@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Triup Motion E · FAQ</title>
-<meta name="description" content="Triup Motion E 자주 묻는 질문 (FAQ)">
+<title>Triup Motion E · 고객센터</title>
+<meta name="description" content="Triup Motion E 고객센터 — 자주 묻는 질문(FAQ)과 제품 업데이트 소식">
 <link rel="icon" href="images/logo-motion.png">
 <style>
 :root{
@@ -24,80 +24,96 @@ a{color:var(--brand)}
 
 /* header */
 .site-head{background:var(--card);border-bottom:1px solid var(--line)}
-.head-row{display:flex;align-items:center;gap:18px;padding:16px 22px}
+.head-row{display:flex;align-items:center;gap:18px;padding:16px 22px;max-width:1120px;margin:0 auto}
 .logo-motion{height:52px;width:auto;flex:none}
-.head-titles h1{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
-.head-titles h1 span{color:var(--brand)}
+.head-titles h1{margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
 .head-sub{margin:2px 0 0;font-size:12.5px;color:var(--sub);letter-spacing:.02em}
 .logo-triup{height:26px;width:auto;margin-left:auto;flex:none;opacity:.92}
 
-/* search band */
-.search-band{background:var(--grad)}
-.search-band .wrap{padding:22px 22px}
-.search{position:relative;max-width:620px}
+/* section nav (FAQ / 업데이트) */
+.section-nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.section-nav .wrap{display:flex;gap:6px;padding:0 22px}
+.snav{position:relative;background:none;border:none;padding:15px 6px;margin-right:22px;
+  font-size:16px;font-weight:700;color:var(--sub);cursor:pointer;transition:color .15s}
+.snav:hover{color:var(--brand)}
+.snav.active{color:var(--brand)}
+.snav.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--brand);border-radius:3px 3px 0 0}
+.snav .n-badge{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:#fff;background:var(--peri);border-radius:999px;padding:1px 7px;vertical-align:middle}
+
+/* band */
+.band{background:var(--grad)}
+.band .wrap{padding:22px 22px}
+.band-title{color:#fff;font-weight:800;font-size:18px;margin:0 0 3px}
+.band-sub{color:rgba(255,255,255,.9);font-size:13.5px;margin:0}
+.search{position:relative;max-width:620px;margin-top:14px}
 .search input{width:100%;padding:14px 16px 14px 46px;border:none;border-radius:12px;
   font-size:16px;background:rgba(255,255,255,.97);color:var(--ink);box-shadow:0 6px 20px rgba(11,60,140,.18)}
 .search input:focus{outline:2px solid #bcd4ff}
 .search .s-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#8a93a5}
 
-/* tabs */
-.tabs{position:sticky;top:0;z-index:30;background:rgba(244,247,251,.94);
-  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+/* category tabs */
+.tabs{position:sticky;top:53px;z-index:30;background:rgba(244,247,251,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tabs .wrap{display:flex;gap:8px;flex-wrap:wrap;padding:12px 22px}
-.tab{border:1px solid var(--line);background:var(--card);color:var(--sub);
-  padding:8px 15px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--sub);padding:8px 15px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
 .tab:hover{border-color:var(--brand);color:var(--brand)}
 .tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
 /* layout */
+.view[hidden]{display:none}
 main{padding:22px 0 60px}
 .count{color:var(--sub);font-size:13px;margin:0 2px 12px}
 .faq-layout{display:grid;grid-template-columns:minmax(300px,400px) 1fr;gap:22px;align-items:start}
 
-/* question list */
+/* list */
 .q-list{display:flex;flex-direction:column;gap:9px}
-.q-item{display:flex;align-items:center;gap:11px;text-align:left;width:100%;
-  background:var(--card);border:1px solid var(--line);border-radius:12px;
-  padding:14px 15px;cursor:pointer;font-size:15px;font-weight:600;color:var(--ink);
-  line-height:1.45;transition:border-color .15s,box-shadow .15s,background .15s}
+.q-item{display:flex;align-items:center;gap:11px;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;cursor:pointer;font-size:15px;font-weight:600;color:var(--ink);line-height:1.45;transition:border-color .15s,box-shadow .15s,background .15s}
 .q-item:hover{border-color:#c3d6f5;box-shadow:0 5px 16px rgba(33,114,222,.08)}
-.q-item.active{border-color:var(--brand);background:var(--brand-soft);
-  box-shadow:0 6px 20px rgba(33,114,222,.14)}
-.qi-cat{flex:none;font-size:11px;font-weight:700;color:var(--brand);
-  background:var(--brand-soft);padding:3px 8px;border-radius:6px}
+.q-item.active{border-color:var(--brand);background:var(--brand-soft);box-shadow:0 6px 20px rgba(33,114,222,.14)}
+.qi-cat{flex:none;font-size:11px;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:3px 8px;border-radius:6px}
 .q-item.active .qi-cat{background:#fff}
 .qi-text{flex:1}
+.qi-date{flex:none;font-size:12px;font-weight:600;color:var(--sub)}
 .qi-arrow{flex:none;color:#b3bccc;transition:transform .15s,color .15s}
 .q-item.active .qi-arrow{color:var(--brand);transform:translateX(2px)}
 .badge{flex:none;font-size:10.5px;font-weight:700;color:#b45309;background:#fef3c7;padding:3px 8px;border-radius:6px}
 
-/* detail panel (right, sticky) */
-.detail{position:sticky;top:calc(var(--head-h) + 6px);background:var(--card);
-  border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;
-  max-height:calc(100vh - var(--head-h) - 34px);overflow:auto;
-  box-shadow:0 8px 30px rgba(23,45,90,.06)}
+/* detail */
+.detail{position:sticky;top:calc(var(--head-h)+6px);background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;max-height:calc(100vh - var(--head-h) - 34px);overflow:auto;box-shadow:0 8px 30px rgba(23,45,90,.06)}
 .detail-close{display:none}
 .detail-empty{color:var(--sub);text-align:center;padding:60px 20px}
 .detail-empty .de-ico{font-size:34px;display:block;margin-bottom:10px;opacity:.6}
 .detail-panel{display:none}
 .detail-panel.show{display:block;animation:fade .2s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-body.has-selection .detail-empty{display:none}
-.dp-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);
-  background:var(--brand-soft);padding:4px 11px;border-radius:7px;margin-bottom:12px}
-.dp-q{margin:0 0 16px;font-size:21px;font-weight:800;line-height:1.4;color:var(--ink);
-  padding-bottom:16px;border-bottom:1px solid var(--line)}
+.detail.has-selection .detail-empty{display:none}
+.dp-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:4px 11px;border-radius:7px;margin-bottom:12px}
+.upd-meta{display:inline-block;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);padding:5px 13px;border-radius:8px;margin-bottom:14px}
+.dp-q{margin:0 0 16px;font-size:22px;font-weight:800;line-height:1.4;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line)}
 .dp-body{font-size:15.5px}
 .dp-body p{margin:0 0 11px}
 .dp-body ul,.dp-body ol{margin:0 0 13px;padding-left:22px}
 .dp-body li{margin:5px 0}
 .dp-body strong{font-weight:700}
-.dp-body code{background:#eef1f6;padding:1px 6px;border-radius:5px;font-size:.92em}
+.dp-body code{background:#eef1f6;padding:1px 6px;border-radius:5px;font-size:.9em}
+.a-h1{font-size:19px;font-weight:800;margin:22px 0 10px;color:var(--ink)}
+.a-h2{font-size:16.5px;font-weight:700;margin:18px 0 8px;color:var(--ink)}
+.a-h3{font-size:15px;font-weight:700;margin:14px 0 6px;color:var(--deep)}
+.dp-body blockquote{margin:14px 0;padding:12px 16px;background:#f4f8ff;border-left:4px solid var(--brand);border-radius:0 8px 8px 0;color:#334;font-size:14.5px}
+.dp-body blockquote p{margin:0 0 6px}
+.dp-body blockquote :last-child{margin-bottom:0}
+.dp-body hr{border:none;border-top:1px solid var(--line);margin:20px 0}
+.dp-body pre{background:#1e2733;color:#e6edf3;padding:14px 16px;border-radius:10px;overflow-x:auto;margin:12px 0;font-size:13.5px;line-height:1.6}
+.dp-body pre code{background:none;color:inherit;padding:0}
+.callout{display:flex;gap:10px;background:#f4f8ff;border:1px solid #d9e6fb;border-radius:10px;padding:13px 15px;margin:14px 0}
+.callout .co-ico{flex:none;font-size:18px;line-height:1.5}
+.callout .co-body{flex:1}
+.callout .co-body :last-child{margin-bottom:0}
+.tgl{margin:12px 0;border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.tgl summary{font-weight:700;cursor:pointer}
 figure{margin:16px 0}
 figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;display:block}
 figcaption{font-size:13px;color:var(--sub);margin-top:6px;text-align:center}
-.pending{color:var(--sub);background:#fafbfd;border:1px dashed var(--line);
-  border-radius:10px;padding:20px;text-align:center;font-size:15px}
+.pending{color:var(--sub);background:#fafbfd;border:1px dashed var(--line);border-radius:10px;padding:20px;text-align:center;font-size:15px}
 .tbl-wrap{overflow-x:auto;margin:14px 0}
 table{border-collapse:collapse;width:100%;font-size:14.5px}
 th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
@@ -107,32 +123,20 @@ th{background:var(--brand-soft);font-weight:700}
 footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--sub);font-size:13px;text-align:center}
 footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 
-/* lightbox */
-.lightbox{position:fixed;inset:0;background:rgba(15,23,42,.9);display:none;
-  align-items:center;justify-content:center;z-index:100;padding:20px;cursor:zoom-out}
+.lightbox{position:fixed;inset:0;background:rgba(15,23,42,.9);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;cursor:zoom-out}
 .lightbox.on{display:flex}
 .lightbox img{max-width:100%;max-height:100%;border-radius:8px}
 
-/* responsive: master-detail -> list + slide-in drawer */
 @media(max-width:820px){
-  .head-titles h1{font-size:19px}
-  .logo-motion{height:44px}
+  .head-titles h1{font-size:20px}.logo-motion{height:44px}
   .faq-layout{grid-template-columns:1fr}
-  .detail{position:fixed;inset:0;z-index:60;border:none;border-radius:0;
-    max-height:none;height:100%;padding:64px 20px 30px;
-    transform:translateX(100%);transition:transform .28s ease;box-shadow:none}
-  body.detail-open .detail{transform:none}
-  body.detail-open{overflow:hidden}
+  .detail{position:fixed;inset:0;z-index:60;border:none;border-radius:0;max-height:none;height:100%;padding:64px 20px 30px;transform:translateX(100%);transition:transform .28s ease;box-shadow:none;overflow:auto}
+  .detail.drawer-open{transform:none}
+  body.drawer-open{overflow:hidden}
   .detail-empty{display:none}
-  .detail-close{display:inline-flex;align-items:center;gap:6px;position:fixed;
-    top:12px;left:14px;z-index:61;background:var(--card);border:1px solid var(--line);
-    color:var(--ink);font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer}
+  .detail-close{display:inline-flex;align-items:center;gap:6px;position:fixed;top:12px;left:14px;z-index:61;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer}
 }
-@media(max-width:560px){
-  .head-row{flex-wrap:wrap;gap:12px}
-  .logo-triup{margin-left:0}
-  .qi-cat{display:none}
-}
+@media(max-width:560px){.head-row{flex-wrap:wrap;gap:12px}.logo-triup{margin-left:0}.qi-cat{display:none}}
 </style>
 </head>
 <body>
@@ -140,191 +144,192 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
   <div class="head-row">
     <img class="logo-motion" src="images/logo-motion.png" alt="Motion E 로고">
     <div class="head-titles">
-      <h1>자주 묻는 질문 <span>FAQ</span></h1>
+      <h1>고객센터</h1>
       <p class="head-sub">TRIUP MOTION E · EMR · OCS · CRM CHART SYSTEM</p>
     </div>
     <img class="logo-triup" src="images/logo-triup.png" alt="trIup 로고">
   </div>
 </header>
 
-<div class="search-band">
+<nav class="section-nav">
   <div class="wrap">
-    <div class="search">
-      <svg class="s-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input id="search" type="search" placeholder="질문 검색 (예: 환불, 계정, 통계)" autocomplete="off">
+    <button class="snav active" data-view="faq">자주 묻는 질문</button>
+    <button class="snav" data-view="update">업데이트 <span class="n-badge">2</span></button>
+  </div>
+</nav>
+
+<!-- ===== FAQ view ===== -->
+<div class="view view-faq" id="view-faq">
+  <div class="band">
+    <div class="wrap">
+      <div class="search">
+        <svg class="s-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="질문 검색 (예: 환불, 계정, 통계)" autocomplete="off">
+      </div>
     </div>
   </div>
-</div>
-
-<div class="tabs"><div class="wrap"><button class="tab active" data-cat="전체">전체</button><button class="tab" data-cat="고객관리">고객관리</button><button class="tab" data-cat="차트">차트</button><button class="tab" data-cat="매출관리">매출관리</button><button class="tab" data-cat="관리자">관리자</button><button class="tab" data-cat="수납">수납</button><button class="tab" data-cat="설정">설정</button></div></div>
-
-<main class="wrap">
-  <div class="count" id="count"></div>
-  <div class="faq-layout">
-    <aside class="q-list" id="qlist">
-<button class="q-item" data-id="1" data-cat="고객관리" data-search="신환(고객)등록은 어떻게 하나요? [고객관리] &amp;gt; [고객등록] 경로에서 고객 정보를 입력 후 등록이 가능해요. 또는 [대시보드] 좌측 검색창에 고객 정보(이름, 연락처)를 검색 후 중복 등록 여부를 확인하신 후 조회되는 정보가 없다면 [환자 등록 후 예약] 을 눌러 고객정보를 입력 후 등록해 주세요.">
+  <div class="tabs"><div class="wrap"><button class="tab active" data-cat="전체">전체</button><button class="tab" data-cat="고객관리">고객관리</button><button class="tab" data-cat="차트">차트</button><button class="tab" data-cat="매출관리">매출관리</button><button class="tab" data-cat="관리자">관리자</button><button class="tab" data-cat="수납">수납</button><button class="tab" data-cat="설정">설정</button></div></div>
+  <main class="wrap">
+    <div class="count" id="count"></div>
+    <div class="faq-layout">
+      <aside class="q-list" id="faq-list">
+<button class="q-item" data-id="f1" data-cat="고객관리" data-search="신환(고객)등록은 어떻게 하나요? [고객관리] &amp;gt; [고객등록] 경로에서 고객 정보를 입력 후 등록이 가능해요. 또는 [대시보드] 좌측 검색창에 고객 정보(이름, 연락처)를 검색 후 중복 등록 여부를 확인하신 후 조회되는 정보가 없다면 [환자 등록 후 예약] 을 눌러 고객정보를 입력 후 등록해 주세요.">
       <span class="qi-cat">고객관리</span>
       <span class="qi-text">신환(고객)등록은 어떻게 하나요?</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="2" data-cat="고객관리" data-search="등록한 고객을 삭제하고 싶어요. [고객관리] &amp;gt; [고객리스트] &amp;gt; 이름 또는 고객정보를 입력 후 [조회] &amp;gt; 조회된 고객 체크박스를 선택하신 후 우측 상단의 [선택고객삭제] 버튼을 눌러주세요. 고객 삭제 시 등록된 고객 정보, 포인트 적립·사용·차감 내역 등 고객 관련 기록은 함께 삭제되며 복구가 불가하니 이점 유의하여 진행해 주세요.">
+<button class="q-item" data-id="f2" data-cat="고객관리" data-search="등록한 고객을 삭제하고 싶어요. [고객관리] &amp;gt; [고객리스트] &amp;gt; 이름 또는 고객정보를 입력 후 [조회] &amp;gt; 조회된 고객 체크박스를 선택하신 후 우측 상단의 [선택고객삭제] 버튼을 눌러주세요. 고객 삭제 시 등록된 고객 정보, 포인트 적립·사용·차감 내역 등 고객 관련 기록은 함께 삭제되며 복구가 불가하니 이점 유의하여 진행해 주세요.">
       <span class="qi-cat">고객관리</span>
       <span class="qi-text">등록한 고객을 삭제하고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="3" data-cat="고객관리" data-search="동일한 고객 정보로 차트가 중복 생성되었어요. 차트를 통합해 주세요. 차트 통합은 고객센터를 통해서 처리가 가능해요. 고객명, 차트 번호 와 함께 고객센터로 문의해 주세요!. 모션e 상단 [고객센터] &amp;gt; [문의하기] &amp;gt; [상담원 연결 ] 버튼을 눌러 연결이 가능해요.">
+<button class="q-item" data-id="f3" data-cat="고객관리" data-search="동일한 고객 정보로 차트가 중복 생성되었어요. 차트를 통합해 주세요. 차트 통합은 고객센터를 통해서 처리가 가능해요. 고객명, 차트 번호 와 함께 고객센터로 문의해 주세요!. 모션e 상단 [고객센터] &amp;gt; [문의하기] &amp;gt; [상담원 연결 ] 버튼을 눌러 연결이 가능해요.">
       <span class="qi-cat">고객관리</span>
       <span class="qi-text">동일한 고객 정보로 차트가 중복 생성되었어요. 차트를 통합해 주세요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="4" data-cat="차트" data-search="차트를 삭제하고 싶어요. 차트는 &amp;quot;만들어진 순서의 반대로&amp;quot; 지워야 삭제됩니다. 접수를 하면 차트가 생성되므로, 삭제하실 때는 진행하신 단계를 거꾸로 되돌려 주셔야 합니다. 예를 들어 접수 → 시술/처방 → 수납 까지 완료된 차트라면, 반대 순서인 수납 취소 → 시술/처방 삭제 → 접수 취소 순으로 진행하시면 차트가 삭제됩니다. *수납취소는 고객 차트 내 수납 탭에서, 시술은 상담 탭, 처방은 진료 탭에서 삭제가 가능합니다.">
+<button class="q-item" data-id="f4" data-cat="차트" data-search="차트를 삭제하고 싶어요. 차트는 &amp;quot;만들어진 순서의 반대로&amp;quot; 지워야 삭제됩니다. 접수를 하면 차트가 생성되므로, 삭제하실 때는 진행하신 단계를 거꾸로 되돌려 주셔야 합니다. 예를 들어 접수 → 시술/처방 → 수납 까지 완료된 차트라면, 반대 순서인 수납 취소 → 시술/처방 삭제 → 접수 취소 순으로 진행하시면 차트가 삭제됩니다. *수납취소는 고객 차트 내 수납 탭에서, 시술은 상담 탭, 처방은 진료 탭에서 삭제가 가능합니다.">
       <span class="qi-cat">차트</span>
       <span class="qi-text">차트를 삭제하고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="5" data-cat="차트" data-search="시술 오더는 어떻게 삭제하나요? 시술내역은 ‘미수납’ 상태에서만 삭제가 가능합니다. 고객 차트 내 [상담] 탭 &amp;gt; [시술내역] 버튼을 누르시면 전체 시술내역이 조회가 되며, 삭제할 내역의 [x]버튼을 눌러 삭제해 주세요.">
+<button class="q-item" data-id="f5" data-cat="차트" data-search="시술 오더는 어떻게 삭제하나요? 시술내역은 ‘미수납’ 상태에서만 삭제가 가능합니다. 고객 차트 내 [상담] 탭 &amp;gt; [시술내역] 버튼을 누르시면 전체 시술내역이 조회가 되며, 삭제할 내역의 [x]버튼을 눌러 삭제해 주세요.">
       <span class="qi-cat">차트</span>
       <span class="qi-text">시술 오더는 어떻게 삭제하나요?</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="6" data-cat="차트" data-search="처방 내역을 삭제하고 싶어요. 고객 차트 내 [진료] 탭 에서 처방 된 내역의 [x]버튼 을 눌러주시면 처방이 삭제됩니다. 삭제 후 [저장] 버튼을 눌러주세요.">
+<button class="q-item" data-id="f6" data-cat="차트" data-search="처방 내역을 삭제하고 싶어요. 고객 차트 내 [진료] 탭 에서 처방 된 내역의 [x]버튼 을 눌러주시면 처방이 삭제됩니다. 삭제 후 [저장] 버튼을 눌러주세요.">
       <span class="qi-cat">차트</span>
       <span class="qi-text">처방 내역을 삭제하고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="7" data-cat="차트" data-search="상담메모 히스토리를 보고 싶어요. 고객 차트 내 [상담] 탭&amp;gt; 상담메모 영역을 더블클릭 하면 이전 상담메모 히스토리를 확인할 수 있습니다. 상담메모 뿐만아니라, 예약/접수 메모, 어시메모 등 메모 영역은 더블클릭을 통해 히스토리 확인이 가능합니다.">
+<button class="q-item" data-id="f7" data-cat="차트" data-search="상담메모 히스토리를 보고 싶어요. 고객 차트 내 [상담] 탭&amp;gt; 상담메모 영역을 더블클릭 하면 이전 상담메모 히스토리를 확인할 수 있습니다. 상담메모 뿐만아니라, 예약/접수 메모, 어시메모 등 메모 영역은 더블클릭을 통해 히스토리 확인이 가능합니다.">
       <span class="qi-cat">차트</span>
       <span class="qi-text">상담메모 히스토리를 보고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item is-pending" data-id="8" data-cat="차트" data-search="dur 점검 시 인증서가 나오지 않아요.">
+<button class="q-item is-pending" data-id="f8" data-cat="차트" data-search="dur 점검 시 인증서가 나오지 않아요.">
       <span class="qi-cat">차트</span>
       <span class="qi-text">DUR 점검 시 인증서가 나오지 않아요.</span>
       <span class="badge">준비중</span>
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="9" data-cat="매출관리" data-search="매출금액별 ‘총 진료비’와 ‘수납금액’의 합계가 맞지 않아요. 매출금액과 수납금액은 집계 기준이 달라 차이가 발생할 수 있습니다. 매출금액(총 진료비)에는 환자 본인부담금과 공단부담금이 모두 포함됩니다. 수납금액에는 환자가 실제로 납부한 본인부담금만 반영됩니다. 따라서 건강보험 청구 건이 포함된 경우 매출금액과 수납금액의 합계가 일치하지 않을 수 있습니다. 또한 미수금이 발생한 경우에도 조회 화면에 따라 금액 차이가 발생할 수 있습니다. 미수금은, [매출관리] &amp;gt; [미수금 내역]에서 조회 가능합니다. ※ 결산시스템의 미수금은 0원으로 수납 처리한 경우에만 미수금으로 집계됩니다. 단순히 수납 처리를 진행하지 않은 건은 결산시스템 &amp;gt; 미수금 메뉴에 표시되지 않을 수 있습니다. 매출과 수납을 비교할 때에는 총 진료비에서 보험청구액, 미수금을 제외하고 비교해 주세요.">
+<button class="q-item" data-id="f9" data-cat="매출관리" data-search="매출금액별 ‘총 진료비’와 ‘수납금액’의 합계가 맞지 않아요. 매출금액과 수납금액은 집계 기준이 달라 차이가 발생할 수 있습니다. 매출금액(총 진료비)에는 환자 본인부담금과 공단부담금이 모두 포함됩니다. 수납금액에는 환자가 실제로 납부한 본인부담금만 반영됩니다. 따라서 건강보험 청구 건이 포함된 경우 매출금액과 수납금액의 합계가 일치하지 않을 수 있습니다. 또한 미수금이 발생한 경우에도 조회 화면에 따라 금액 차이가 발생할 수 있습니다. 미수금은, [매출관리] &amp;gt; [미수금 내역]에서 조회 가능합니다. ※ 결산시스템의 미수금은 0원으로 수납 처리한 경우에만 미수금으로 집계됩니다. 단순히 수납 처리를 진행하지 않은 건은 결산시스템 &amp;gt; 미수금 메뉴에 표시되지 않을 수 있습니다. 매출과 수납을 비교할 때에는 총 진료비에서 보험청구액, 미수금을 제외하고 비교해 주세요.">
       <span class="qi-cat">매출관리</span>
       <span class="qi-text">매출금액별 ‘총 진료비’와 ‘수납금액’의 합계가 맞지 않아요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="10" data-cat="매출관리" data-search="상담사(상담실장) 별 한 달간 상담건수를 보고 싶어요. [매출관리] &amp;gt; [결산시스템] &amp;gt; 월별 선택, 개인별 탭에서 직무를 ‘상담사’로 선택하시면 상담사 별 해당 기간의 매출을 조회할 수 있어요. 고객 접수 시 상담사를 지정하지 않은 경우, 미지정으로 집계됩니다.">
+<button class="q-item" data-id="f10" data-cat="매출관리" data-search="상담사(상담실장) 별 한 달간 상담건수를 보고 싶어요. [매출관리] &amp;gt; [결산시스템] &amp;gt; 월별 선택, 개인별 탭에서 직무를 ‘상담사’로 선택하시면 상담사 별 해당 기간의 매출을 조회할 수 있어요. 고객 접수 시 상담사를 지정하지 않은 경우, 미지정으로 집계됩니다.">
       <span class="qi-cat">매출관리</span>
       <span class="qi-text">상담사(상담실장) 별 한 달간 상담건수를 보고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="11" data-cat="매출관리" data-search="통계를 보고 싶어요. [매출관리] &amp;gt; [결산시스템] 메뉴를 통해 기간과 카테고리를 선택하여, 결산 , 시술별 , 진료별 , 시술구분 , 진료분야 , 개인별 , 내원경로 , 예약경로 , 국가별 , 월간 에 대한 통계를 확인할 수 있어요. 결산 총 진료비와 수납금액의 합계를 확인할 수 있습니다. 시술별 고객 차트 내 [상답]탭에서 비급여 시술을 저장한 일자를 기준으로 집계됩니다. ※전액 멤버십 포인트를 사용한 시술은 그래프 우측 하단의 ‘포인트’를 선택한 경우에 표기됩니다. 진료별 고객 차트 내 [진료]탭에서 처방된 내역을 확인할 수 있습니다. 시술구분 객 예약 및 접수 시 선택한 ‘시술’에 해당하는 항목들이 집계됩니다. 진료분야 고객 예약 및 접수 시 선택한 ‘진료분야’에 해당하는 항목들이 집계됩니다. 개인별 의사, 상담사 등 직무에 따라 매출이 집계됩니다. 내원경로 고객 등록 시 선택한 ‘내원경로’에 따른 매출을 확인할 수 있습니다. 예약경로 고객 예약 시 선택한 ‘예약경로’에 따른 매출을 확인할 수 있습니다. 국가별 고객 등록 시 선택한 국가에 따른 매출을 확인할 수 있습니다. 일간/월간 일별, 주별, 월별 선택 시 일자별로 매출 확인이 가능하며, 3개월별, 연도별 선택 시 월 별로 매출 확인이 가능합니다.">
+<button class="q-item" data-id="f11" data-cat="매출관리" data-search="통계를 보고 싶어요. [매출관리] &amp;gt; [결산시스템] 메뉴를 통해 기간과 카테고리를 선택하여, 결산 , 시술별 , 진료별 , 시술구분 , 진료분야 , 개인별 , 내원경로 , 예약경로 , 국가별 , 월간 에 대한 통계를 확인할 수 있어요. 결산 총 진료비와 수납금액의 합계를 확인할 수 있습니다. 시술별 고객 차트 내 [상답]탭에서 비급여 시술을 저장한 일자를 기준으로 집계됩니다. ※전액 멤버십 포인트를 사용한 시술은 그래프 우측 하단의 ‘포인트’를 선택한 경우에 표기됩니다. 진료별 고객 차트 내 [진료]탭에서 처방된 내역을 확인할 수 있습니다. 시술구분 객 예약 및 접수 시 선택한 ‘시술’에 해당하는 항목들이 집계됩니다. 진료분야 고객 예약 및 접수 시 선택한 ‘진료분야’에 해당하는 항목들이 집계됩니다. 개인별 의사, 상담사 등 직무에 따라 매출이 집계됩니다. 내원경로 고객 등록 시 선택한 ‘내원경로’에 따른 매출을 확인할 수 있습니다. 예약경로 고객 예약 시 선택한 ‘예약경로’에 따른 매출을 확인할 수 있습니다. 국가별 고객 등록 시 선택한 국가에 따른 매출을 확인할 수 있습니다. 일간/월간 일별, 주별, 월별 선택 시 일자별로 매출 확인이 가능하며, 3개월별, 연도별 선택 시 월 별로 매출 확인이 가능합니다.">
       <span class="qi-cat">매출관리</span>
       <span class="qi-text">통계를 보고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="12" data-cat="관리자" data-search="휴진일은 어떻게 설정하나요? 휴진일은 관리자 권한이 있는 계정으로 접속하여 설정이 가능해요. 차트 상단 [관리자] &amp;gt; [병원설정] &amp;gt; 진료일/휴진일 영역 에서 설정해 주세요. 정기 휴일은 상단에서, 공휴일 등 병원 지정 휴진일은 하단의 휴진일 영역에서 날짜를 선택해 주세요. 선택 후 우측 하단의 [저장] 버튼을 눌러주셔야 적용이 됩니다.">
+<button class="q-item" data-id="f12" data-cat="관리자" data-search="휴진일은 어떻게 설정하나요? 휴진일은 관리자 권한이 있는 계정으로 접속하여 설정이 가능해요. 차트 상단 [관리자] &amp;gt; [병원설정] &amp;gt; 진료일/휴진일 영역 에서 설정해 주세요. 정기 휴일은 상단에서, 공휴일 등 병원 지정 휴진일은 하단의 휴진일 영역에서 날짜를 선택해 주세요. 선택 후 우측 하단의 [저장] 버튼을 눌러주셔야 적용이 됩니다.">
       <span class="qi-cat">관리자</span>
       <span class="qi-text">휴진일은 어떻게 설정하나요?</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="13" data-cat="관리자" data-search="신규 입사한 선생님 계정을 추가하고 싶어요. 계정 생성은 관리자 권한이 있는 계정에서 생성이 가능해요. [관리자] &amp;gt; [사용자 관리] &amp;gt; 우측 상단 [신규입력] 을 통해 생성해 주세요. ※퇴사 후 재입사를 하신 경우, 기존의 계정을 활성화하여 사용이 가능합니다. [관리자] &amp;gt; [사용자 관리] &amp;gt; 좌측 상단 '전체' 선택 후 사용자명 검색 및 선택 &amp;gt; 사용여부 '사용'으로 변경 후 [저장]해 주세요.">
+<button class="q-item" data-id="f13" data-cat="관리자" data-search="신규 입사한 선생님 계정을 추가하고 싶어요. 계정 생성은 관리자 권한이 있는 계정에서 생성이 가능해요. [관리자] &amp;gt; [사용자 관리] &amp;gt; 우측 상단 [신규입력] 을 통해 생성해 주세요. ※퇴사 후 재입사를 하신 경우, 기존의 계정을 활성화하여 사용이 가능합니다. [관리자] &amp;gt; [사용자 관리] &amp;gt; 좌측 상단 '전체' 선택 후 사용자명 검색 및 선택 &amp;gt; 사용여부 '사용'으로 변경 후 [저장]해 주세요.">
       <span class="qi-cat">관리자</span>
       <span class="qi-text">신규 입사한 선생님 계정을 추가하고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="14" data-cat="관리자" data-search="특정 계정에서는 병원 매출을 안 보이게 설정하고 싶어요. 관리자 권한이 있는 계정으로 설정이 가능하며, [관리자] &amp;gt; [옵션설정] &amp;gt; ‘[사용자설정] &amp;gt; ‘통계 사용 권한’ &amp;gt; ‘사용자 이름’ 선택 후 전체 각각의 옵션명에 해당하는 선택옵션을 ‘미사용’으로 선택 후 [일괄저장]해 주세요. 동시 적용 사용자 선택란을 클릭 후 동시에 적용할 사용자 이름을 선택하면 선택된 사용자에게 일괄 적용됩니다. ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.">
+<button class="q-item" data-id="f14" data-cat="관리자" data-search="특정 계정에서는 병원 매출을 안 보이게 설정하고 싶어요. 관리자 권한이 있는 계정으로 설정이 가능하며, [관리자] &amp;gt; [옵션설정] &amp;gt; ‘[사용자설정] &amp;gt; ‘통계 사용 권한’ &amp;gt; ‘사용자 이름’ 선택 후 전체 각각의 옵션명에 해당하는 선택옵션을 ‘미사용’으로 선택 후 [일괄저장]해 주세요. 동시 적용 사용자 선택란을 클릭 후 동시에 적용할 사용자 이름을 선택하면 선택된 사용자에게 일괄 적용됩니다. ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.">
       <span class="qi-cat">관리자</span>
       <span class="qi-text">특정 계정에서는 병원 매출을 안 보이게 설정하고 싶어요.</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="15" data-cat="관리자" data-search="메모지 출력 시 상담메모가 안 나와요. (네모닉, pos뱅크) 관리자 권한이 있는 계정으로 접속하여 아래 경로를 통해 메모지 출력 옵션 설정이 가능합니다. 경로: [관리자] &amp;gt; [옵션설정] &amp;gt; ‘병원설정’ &amp;gt; ‘네모닉’ 선택 후 선택옵션이 모두 ‘출력’상태로 되어 있는지 확인해 주세요. ‘미출력’으로 선택된 경우, 메모지 출력 시 해당 옵션은 출력되지 않아요. ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.">
+<button class="q-item" data-id="f15" data-cat="관리자" data-search="메모지 출력 시 상담메모가 안 나와요. (네모닉, pos뱅크) 관리자 권한이 있는 계정으로 접속하여 아래 경로를 통해 메모지 출력 옵션 설정이 가능합니다. 경로: [관리자] &amp;gt; [옵션설정] &amp;gt; ‘병원설정’ &amp;gt; ‘네모닉’ 선택 후 선택옵션이 모두 ‘출력’상태로 되어 있는지 확인해 주세요. ‘미출력’으로 선택된 경우, 메모지 출력 시 해당 옵션은 출력되지 않아요. ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.">
       <span class="qi-cat">관리자</span>
       <span class="qi-text">메모지 출력 시 상담메모가 안 나와요. (네모닉, POS뱅크)</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item is-pending" data-id="16" data-cat="관리자" data-search="차트를 삭제했어요. 삭제된 차트 복구 가능한가요?">
+<button class="q-item is-pending" data-id="f16" data-cat="관리자" data-search="차트를 삭제했어요. 삭제된 차트 복구 가능한가요?">
       <span class="qi-cat">관리자</span>
       <span class="qi-text">차트를 삭제했어요. 삭제된 차트 복구 가능한가요?</span>
       <span class="badge">준비중</span>
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="17" data-cat="수납" data-search="부분환불은 어떻게 하나요? [고객 차트] &amp;gt; [수납] 탭에서 화면 하단 [기존수납 내역]의 [+] 버튼을 클릭합니다. 부분환불할 수납 내역 을 선택한 후, 하단 [시술 수납 내역]에서 해당 항목을 선택합니다. 환불금액 칸을 더블클릭 하여 환불할 금액을 직접 입력합니다. 우측에서 환불일자 를 선택한 뒤, 과세/비과세 결제수단 옆의 빈 입력란 을 클릭하면 입력한 환불금액이 자동으로 반영됩니다. 마지막으로 [환불] 버튼을 클릭하면 부분환불이 완료됩니다.">
+<button class="q-item" data-id="f17" data-cat="수납" data-search="부분환불은 어떻게 하나요? [고객 차트] &amp;gt; [수납] 탭에서 화면 하단 [기존수납 내역]의 [+] 버튼을 클릭합니다. 부분환불할 수납 내역 을 선택한 후, 하단 [시술 수납 내역]에서 해당 항목을 선택합니다. 환불금액 칸을 더블클릭 하여 환불할 금액을 직접 입력합니다. 우측에서 환불일자 를 선택한 뒤, 과세/비과세 결제수단 옆의 빈 입력란 을 클릭하면 입력한 환불금액이 자동으로 반영됩니다. 마지막으로 [환불] 버튼을 클릭하면 부분환불이 완료됩니다.">
       <span class="qi-cat">수납</span>
       <span class="qi-text">부분환불은 어떻게 하나요?</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-<button class="q-item" data-id="18" data-cat="설정" data-search="자주 쓰는 상용구 설정은 어떻게 하나요? 상담메모, 예약/접수메모, 어시메모, 관리메모 등 자주 사용하는 문구는 상용구 로 등록하여 편리하게 사용할 수 있습니다. 경로: [설정] &amp;gt; [상용구 설정] &amp;gt;[추가] &amp;gt; 키워드와 내용을 입력한 후 [저장] 버튼을 클릭 상담메모, 예약/접수메모, 어시메모, 관리메모 등 입력란에서 / + 키워드 를 입력한 뒤 스페이스바(space)를 누르면 등록한 내용이 자동으로 입력됩니다. 예시) /흑자 입력 → 스페이스바 → 등록한 상용구 내용 자동 입력">
+<button class="q-item" data-id="f18" data-cat="설정" data-search="자주 쓰는 상용구 설정은 어떻게 하나요? 상담메모, 예약/접수메모, 어시메모, 관리메모 등 자주 사용하는 문구는 상용구 로 등록하여 편리하게 사용할 수 있습니다. 경로: [설정] &amp;gt; [상용구 설정] &amp;gt;[추가] &amp;gt; 키워드와 내용을 입력한 후 [저장] 버튼을 클릭 상담메모, 예약/접수메모, 어시메모, 관리메모 등 입력란에서 / + 키워드 를 입력한 뒤 스페이스바(space)를 누르면 등록한 내용이 자동으로 입력됩니다. 예시) /흑자 입력 → 스페이스바 → 등록한 상용구 내용 자동 입력">
       <span class="qi-cat">설정</span>
       <span class="qi-text">자주 쓰는 상용구 설정은 어떻게 하나요?</span>
       
       <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    </aside>
-    <section class="detail" id="detail">
-      <button class="detail-close" id="close">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-        목록
-      </button>
-      <div class="detail-empty" id="empty-detail">
-        <span class="de-ico">💬</span>
-        왼쪽 목록에서 궁금한 질문을 선택하세요.
-      </div>
-<div class="detail-panel" data-id="1">
+      </aside>
+      <section class="detail" id="faq-detail">
+        <button class="detail-close">◀ 목록</button>
+        <div class="detail-empty"><span class="de-ico">💬</span>왼쪽 목록에서 궁금한 질문을 선택하세요.</div>
+<div class="detail-panel" data-id="f1">
       <div class="dp-cat">고객관리</div>
       <h2 class="dp-q">신환(고객)등록은 어떻게 하나요?</h2>
-      <div class="dp-body"><p>[고객관리] &gt; [고객등록] 경로에서 고객 정보를 입력 후 등록이 가능해요. </p><p>또는 [대시보드] 좌측 검색창에 고객 정보(이름, 연락처)를 검색 후 중복 등록 여부를 확인하신 후 조회되는 정보가 없다면 [환자 등록 후 예약] 을 눌러 고객정보를 입력 후 등록해 주세요.</p><figure><img loading="lazy" src="images/faq-01.png" alt="FAQ 이미지"></figure></div>
+      <div class="dp-body"><p>[고객관리] &gt; [고객등록] 경로에서 고객 정보를 입력 후 등록이 가능해요. </p><p>또는 [대시보드] 좌측 검색창에 고객 정보(이름, 연락처)를 검색 후 중복 등록 여부를 확인하신 후 조회되는 정보가 없다면 [환자 등록 후 예약] 을 눌러 고객정보를 입력 후 등록해 주세요.</p><figure><img loading="lazy" src="images/faq-01.png" alt="이미지"></figure></div>
     </div>
-<div class="detail-panel" data-id="2">
+<div class="detail-panel" data-id="f2">
       <div class="dp-cat">고객관리</div>
       <h2 class="dp-q">등록한 고객을 삭제하고 싶어요.</h2>
-      <div class="dp-body"><p>[고객관리] &gt; [고객리스트] &gt; 이름 또는 고객정보를 입력 후 [조회] &gt; 조회된 고객 체크박스를 선택하신 후 우측 상단의 [선택고객삭제] 버튼을 눌러주세요. </p><p>고객 삭제 시 등록된 고객 정보, 포인트 적립·사용·차감 내역 등 고객 관련 기록은 함께 삭제되며 복구가 불가하니 이점 유의하여 진행해 주세요. </p><figure><img loading="lazy" src="images/faq-02.png" alt="FAQ 이미지"></figure></div>
+      <div class="dp-body"><p>[고객관리] &gt; [고객리스트] &gt; 이름 또는 고객정보를 입력 후 [조회] &gt; 조회된 고객 체크박스를 선택하신 후 우측 상단의 [선택고객삭제] 버튼을 눌러주세요. </p><p>고객 삭제 시 등록된 고객 정보, 포인트 적립·사용·차감 내역 등 고객 관련 기록은 함께 삭제되며 복구가 불가하니 이점 유의하여 진행해 주세요. </p><figure><img loading="lazy" src="images/faq-02.png" alt="이미지"></figure></div>
     </div>
-<div class="detail-panel" data-id="3">
+<div class="detail-panel" data-id="f3">
       <div class="dp-cat">고객관리</div>
       <h2 class="dp-q">동일한 고객 정보로 차트가 중복 생성되었어요. 차트를 통합해 주세요.</h2>
       <div class="dp-body"><p>차트 통합은 고객센터를 통해서 처리가 가능해요. </p><p><strong>고객명, 차트 번호</strong>와 함께 고객센터로 문의해 주세요!.
-모션E 상단<strong> [고객센터] &gt; [문의하기] &gt; [상담원 연결</strong>] 버튼을 눌러 연결이 가능해요. </p><figure><img loading="lazy" src="images/faq-03.png" alt="FAQ 이미지"></figure></div>
+모션E 상단<strong> [고객센터] &gt; [문의하기] &gt; [상담원 연결</strong>] 버튼을 눌러 연결이 가능해요. </p><figure><img loading="lazy" src="images/faq-03.png" alt="이미지"></figure></div>
     </div>
-<div class="detail-panel" data-id="4">
+<div class="detail-panel" data-id="f4">
       <div class="dp-cat">차트</div>
       <h2 class="dp-q">차트를 삭제하고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-04.png" alt="FAQ 이미지"></figure><p><strong>차트는 &quot;만들어진 순서의 반대로&quot; 지워야 삭제됩니다.</strong></p><p>접수를 하면 차트가 생성되므로, 삭제하실 때는 진행하신 단계를 거꾸로 되돌려 주셔야 합니다.
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-04.png" alt="이미지"></figure><p><strong>차트는 &quot;만들어진 순서의 반대로&quot; 지워야 삭제됩니다.</strong></p><p>접수를 하면 차트가 생성되므로, 삭제하실 때는 진행하신 단계를 거꾸로 되돌려 주셔야 합니다.
 예를 들어 <strong>접수 → 시술/처방 → 수납</strong>까지 완료된 차트라면, 
 반대 순서인 <strong>수납 취소 → 시술/처방 삭제 → 접수 취소</strong> 순으로 진행하시면 차트가 삭제됩니다.</p><p>*수납취소는 고객 차트 내 수납 탭에서, 시술은 상담 탭, 처방은 진료 탭에서 삭제가 가능합니다. </p></div>
     </div>
-<div class="detail-panel" data-id="5">
+<div class="detail-panel" data-id="f5">
       <div class="dp-cat">차트</div>
       <h2 class="dp-q">시술 오더는 어떻게 삭제하나요?</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-05.png" alt="FAQ 이미지"></figure><p>시술내역은 ‘미수납’ 상태에서만 삭제가 가능합니다.
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-05.png" alt="이미지"></figure><p>시술내역은 ‘미수납’ 상태에서만 삭제가 가능합니다.
 고객 차트 내 [상담] 탭 &gt; [시술내역] 버튼을 누르시면 전체 시술내역이 조회가 되며, 삭제할 내역의 [X]버튼을 눌러 삭제해 주세요.</p></div>
     </div>
-<div class="detail-panel" data-id="6">
+<div class="detail-panel" data-id="f6">
       <div class="dp-cat">차트</div>
       <h2 class="dp-q">처방 내역을 삭제하고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-06.png" alt="FAQ 이미지"></figure><p>고객 차트 내 <strong>[진료] 탭</strong>에서 처방 된 내역의 <strong>[X]버튼</strong>을 눌러주시면 처방이 삭제됩니다. </p><p>삭제 후<strong> [저장]</strong> 버튼을 눌러주세요. </p></div>
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-06.png" alt="이미지"></figure><p>고객 차트 내 <strong>[진료] 탭</strong>에서 처방 된 내역의 <strong>[X]버튼</strong>을 눌러주시면 처방이 삭제됩니다. </p><p>삭제 후<strong> [저장]</strong> 버튼을 눌러주세요. </p></div>
     </div>
-<div class="detail-panel" data-id="7">
+<div class="detail-panel" data-id="f7">
       <div class="dp-cat">차트</div>
       <h2 class="dp-q">상담메모 히스토리를 보고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-07.png" alt="FAQ 이미지"></figure><p>고객 차트 내 [상담] 탭&gt; 상담메모 영역을 더블클릭 하면 이전 상담메모 히스토리를 확인할 수 있습니다.</p><p>상담메모 뿐만아니라, 예약/접수 메모, 어시메모 등 메모 영역은 더블클릭을 통해 히스토리 확인이 가능합니다. </p></div>
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-07.png" alt="이미지"></figure><p>고객 차트 내 [상담] 탭&gt; 상담메모 영역을 더블클릭 하면 이전 상담메모 히스토리를 확인할 수 있습니다.</p><p>상담메모 뿐만아니라, 예약/접수 메모, 어시메모 등 메모 영역은 더블클릭을 통해 히스토리 확인이 가능합니다. </p></div>
     </div>
-<div class="detail-panel" data-id="8">
+<div class="detail-panel" data-id="f8">
       <div class="dp-cat">차트</div>
       <h2 class="dp-q">DUR 점검 시 인증서가 나오지 않아요.</h2>
       <div class="dp-body"><div class="pending">🕐 내용 준비중입니다.</div></div>
     </div>
-<div class="detail-panel" data-id="9">
+<div class="detail-panel" data-id="f9">
       <div class="dp-cat">매출관리</div>
       <h2 class="dp-q">매출금액별 ‘총 진료비’와 ‘수납금액’의 합계가 맞지 않아요.</h2>
       <div class="dp-body"><p>매출금액과 수납금액은 집계 기준이 달라 차이가 발생할 수 있습니다.
@@ -334,97 +339,153 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 단순히 수납 처리를 진행하지 않은 건은 결산시스템 &gt; 미수금 메뉴에 표시되지 않을 수 있습니다.
 <strong>매출과 수납을 비교할 때에는 총 진료비에서 보험청구액, 미수금을 제외하고 비교해 주세요. </strong></p></div>
     </div>
-<div class="detail-panel" data-id="10">
+<div class="detail-panel" data-id="f10">
       <div class="dp-cat">매출관리</div>
       <h2 class="dp-q">상담사(상담실장) 별 한 달간 상담건수를 보고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-08.png" alt="FAQ 이미지"></figure><p>[매출관리] &gt; [결산시스템] &gt; 월별 선택, 개인별 탭에서 직무를 ‘상담사’로 선택하시면 상담사 별 해당 기간의 매출을 조회할 수 있어요. </p><p>고객 접수 시 상담사를 지정하지 않은 경우, 미지정으로 집계됩니다. </p></div>
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-08.png" alt="이미지"></figure><p>[매출관리] &gt; [결산시스템] &gt; 월별 선택, 개인별 탭에서 직무를 ‘상담사’로 선택하시면 상담사 별 해당 기간의 매출을 조회할 수 있어요. </p><p>고객 접수 시 상담사를 지정하지 않은 경우, 미지정으로 집계됩니다. </p></div>
     </div>
-<div class="detail-panel" data-id="11">
+<div class="detail-panel" data-id="f11">
       <div class="dp-cat">매출관리</div>
       <h2 class="dp-q">통계를 보고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-09.png" alt="FAQ 이미지"></figure><p>[매출관리] &gt; [결산시스템] 메뉴를 통해 기간과 카테고리를 선택하여,</p><p><strong><u>결산</u></strong><strong>, </strong><strong><u>시술별</u></strong><strong>, </strong><strong><u>진료별</u></strong><strong>, </strong><strong><u>시술구분</u></strong><strong>, </strong><strong><u>진료분야</u></strong><strong>, </strong><strong><u>개인별</u></strong><strong>, </strong><strong><u>내원경로</u></strong><strong>, </strong><strong><u>예약경로</u></strong><strong>, </strong><strong><u>국가별</u></strong><strong>, </strong><strong><u>월간</u></strong>에 대한 통계를 확인할 수 있어요. </p><div class="tbl-wrap"><table><tr><th>결산</th><th>총 진료비와 수납금액의 합계를 확인할 수 있습니다.  </th></tr><tr><td>시술별</td><td>고객 차트 내 [상답]탭에서 비급여 시술을 저장한 일자를 기준으로 집계됩니다. 
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-09.png" alt="이미지"></figure><p>[매출관리] &gt; [결산시스템] 메뉴를 통해 기간과 카테고리를 선택하여,</p><p><strong><u>결산</u></strong><strong>, </strong><strong><u>시술별</u></strong><strong>, </strong><strong><u>진료별</u></strong><strong>, </strong><strong><u>시술구분</u></strong><strong>, </strong><strong><u>진료분야</u></strong><strong>, </strong><strong><u>개인별</u></strong><strong>, </strong><strong><u>내원경로</u></strong><strong>, </strong><strong><u>예약경로</u></strong><strong>, </strong><strong><u>국가별</u></strong><strong>, </strong><strong><u>월간</u></strong>에 대한 통계를 확인할 수 있어요. </p><div class="tbl-wrap"><table><tr><th>결산</th><th>총 진료비와 수납금액의 합계를 확인할 수 있습니다.  </th></tr><tr><td>시술별</td><td>고객 차트 내 [상답]탭에서 비급여 시술을 저장한 일자를 기준으로 집계됩니다. 
 ※전액 멤버십 포인트를 사용한 시술은 그래프 우측 하단의 ‘포인트’를 선택한 경우에 표기됩니다. </td></tr><tr><td>진료별</td><td>고객 차트 내 [진료]탭에서 처방된 내역을 확인할 수 있습니다. </td></tr><tr><td>시술구분</td><td>객 예약 및 접수 시 선택한 ‘시술’에 해당하는 항목들이 집계됩니다. </td></tr><tr><td>진료분야</td><td>고객 예약 및 접수 시 선택한 ‘진료분야’에 해당하는 항목들이 집계됩니다. </td></tr><tr><td>개인별</td><td>의사, 상담사 등 직무에 따라 매출이 집계됩니다.</td></tr><tr><td>내원경로</td><td>고객 등록 시 선택한 ‘내원경로’에 따른 매출을 확인할 수 있습니다. </td></tr><tr><td>예약경로</td><td>고객 예약 시 선택한 ‘예약경로’에 따른 매출을 확인할 수 있습니다.</td></tr><tr><td>국가별</td><td>고객 등록 시 선택한 국가에 따른 매출을 확인할 수 있습니다. </td></tr><tr><td>일간/월간</td><td>일별, 주별, 월별 선택 시 일자별로 매출 확인이 가능하며, 3개월별, 연도별 선택 시 월 별로 매출 확인이 가능합니다.</td></tr></table></div></div>
     </div>
-<div class="detail-panel" data-id="12">
+<div class="detail-panel" data-id="f12">
       <div class="dp-cat">관리자</div>
       <h2 class="dp-q">휴진일은 어떻게 설정하나요?</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-10.png" alt="FAQ 이미지"></figure><p>휴진일은 관리자 권한이 있는 계정으로 접속하여 설정이 가능해요.
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-10.png" alt="이미지"></figure><p>휴진일은 관리자 권한이 있는 계정으로 접속하여 설정이 가능해요.
 차트 상단<strong> [관리자] &gt; [병원설정] &gt; 진료일/휴진일 영역</strong>에서 설정해 주세요.
 정기 휴일은 상단에서, 공휴일 등 병원 지정 휴진일은 하단의 휴진일 영역에서 날짜를 선택해 주세요.
 선택 후 우측 하단의<strong> [저장]</strong>버튼을 눌러주셔야 적용이 됩니다.</p></div>
     </div>
-<div class="detail-panel" data-id="13">
+<div class="detail-panel" data-id="f13">
       <div class="dp-cat">관리자</div>
       <h2 class="dp-q">신규 입사한 선생님 계정을 추가하고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-11.png" alt="FAQ 이미지"></figure><p>계정 생성은 관리자 권한이 있는 계정에서 생성이 가능해요. 
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-11.png" alt="이미지"></figure><p>계정 생성은 관리자 권한이 있는 계정에서 생성이 가능해요. 
 [관리자] &gt; [사용자 관리] &gt; 우측 상단 [신규입력] 을 통해 생성해 주세요. </p><p>※퇴사 후 재입사를 하신 경우, 기존의 계정을 활성화하여 사용이 가능합니다.
 [관리자] &gt; [사용자 관리] &gt; 좌측 상단 '전체' 선택 후 사용자명 검색 및 선택 &gt; 사용여부 '사용'으로 변경 후 [저장]해 주세요. </p></div>
     </div>
-<div class="detail-panel" data-id="14">
+<div class="detail-panel" data-id="f14">
       <div class="dp-cat">관리자</div>
       <h2 class="dp-q">특정 계정에서는 병원 매출을 안 보이게 설정하고 싶어요.</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-12.png" alt="FAQ 이미지"></figure><p>관리자 권한이 있는 계정으로 설정이 가능하며,  [관리자] &gt; [옵션설정] &gt; ‘[사용자설정] &gt; ‘통계 사용 권한’ &gt; ‘사용자 이름’ 선택 후 전체 각각의 옵션명에 해당하는 선택옵션을 ‘미사용’으로 선택 후 [일괄저장]해 주세요. </p><p>동시 적용 사용자 선택란을 클릭 후 동시에 적용할 사용자 이름을 선택하면 선택된 사용자에게 일괄 적용됩니다. 
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-12.png" alt="이미지"></figure><p>관리자 권한이 있는 계정으로 설정이 가능하며,  [관리자] &gt; [옵션설정] &gt; ‘[사용자설정] &gt; ‘통계 사용 권한’ &gt; ‘사용자 이름’ 선택 후 전체 각각의 옵션명에 해당하는 선택옵션을 ‘미사용’으로 선택 후 [일괄저장]해 주세요. </p><p>동시 적용 사용자 선택란을 클릭 후 동시에 적용할 사용자 이름을 선택하면 선택된 사용자에게 일괄 적용됩니다. 
 ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.</p></div>
     </div>
-<div class="detail-panel" data-id="15">
+<div class="detail-panel" data-id="f15">
       <div class="dp-cat">관리자</div>
       <h2 class="dp-q">메모지 출력 시 상담메모가 안 나와요. (네모닉, POS뱅크)</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-13.png" alt="FAQ 이미지"></figure><p>관리자 권한이 있는 계정으로 접속하여 아래 경로를 통해 메모지 출력 옵션 설정이 가능합니다.</p><ul><li>경로: [관리자] &gt; [옵션설정] &gt; ‘병원설정’ &gt; ‘네모닉’ 선택 후 선택옵션이 모두 ‘출력’상태로 되어 있는지 확인해 주세요.</li></ul><p>‘미출력’으로 선택된 경우, 메모지 출력 시 해당 옵션은 출력되지 않아요.
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-13.png" alt="이미지"></figure><p>관리자 권한이 있는 계정으로 접속하여 아래 경로를 통해 메모지 출력 옵션 설정이 가능합니다.</p><ul><li>경로: [관리자] &gt; [옵션설정] &gt; ‘병원설정’ &gt; ‘네모닉’ 선택 후 선택옵션이 모두 ‘출력’상태로 되어 있는지 확인해 주세요.</li></ul><p>‘미출력’으로 선택된 경우, 메모지 출력 시 해당 옵션은 출력되지 않아요.
 ※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.</p></div>
     </div>
-<div class="detail-panel" data-id="16">
+<div class="detail-panel" data-id="f16">
       <div class="dp-cat">관리자</div>
       <h2 class="dp-q">차트를 삭제했어요. 삭제된 차트 복구 가능한가요?</h2>
       <div class="dp-body"><div class="pending">🕐 내용 준비중입니다.</div></div>
     </div>
-<div class="detail-panel" data-id="17">
+<div class="detail-panel" data-id="f17">
       <div class="dp-cat">수납</div>
       <h2 class="dp-q">부분환불은 어떻게 하나요?</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-14.png" alt="FAQ 이미지"></figure><ol><li><strong>[고객 차트] &gt; [수납]</strong> 탭에서 화면 하단 [기존수납 내역]의 <strong>[+]</strong> 버튼을 클릭합니다.</li><li><strong>부분환불할 수납 내역</strong>을 선택한 후, 하단 [시술 수납 내역]에서 해당 항목을 선택합니다.</li><li><strong>환불금액</strong> 칸을 <strong>더블클릭</strong>하여 환불할 금액을 직접 입력합니다.</li><li>우측에서 <strong>환불일자</strong>를 선택한 뒤, <strong>과세/비과세 결제수단</strong> 옆의 <strong>빈 입력란</strong>을 클릭하면 입력한 환불금액이 자동으로 반영됩니다.</li><li>마지막으로 <strong>[환불]</strong> 버튼을 클릭하면 부분환불이 완료됩니다.</li></ol></div>
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-14.png" alt="이미지"></figure><ol><li><strong>[고객 차트] &gt; [수납]</strong> 탭에서 화면 하단 [기존수납 내역]의 <strong>[+]</strong> 버튼을 클릭합니다.</li><li><strong>부분환불할 수납 내역</strong>을 선택한 후, 하단 [시술 수납 내역]에서 해당 항목을 선택합니다.</li><li><strong>환불금액</strong> 칸을 <strong>더블클릭</strong>하여 환불할 금액을 직접 입력합니다.</li><li>우측에서 <strong>환불일자</strong>를 선택한 뒤, <strong>과세/비과세 결제수단</strong> 옆의 <strong>빈 입력란</strong>을 클릭하면 입력한 환불금액이 자동으로 반영됩니다.</li><li>마지막으로 <strong>[환불]</strong> 버튼을 클릭하면 부분환불이 완료됩니다.</li></ol></div>
     </div>
-<div class="detail-panel" data-id="18">
+<div class="detail-panel" data-id="f18">
       <div class="dp-cat">설정</div>
       <h2 class="dp-q">자주 쓰는 상용구 설정은 어떻게 하나요?</h2>
-      <div class="dp-body"><figure><img loading="lazy" src="images/faq-15.png" alt="FAQ 이미지"></figure><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 자주 사용하는 문구는 <strong>상용구</strong>로 등록하여 편리하게 사용할 수 있습니다.</p><ul><li>경로: [설정] &gt; [상용구 설정] &gt;[추가] &gt; 키워드와 내용을 입력한 후 [저장] 버튼을 클릭</li></ul><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 입력란에서 <code><strong>/</strong></code><strong> + 키워드</strong>를 입력한 뒤 스페이스바(Space)를 누르면 등록한 내용이 자동으로 입력됩니다.
+      <div class="dp-body"><figure><img loading="lazy" src="images/faq-15.png" alt="이미지"></figure><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 자주 사용하는 문구는 <strong>상용구</strong>로 등록하여 편리하게 사용할 수 있습니다.</p><ul><li>경로: [설정] &gt; [상용구 설정] &gt;[추가] &gt; 키워드와 내용을 입력한 후 [저장] 버튼을 클릭</li></ul><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 입력란에서 <code><strong>/</strong></code><strong> + 키워드</strong>를 입력한 뒤 스페이스바(Space)를 누르면 등록한 내용이 자동으로 입력됩니다.
 예시)<code>/흑자</code> 입력 → <strong>스페이스바</strong> → 등록한 상용구 내용 자동 입력</p></div>
     </div>
-    </section>
+      </section>
+    </div>
+    <div class="empty" id="empty">검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</div>
+  </main>
+</div>
+
+<!-- ===== Update view ===== -->
+<div class="view view-update" id="view-update" hidden>
+  <div class="band">
+    <div class="wrap">
+      <p class="band-title">제품 업데이트 소식</p>
+      <p class="band-sub">Motion E의 새로운 기능과 개선사항을 확인하세요.</p>
+    </div>
   </div>
-  <div class="empty" id="empty">검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</div>
-</main>
+  <main class="wrap">
+    <div class="faq-layout">
+      <aside class="q-list" id="upd-list">
+<button class="q-item" data-id="u1">
+      <span class="qi-text">기타 결제수단 현금영수증 추가</span>
+      <span class="qi-date">2026년 6월 30일</span>
+      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+<button class="q-item" data-id="u2">
+      <span class="qi-text">고객등록 / 고객정보 기능 업데이트</span>
+      <span class="qi-date">2026-06-23</span>
+      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+      </aside>
+      <section class="detail" id="upd-detail">
+        <button class="detail-close">◀ 목록</button>
+        <div class="detail-empty"><span class="de-ico">🔔</span>왼쪽 목록에서 업데이트 항목을 선택하세요.</div>
+<div class="detail-panel" data-id="u1">
+      <div class="upd-meta">📅 2026년 6월 30일 &nbsp;·&nbsp; 🏷️ v1.5.0.69</div>
+      <h2 class="dp-q">기타 결제수단 현금영수증 추가</h2>
+      <div class="dp-body"><blockquote>업데이트 일자: 2026년 6월 30일 
+업데이트 버전: 1.5.0.69</blockquote><h5 class="a-h3">기타결제(알리페이, 위챗페이 등) 현금영수증 처리 방법</h5><p>알리페이, 위챗페이 등 <strong>기타결제</strong>로 수납하는 경우에도 <strong>현금영수증 발급 여부를 선택 및 확인</strong>할 수 있습니다.</p><h5 class="a-h3">현금영수증 처리 방법</h5><ol><li>차트 <strong>[수납]</strong> 탭에서 <strong>기타결제</strong>를 선택합니다.</li><li>결제수단(예: 알리페이, 위챗페이)을 선택합니다.</li><li><strong>[현금영수증]</strong> 체크박스를 선택한 후 수납을 진행합니다.</li><li><strong>VAN 연동이 되지 않은 경우, 실제로 현금영수증 발급 처리는 되지 않습니다.</strong></li></ol><h5 class="a-h3">결산시스템에서 확인하는 방법</h5><p>수납된 내역은 <strong>[매출관리] &gt; [결산시스템] &gt; [수납금 집계]</strong>에서 확인할 수 있습니다.</p><ul><li><strong>현금영수증이 발급된 기타결제</strong>는 <strong>'기타영수증'</strong> 항목으로 집계됩니다.</li><li><strong>기타영수증</strong> 항목을 클릭하면 <strong>알리페이, 위챗페이 등 어떤 결제수단으로 처리되었는지 세부 내역을 확인</strong>할 수 있습니다.</li></ul><blockquote><strong>참고</strong><ul><li>현금영수증 체크박스에 체크를 하지 않은 경우 기타결제는 <strong>기타영수증</strong> 항목에 집계되지 않습니다.</li></ul></blockquote><figure><img loading="lazy" src="images/upd-01.png" alt="  *이미지를 더블클릭 하면 확대해서 보실 수 있습니다."><figcaption>  *이미지를 더블클릭 하면 확대해서 보실 수 있습니다.</figcaption></figure></div>
+    </div>
+<div class="detail-panel" data-id="u2">
+      
+      <h2 class="dp-q">고객등록 / 고객정보 기능 업데이트</h2>
+      <div class="dp-body"><h3 class="a-h1">👤 고객등록 / 고객정보 기능 업데이트 </h3><p>고객등록 및 고객정보 화면에 아래 기능이 추가되었습니다.</p><p>✅ 가족 연결</p><p>✅ 추천인 / 피추천인 확인</p><p>✅ 고객 등록 시 자격조회</p><p>✅ 임산부 체크</p><p>✅ 고객검색 필터 추가</p><hr><figure><img loading="lazy" src="images/upd-02.png" alt="이미지"></figure><h4 class="a-h2">👨‍👩‍👧 1. 가족 연결 기능</h4><p>고객등록 및 고객정보 수정 화면에서 고객 간 <strong>가족 관계를 연결</strong>할 수 있습니다.</p><p>가족 영역에서 고객의 <strong>이름, 차트번호, 휴대폰 번호</strong>로 검색 후</p><p>가족으로 연결할 고객을 선택해 주세요.</p><h5 class="a-h3">📌 가족 연결 기준</h5><p>가족 연결은 <strong>1:1 관계로만 연결</strong>됩니다.</p><p>예시)</p><pre><code>A ↔ B 가족 연결
+B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p><strong>C와 A는 자동으로 가족으로 연결되지 않습니다.</strong></p><p>C와 A도 가족으로 연결해야 하는 경우에는 <strong>C ↔ A를 별도로 가족 연결</strong>해 주세요.</p><h5 class="a-h3">✅ 체크사항</h5><p>가족 연결은 제한 없이 등록할 수 있습니다.</p><p>단, 가족 관계는 자동 확장되지 않으므로 필요한 관계를 각각 연결해 주세요.</p><hr><h4 class="a-h2">🙋‍♀️ 2. 추천인 / 피추천인 기능</h4><h5 class="a-h3">🔹 추천인</h5><p>추천인은 해당 고객을 소개해 준 고객입니다.</p><p>고객정보의 <strong>추천인</strong> 항목에 추천한 고객을 등록할 수 있습니다.</p><h5 class="a-h3">🔹 피추천인</h5><p><strong>피추천인</strong>은 내가 추천한 고객을 의미합니다.</p><p>예시)</p><pre><code>고객 A가 고객 B를 추천한 경우
+→ 고객 B의 추천인에 고객 A 등록
+→ 고객 A의 고객정보에서 피추천인으로 고객 B 확인 가능</code></pre><p>즉, 피추천인 고객정보의 <strong>추천인</strong>에 내가 등록되면 내 고객정보에서 <strong>피추천인 목록</strong>을 확인할 수 있습니다.</p><hr><figure><img loading="lazy" src="images/upd-03.png" alt="이미지"></figure><h4 class="a-h2">🩺 3. 고객 등록 시 자격조회 가능</h4><p>고객 등록 화면에서 바로 **[자격조회]**를 진행할 수 있습니다.</p><p>고객의 주민등록번호 등 필수 정보를 입력한 후</p><p><strong>[자격조회]</strong> 버튼을 클릭하면 고객 등록 단계에서도 자격 정보를 확인할 수 있습니다.</p><hr><h4 class="a-h2">🤰 4. 임산부 체크 기능</h4><p>고객등록 및 고객정보 화면에 <strong>임산부 체크 항목</strong>이 추가되었습니다.</p><h5 class="a-h3">🔹 자격조회 시</h5><p>자격조회 결과 임산부 정보가 있는 경우, 임산부 정보가 자동으로 불러와집니다.</p><h5 class="a-h3">🔹 자격조회 없이 확인된 경우</h5><p>비급여 진료 등으로 자격조회를 진행하지 않았으나 원내에서 임산부 여부가 확인된 경우에는</p><p><strong>임산부 항목을 직접 체크</strong>해 주세요.</p><p>임산부로 체크된 고객은 고객정보 영역에 <strong>분홍색 임산부 표시</strong>가 노출됩니다.</p><hr><h4 class="a-h2">📝 5. 접수 화면에서 임산부 정보 수정</h4><p>차트 접수 시 접수 화면에서도 <strong>[임산부]</strong> 항목을 체크할 수 있습니다.</p><p>접수 화면에서 **[임산부]**를 체크하면 고객정보 창에도 해당 내용이 함께 반영됩니다.</p><p>즉, 접수 화면에서 임산부 여부를 수정해도 고객정보에 동일하게 저장됩니다.</p><hr><figure><img loading="lazy" src="images/upd-04.png" alt="이미지"></figure><h4 class="a-h2">🔍 7. 고객검색 필터 추가</h4><p><strong>[고객관리] - [고객검색]</strong> 화면에 아래 검색 필터가 추가되었습니다.</p><p>✅ 임산부</p><p>✅ 가족</p><p>✅ 피추천인</p><p>추가된 필터를 활용하여 특정 조건에 해당하는 고객을 더 쉽게 검색할 수 있습니다.</p><h5 class="a-h3">🤰 임산부 필터</h5><p>임산부로 체크된 고객을 기준으로 검색할 수 있습니다.</p><p>자격조회 또는 수동 체크를 통해 임산부 정보가 등록된 고객은 고객검색 화면에서 임산부 조건으로 조회할 수 있습니다.</p><h5 class="a-h3">👨‍👩‍👧 가족 필터</h5><p>특정 고객과 가족으로 연결된 고객을 검색할 수 있습니다.</p><p>가족 연결은 등록된 가족 관계 기준으로 조회됩니다.</p><h5 class="a-h3">🙋‍♀️ 피추천인 필터</h5><p>특정 고객이 추천한 고객, 즉 피추천인을 검색할 수 있습니다.</p><p>추천받은 고객의 고객정보 내 추천인에 해당 고객이 등록되어 있으면 피추천인 조건으로 조회할 수 있습니다.</p><hr><h4 class="a-h2">📌 요약 안내</h4><p>고객등록 및 고객정보 화면에</p><p><strong>가족 연결, 추천인/피추천인, 자격조회, 임산부 체크 기능</strong>이 추가되었습니다.</p><p>또한 <strong>[고객관리] - [고객검색]</strong> 화면에서도 <strong>임산부, 가족, 피추천인 조건</strong>으로 고객을 검색할 수 있습니다.</p></div>
+    </div>
+      </section>
+    </div>
+  </main>
+</div>
 
 <footer>
-  <div class="wrap">
-    © Triup Motion E · FAQ &nbsp;|&nbsp; powered by
-    <img class="logo-triup" src="images/logo-triup.png" alt="trIup">
-  </div>
+  <div class="wrap">© Triup Motion E · 고객센터 &nbsp;|&nbsp; powered by <img class="logo-triup" src="images/logo-triup.png" alt="trIup"></div>
 </footer>
 
 <div class="lightbox" id="lightbox"><img id="lbimg" alt=""></div>
 
 <script>
 (function(){
-  var items = [].slice.call(document.querySelectorAll('.q-item'));
-  var panels = [].slice.call(document.querySelectorAll('.detail-panel'));
+  // ---- master-detail behavior, reusable per section ----
+  function setupMasterDetail(listEl, detailEl){
+    var items = [].slice.call(listEl.querySelectorAll('.q-item'));
+    var panels = [].slice.call(detailEl.querySelectorAll('.detail-panel'));
+    function select(id){
+      items.forEach(function(it){ it.classList.toggle('active', it.getAttribute('data-id') === id); });
+      panels.forEach(function(p){ p.classList.toggle('show', p.getAttribute('data-id') === id); });
+      detailEl.classList.add('has-selection','drawer-open');
+      document.body.classList.add('drawer-open');
+      detailEl.scrollTop = 0;
+    }
+    function close(){ detailEl.classList.remove('drawer-open'); document.body.classList.remove('drawer-open'); }
+    items.forEach(function(it){ it.addEventListener('click', function(){ select(it.getAttribute('data-id')); }); });
+    var cb = detailEl.querySelector('.detail-close');
+    if(cb) cb.addEventListener('click', close);
+    return { items: items, close: close };
+  }
+
+  var faq = setupMasterDetail(document.getElementById('faq-list'), document.getElementById('faq-detail'));
+  setupMasterDetail(document.getElementById('upd-list'), document.getElementById('upd-detail'));
+
+  // ---- FAQ search + category ----
   var tabs = [].slice.call(document.querySelectorAll('.tab'));
   var search = document.getElementById('search');
   var countEl = document.getElementById('count');
   var emptyEl = document.getElementById('empty');
-  var detail = document.getElementById('detail');
-  var closeBtn = document.getElementById('close');
   var curCat = '전체';
-
-  function syncTabs(cat){
-    tabs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-cat') === cat); });
-  }
+  function syncTabs(cat){ tabs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-cat') === cat); }); }
   function apply(){
     var qv = search.value.trim().toLowerCase();
-    // 검색 중에는 선택한 카테고리를 무시하고 전체 카테고리에서 검색
-    var effectiveCat = qv ? '전체' : curCat;
-    syncTabs(effectiveCat);
+    var effCat = qv ? '전체' : curCat;      // 검색 중엔 전체에서 검색
+    syncTabs(effCat);
     var shown = 0;
-    items.forEach(function(it){
-      var catOk = effectiveCat === '전체' || it.getAttribute('data-cat') === effectiveCat;
+    faq.items.forEach(function(it){
+      var catOk = effCat === '전체' || it.getAttribute('data-cat') === effCat;
       var txtOk = !qv || it.getAttribute('data-search').indexOf(qv) !== -1;
       var ok = catOk && txtOk;
       it.style.display = ok ? '' : 'none';
@@ -433,41 +494,33 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
     countEl.textContent = shown + '개의 질문';
     emptyEl.style.display = shown ? 'none' : 'block';
   }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ curCat = t.getAttribute('data-cat'); search.value=''; apply(); }); });
+  search.addEventListener('input', apply);
+  apply();
 
-  function select(id){
-    items.forEach(function(it){ it.classList.toggle('active', it.getAttribute('data-id') === id); });
-    panels.forEach(function(p){ p.classList.toggle('show', p.getAttribute('data-id') === id); });
-    document.body.classList.add('has-selection','detail-open');
-    detail.scrollTop = 0;
-  }
-  function closeDrawer(){ document.body.classList.remove('detail-open'); }
-
-  items.forEach(function(it){
-    it.addEventListener('click', function(){ select(it.getAttribute('data-id')); });
-  });
-  closeBtn.addEventListener('click', closeDrawer);
-
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      curCat = t.getAttribute('data-cat');
-      search.value = '';   // 카테고리 선택 시 검색어 초기화 → 해당 카테고리만 표시
-      apply();
+  // ---- section switch (FAQ / 업데이트) ----
+  var snavs = [].slice.call(document.querySelectorAll('.snav'));
+  var views = { faq: document.getElementById('view-faq'), update: document.getElementById('view-update') };
+  snavs.forEach(function(n){
+    n.addEventListener('click', function(){
+      snavs.forEach(function(x){ x.classList.remove('active'); });
+      n.classList.add('active');
+      var v = n.getAttribute('data-view');
+      views.faq.hidden = (v !== 'faq');
+      views.update.hidden = (v !== 'update');
+      window.scrollTo(0, 0);
     });
   });
-  search.addEventListener('input', apply);
 
-  // lightbox
+  // ---- lightbox ----
   var lb = document.getElementById('lightbox'), lbimg = document.getElementById('lbimg');
   document.addEventListener('click', function(e){
-    if(e.target.tagName === 'IMG' && e.target.closest('figure')){
-      lbimg.src = e.target.src; lb.classList.add('on');
-    } else if(e.target === lb || e.target === lbimg){ lb.classList.remove('on'); }
+    if(e.target.tagName === 'IMG' && e.target.closest('figure')){ lbimg.src = e.target.src; lb.classList.add('on'); }
+    else if(e.target === lb || e.target === lbimg){ lb.classList.remove('on'); }
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ lb.classList.remove('on'); closeDrawer(); }
+    if(e.key === 'Escape'){ lb.classList.remove('on'); document.querySelectorAll('.detail').forEach(function(d){d.classList.remove('drawer-open');}); document.body.classList.remove('drawer-open'); }
   });
-
-  apply();
 })();
 </script>
 </body>
