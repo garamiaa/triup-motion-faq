@@ -414,11 +414,17 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
   var closeBtn = document.getElementById('close');
   var curCat = '전체';
 
+  function syncTabs(cat){
+    tabs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-cat') === cat); });
+  }
   function apply(){
     var qv = search.value.trim().toLowerCase();
+    // 검색 중에는 선택한 카테고리를 무시하고 전체 카테고리에서 검색
+    var effectiveCat = qv ? '전체' : curCat;
+    syncTabs(effectiveCat);
     var shown = 0;
     items.forEach(function(it){
-      var catOk = curCat === '전체' || it.getAttribute('data-cat') === curCat;
+      var catOk = effectiveCat === '전체' || it.getAttribute('data-cat') === effectiveCat;
       var txtOk = !qv || it.getAttribute('data-search').indexOf(qv) !== -1;
       var ok = catOk && txtOk;
       it.style.display = ok ? '' : 'none';
@@ -443,9 +449,8 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 
   tabs.forEach(function(t){
     t.addEventListener('click', function(){
-      tabs.forEach(function(x){ x.classList.remove('active'); });
-      t.classList.add('active');
       curCat = t.getAttribute('data-cat');
+      search.value = '';   // 카테고리 선택 시 검색어 초기화 → 해당 카테고리만 표시
       apply();
     });
   });
