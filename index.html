@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triup Motion E · FAQ</title>
+<meta name="description" content="Triup Motion E 자주 묻는 질문 (FAQ)">
+<style>
+:root{
+  --bg:#f5f7fb; --card:#fff; --ink:#1a2233; --sub:#5a6577;
+  --brand:#2563eb; --brand-soft:#e8f0fe; --line:#e6e9f0; --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;padding:44px 0 40px}
+header .wrap{display:flex;flex-direction:column;gap:6px}
+.brand{font-size:14px;font-weight:600;letter-spacing:.08em;opacity:.9;text-transform:uppercase}
+h1{margin:0;font-size:30px;font-weight:800;letter-spacing:-.01em}
+.sub{opacity:.9;font-size:15px}
+.search{margin-top:22px;position:relative}
+.search input{width:100%;padding:14px 16px 14px 46px;border:none;border-radius:12px;
+  font-size:16px;background:rgba(255,255,255,.96);color:var(--ink);box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.search input:focus{outline:2px solid #93c5fd}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#8a93a5}
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);
+  padding:14px 0 12px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--sub);
+  padding:8px 15px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--brand);color:var(--brand)}
+.tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+main{padding:22px 0 60px}
+.count{color:var(--sub);font-size:13px;margin:2px 2px 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin-bottom:12px;overflow:hidden;transition:box-shadow .15s,border-color .15s}
+.card:hover{box-shadow:0 6px 22px rgba(30,64,175,.07)}
+.card.open{border-color:#c9d6f5;box-shadow:0 8px 28px rgba(30,64,175,.1)}
+.q{width:100%;display:flex;align-items:center;gap:12px;text-align:left;
+  background:none;border:none;cursor:pointer;padding:18px 20px;font-size:16.5px;
+  font-weight:700;color:var(--ink);line-height:1.5}
+.q-cat{flex:none;font-size:11.5px;font-weight:700;color:var(--brand);
+  background:var(--brand-soft);padding:3px 9px;border-radius:6px}
+.q-text{flex:1}
+.badge{flex:none;font-size:11px;font-weight:700;color:#b45309;background:#fef3c7;padding:3px 9px;border-radius:6px}
+.chev{flex:none;color:#9aa4b6;transition:transform .25s}
+.card.open .chev{transform:rotate(180deg)}
+.a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.a-inner{padding:2px 22px 22px;color:var(--ink)}
+.a-inner p{margin:0 0 10px}
+.a-inner ul,.a-inner ol{margin:0 0 12px;padding-left:22px}
+.a-inner li{margin:4px 0}
+.a-inner strong{font-weight:700}
+.a-inner code{background:#eef1f6;padding:1px 6px;border-radius:5px;font-size:.92em}
+.a-inner a{color:var(--brand);text-decoration:underline}
+figure{margin:14px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px;text-align:center}
+.pending{color:var(--sub);background:#fafbfd;border:1px dashed var(--line);
+  border-radius:10px;padding:16px;text-align:center;font-size:14.5px}
+.tbl-wrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--brand-soft);font-weight:700}
+.empty{display:none;text-align:center;color:var(--sub);padding:50px 0}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--sub);font-size:13px;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(15,23,42,.9);display:none;
+  align-items:center;justify-content:center;z-index:100;padding:20px;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:8px}
+@media(max-width:560px){
+  h1{font-size:24px} .q{padding:15px 16px;font-size:15.5px;gap:9px}
+  .a-inner{padding:2px 16px 18px} .q-cat{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Triup Motion E</div>
+    <h1>자주 묻는 질문 (FAQ)</h1>
+    <div class="sub">궁금한 내용을 검색하거나 카테고리로 찾아보세요.</div>
+    <div class="search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="search" placeholder="질문 검색 (예: 환불, 계정, 통계)" autocomplete="off">
+    </div>
+  </div>
+</header>
+
+<div class="tabs"><div class="wrap" style="display:flex;gap:8px;flex-wrap:wrap"><button class="tab active" data-cat="전체">전체</button><button class="tab" data-cat="고객관리">고객관리</button><button class="tab" data-cat="차트">차트</button><button class="tab" data-cat="매출관리">매출관리</button><button class="tab" data-cat="관리자">관리자</button><button class="tab" data-cat="수납">수납</button><button class="tab" data-cat="설정">설정</button></div></div>
+
+<main class="wrap">
+  <div class="count" id="count"></div>
+  <div id="list">
+<article class="card" data-cat="고객관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">고객관리</span>
+    <span class="q-text">신환(고객)등록은 어떻게 하나요?</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><p>[고객관리] &gt; [고객등록] 경로에서 고객 정보를 입력 후 등록이 가능해요. </p><p>또는 [대시보드] 좌측 검색창에 고객 정보(이름, 연락처)를 검색 후 중복 등록 여부를 확인하신 후 조회되는 정보가 없다면 [환자 등록 후 예약] 을 눌러 고객정보를 입력 후 등록해 주세요.</p><figure><img loading="lazy" src="images/faq-01.png" alt="FAQ 이미지"></figure></div></div>
+</article>
+<article class="card" data-cat="고객관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">고객관리</span>
+    <span class="q-text">등록한 고객을 삭제하고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><p>[고객관리] &gt; [고객리스트] &gt; 이름 또는 고객정보를 입력 후 [조회] &gt; 조회된 고객 체크박스를 선택하신 후 우측 상단의 [선택고객삭제] 버튼을 눌러주세요. </p><p>고객 삭제 시 등록된 고객 정보, 포인트 적립·사용·차감 내역 등 고객 관련 기록은 함께 삭제되며 복구가 불가하니 이점 유의하여 진행해 주세요. </p><figure><img loading="lazy" src="images/faq-02.png" alt="FAQ 이미지"></figure></div></div>
+</article>
+<article class="card" data-cat="고객관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">고객관리</span>
+    <span class="q-text">동일한 고객 정보로 차트가 중복 생성되었어요. 차트를 통합해 주세요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><p>차트 통합은 고객센터를 통해서 처리가 가능해요. </p><p><strong>고객명, 차트 번호</strong>와 함께 고객센터로 문의해 주세요!.
+모션E 상단<strong> [고객센터] &gt; [문의하기] &gt; [상담원 연결</strong>] 버튼을 눌러 연결이 가능해요. </p><figure><img loading="lazy" src="images/faq-03.png" alt="FAQ 이미지"></figure></div></div>
+</article>
+<article class="card" data-cat="차트">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">차트</span>
+    <span class="q-text">차트를 삭제하고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-04.png" alt="FAQ 이미지"></figure><p><strong>차트는 &quot;만들어진 순서의 반대로&quot; 지워야 삭제됩니다.</strong></p><p>접수를 하면 차트가 생성되므로, 삭제하실 때는 진행하신 단계를 거꾸로 되돌려 주셔야 합니다.
+예를 들어 <strong>접수 → 시술/처방 → 수납</strong>까지 완료된 차트라면, 
+반대 순서인 <strong>수납 취소 → 시술/처방 삭제 → 접수 취소</strong> 순으로 진행하시면 차트가 삭제됩니다.</p><p>*수납취소는 고객 차트 내 수납 탭에서, 시술은 상담 탭, 처방은 진료 탭에서 삭제가 가능합니다. </p></div></div>
+</article>
+<article class="card" data-cat="차트">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">차트</span>
+    <span class="q-text">시술 오더는 어떻게 삭제하나요?</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-05.png" alt="FAQ 이미지"></figure><p>시술내역은 ‘미수납’ 상태에서만 삭제가 가능합니다.
+고객 차트 내 [상담] 탭 &gt; [시술내역] 버튼을 누르시면 전체 시술내역이 조회가 되며, 삭제할 내역의 [X]버튼을 눌러 삭제해 주세요.</p></div></div>
+</article>
+<article class="card" data-cat="차트">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">차트</span>
+    <span class="q-text">처방 내역을 삭제하고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-06.png" alt="FAQ 이미지"></figure><p>고객 차트 내 <strong>[진료] 탭</strong>에서 처방 된 내역의 <strong>[X]버튼</strong>을 눌러주시면 처방이 삭제됩니다. </p><p>삭제 후<strong> [저장]</strong> 버튼을 눌러주세요. </p></div></div>
+</article>
+<article class="card" data-cat="차트">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">차트</span>
+    <span class="q-text">상담메모 히스토리를 보고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-07.png" alt="FAQ 이미지"></figure><p>고객 차트 내 [상담] 탭&gt; 상담메모 영역을 더블클릭 하면 이전 상담메모 히스토리를 확인할 수 있습니다.</p><p>상담메모 뿐만아니라, 예약/접수 메모, 어시메모 등 메모 영역은 더블클릭을 통해 히스토리 확인이 가능합니다. </p></div></div>
+</article>
+<article class="card is-pending" data-cat="차트">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">차트</span>
+    <span class="q-text">DUR 점검 시 인증서가 나오지 않아요.</span>
+    <span class="badge">준비중</span>
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><div class="pending">🕐 내용 준비중입니다.</div></div></div>
+</article>
+<article class="card" data-cat="매출관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">매출관리</span>
+    <span class="q-text">매출금액별 ‘총 진료비’와 ‘수납금액’의 합계가 맞지 않아요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><p>매출금액과 수납금액은 집계 기준이 달라 차이가 발생할 수 있습니다.
+매출금액(총 진료비)에는 환자 본인부담금과 공단부담금이 모두 포함됩니다.</p><p>수납금액에는 환자가 실제로 납부한 본인부담금만 반영됩니다.
+따라서 건강보험 청구 건이 포함된 경우 매출금액과 수납금액의 합계가 일치하지 않을 수 있습니다.</p><p>또한 미수금이 발생한 경우에도 조회 화면에 따라 금액 차이가 발생할 수 있습니다.
+미수금은, [매출관리] &gt; [미수금 내역]에서 조회 가능합니다. </p><p>※ 결산시스템의 미수금은 0원으로 수납 처리한 경우에만 미수금으로 집계됩니다.
+단순히 수납 처리를 진행하지 않은 건은 결산시스템 &gt; 미수금 메뉴에 표시되지 않을 수 있습니다.
+<strong>매출과 수납을 비교할 때에는 총 진료비에서 보험청구액, 미수금을 제외하고 비교해 주세요. </strong></p></div></div>
+</article>
+<article class="card" data-cat="매출관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">매출관리</span>
+    <span class="q-text">상담사(상담실장) 별 한 달간 상담건수를 보고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-08.png" alt="FAQ 이미지"></figure><p>[매출관리] &gt; [결산시스템] &gt; 월별 선택, 개인별 탭에서 직무를 ‘상담사’로 선택하시면 상담사 별 해당 기간의 매출을 조회할 수 있어요. </p><p>고객 접수 시 상담사를 지정하지 않은 경우, 미지정으로 집계됩니다. </p></div></div>
+</article>
+<article class="card" data-cat="매출관리">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">매출관리</span>
+    <span class="q-text">통계를 보고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-09.png" alt="FAQ 이미지"></figure><p>[매출관리] &gt; [결산시스템] 메뉴를 통해 기간과 카테고리를 선택하여,</p><p><strong><u>결산</u></strong><strong>, </strong><strong><u>시술별</u></strong><strong>, </strong><strong><u>진료별</u></strong><strong>, </strong><strong><u>시술구분</u></strong><strong>, </strong><strong><u>진료분야</u></strong><strong>, </strong><strong><u>개인별</u></strong><strong>, </strong><strong><u>내원경로</u></strong><strong>, </strong><strong><u>예약경로</u></strong><strong>, </strong><strong><u>국가별</u></strong><strong>, </strong><strong><u>월간</u></strong>에 대한 통계를 확인할 수 있어요. </p><div class="tbl-wrap"><table><tr><th>결산</th><th>총 진료비와 수납금액의 합계를 확인할 수 있습니다.  </th></tr><tr><td>시술별</td><td>고객 차트 내 [상답]탭에서 비급여 시술을 저장한 일자를 기준으로 집계됩니다. 
+※전액 멤버십 포인트를 사용한 시술은 그래프 우측 하단의 ‘포인트’를 선택한 경우에 표기됩니다. </td></tr><tr><td>진료별</td><td>고객 차트 내 [진료]탭에서 처방된 내역을 확인할 수 있습니다. </td></tr><tr><td>시술구분</td><td>객 예약 및 접수 시 선택한 ‘시술’에 해당하는 항목들이 집계됩니다. </td></tr><tr><td>진료분야</td><td>고객 예약 및 접수 시 선택한 ‘진료분야’에 해당하는 항목들이 집계됩니다. </td></tr><tr><td>개인별</td><td>의사, 상담사 등 직무에 따라 매출이 집계됩니다.</td></tr><tr><td>내원경로</td><td>고객 등록 시 선택한 ‘내원경로’에 따른 매출을 확인할 수 있습니다. </td></tr><tr><td>예약경로</td><td>고객 예약 시 선택한 ‘예약경로’에 따른 매출을 확인할 수 있습니다.</td></tr><tr><td>국가별</td><td>고객 등록 시 선택한 국가에 따른 매출을 확인할 수 있습니다. </td></tr><tr><td>일간/월간</td><td>일별, 주별, 월별 선택 시 일자별로 매출 확인이 가능하며, 3개월별, 연도별 선택 시 월 별로 매출 확인이 가능합니다.</td></tr></table></div></div></div>
+</article>
+<article class="card" data-cat="관리자">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">관리자</span>
+    <span class="q-text">휴진일은 어떻게 설정하나요?</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-10.png" alt="FAQ 이미지"></figure><p>휴진일은 관리자 권한이 있는 계정으로 접속하여 설정이 가능해요.
+차트 상단<strong> [관리자] &gt; [병원설정] &gt; 진료일/휴진일 영역</strong>에서 설정해 주세요.
+정기 휴일은 상단에서, 공휴일 등 병원 지정 휴진일은 하단의 휴진일 영역에서 날짜를 선택해 주세요.
+선택 후 우측 하단의<strong> [저장]</strong>버튼을 눌러주셔야 적용이 됩니다.</p></div></div>
+</article>
+<article class="card" data-cat="관리자">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">관리자</span>
+    <span class="q-text">신규 입사한 선생님 계정을 추가하고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-11.png" alt="FAQ 이미지"></figure><p>계정 생성은 관리자 권한이 있는 계정에서 생성이 가능해요. 
+[관리자] &gt; [사용자 관리] &gt; 우측 상단 [신규입력] 을 통해 생성해 주세요. </p><p>※퇴사 후 재입사를 하신 경우, 기존의 계정을 활성화하여 사용이 가능합니다.
+[관리자] &gt; [사용자 관리] &gt; 좌측 상단 '전체' 선택 후 사용자명 검색 및 선택 &gt; 사용여부 '사용'으로 변경 후 [저장]해 주세요. </p></div></div>
+</article>
+<article class="card" data-cat="관리자">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">관리자</span>
+    <span class="q-text">특정 계정에서는 병원 매출을 안 보이게 설정하고 싶어요.</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-12.png" alt="FAQ 이미지"></figure><p>관리자 권한이 있는 계정으로 설정이 가능하며,  [관리자] &gt; [옵션설정] &gt; ‘[사용자설정] &gt; ‘통계 사용 권한’ &gt; ‘사용자 이름’ 선택 후 전체 각각의 옵션명에 해당하는 선택옵션을 ‘미사용’으로 선택 후 [일괄저장]해 주세요. </p><p>동시 적용 사용자 선택란을 클릭 후 동시에 적용할 사용자 이름을 선택하면 선택된 사용자에게 일괄 적용됩니다. 
+※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.</p></div></div>
+</article>
+<article class="card" data-cat="관리자">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">관리자</span>
+    <span class="q-text">메모지 출력 시 상담메모가 안 나와요. (네모닉, POS뱅크)</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-13.png" alt="FAQ 이미지"></figure><p>관리자 권한이 있는 계정으로 접속하여 아래 경로를 통해 메모지 출력 옵션 설정이 가능합니다.</p><ul><li>경로: [관리자] &gt; [옵션설정] &gt; ‘병원설정’ &gt; ‘네모닉’ 선택 후 선택옵션이 모두 ‘출력’상태로 되어 있는지 확인해 주세요.</li></ul><p>‘미출력’으로 선택된 경우, 메모지 출력 시 해당 옵션은 출력되지 않아요.
+※옵션설정 후 차트를 재실행 해주셔야 설정된 값으로 적용됩니다.</p></div></div>
+</article>
+<article class="card is-pending" data-cat="관리자">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">관리자</span>
+    <span class="q-text">차트를 삭제했어요. 삭제된 차트 복구 가능한가요?</span>
+    <span class="badge">준비중</span>
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><div class="pending">🕐 내용 준비중입니다.</div></div></div>
+</article>
+<article class="card" data-cat="수납">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">수납</span>
+    <span class="q-text">부분환불은 어떻게 하나요?</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-14.png" alt="FAQ 이미지"></figure><ol><li><strong>[고객 차트] &gt; [수납]</strong> 탭에서 화면 하단 [기존수납 내역]의 <strong>[+]</strong> 버튼을 클릭합니다.</li><li><strong>부분환불할 수납 내역</strong>을 선택한 후, 하단 [시술 수납 내역]에서 해당 항목을 선택합니다.</li><li><strong>환불금액</strong> 칸을 <strong>더블클릭</strong>하여 환불할 금액을 직접 입력합니다.</li><li>우측에서 <strong>환불일자</strong>를 선택한 뒤, <strong>과세/비과세 결제수단</strong> 옆의 <strong>빈 입력란</strong>을 클릭하면 입력한 환불금액이 자동으로 반영됩니다.</li><li>마지막으로 <strong>[환불]</strong> 버튼을 클릭하면 부분환불이 완료됩니다.</li></ol></div></div>
+</article>
+<article class="card" data-cat="설정">
+  <button class="q" aria-expanded="false">
+    <span class="q-cat">설정</span>
+    <span class="q-text">자주 쓰는 상용구 설정은 어떻게 하나요?</span>
+    
+    <svg class="chev" viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="a"><div class="a-inner"><figure><img loading="lazy" src="images/faq-15.png" alt="FAQ 이미지"></figure><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 자주 사용하는 문구는 <strong>상용구</strong>로 등록하여 편리하게 사용할 수 있습니다.</p><ul><li>경로: [설정] &gt; [상용구 설정] &gt;[추가] &gt; 키워드와 내용을 입력한 후 [저장] 버튼을 클릭</li></ul><p>상담메모, 예약/접수메모, 어시메모, 관리메모 등 입력란에서 <code><strong>/</strong></code><strong> + 키워드</strong>를 입력한 뒤 스페이스바(Space)를 누르면 등록한 내용이 자동으로 입력됩니다.
+예시)<code>/흑자</code> 입력 → <strong>스페이스바</strong> → 등록한 상용구 내용 자동 입력</p></div></div>
+</article>
+  </div>
+  <div class="empty" id="empty">검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</div>
+</main>
+
+<footer class="wrap">
+  © Triup Motion E · FAQ &nbsp;|&nbsp; 이 페이지는 Notion FAQ 문서를 기반으로 제작되었습니다.
+</footer>
+
+<div class="lightbox" id="lightbox"><img id="lbimg" alt=""></div>
+
+<script>
+(function(){
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var search = document.getElementById('search');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var curCat = '전체';
+
+  function apply(){
+    var qv = search.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(c){
+      var catOk = curCat === '전체' || c.getAttribute('data-cat') === curCat;
+      var txtOk = !qv || c.textContent.toLowerCase().indexOf(qv) !== -1;
+      var ok = catOk && txtOk;
+      c.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    countEl.textContent = shown + '개의 질문';
+    emptyEl.style.display = shown ? 'none' : 'block';
+  }
+
+  // accordion
+  cards.forEach(function(c){
+    var q = c.querySelector('.q');
+    var a = c.querySelector('.a');
+    q.addEventListener('click', function(){
+      var open = c.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : '0';
+    });
+  });
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){x.classList.remove('active')});
+      t.classList.add('active');
+      curCat = t.getAttribute('data-cat');
+      apply();
+    });
+  });
+  search.addEventListener('input', apply);
+
+  // lightbox
+  var lb = document.getElementById('lightbox'), lbimg = document.getElementById('lbimg');
+  document.addEventListener('click', function(e){
+    if(e.target.tagName === 'IMG' && e.target.closest('figure')){
+      lbimg.src = e.target.src; lb.classList.add('on');
+    } else if(e.target === lb || e.target === lbimg){
+      lb.classList.remove('on');
+    }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('on'); });
+
+  apply();
+})();
+</script>
+</body>
+</html>
