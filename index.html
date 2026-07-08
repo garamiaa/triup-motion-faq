@@ -1123,22 +1123,54 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   var searchView = document.getElementById('view-search');
   var sectionMd = { faq: faq, manual: man, notice: ntc, update: upd };
   var sectionLabel = { faq: 'FAQ', manual: '매뉴얼', notice: '공지', update: '업데이트' };
-  function activateView(v, noscroll){
+  function showView(v){
     snavs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-view') === v); });
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== v); });
     searchView.hidden = true;                    // 섹션 이동 시 검색결과 화면 닫기
+  }
+  function closeDrawers(){                        // 열려 있는 모바일 드로어 닫기
+    document.querySelectorAll('.detail').forEach(function(d){ d.classList.remove('drawer-open'); });
+    document.body.classList.remove('drawer-open');
+  }
+  function activateView(v, noscroll){
+    showView(v);
     if(v === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }  // FAQ 재진입 시 카테고리 초기화
     if(sectionMd[v]) selectFirstVisible(sectionMd[v]);  // 재진입 시 첫 문서로 초기화
     if(!noscroll) window.scrollTo(0, 0);
   }
-  snavs.forEach(function(n){ n.addEventListener('click', function(){ activateView(n.getAttribute('data-view')); }); });
+  snavs.forEach(function(n){ n.addEventListener('click', function(){ var v = n.getAttribute('data-view'); activateView(v); history.pushState({ screen:'view', view:v }, ''); }); });
 
   // ---- 로고 · '고객센터' 클릭 → 홈(공지사항 첫 페이지) ----
   document.querySelectorAll('.home-trigger').forEach(function(el){
     el.addEventListener('click', function(){
       var gs = document.getElementById('global-search'); if(gs) gs.value = '';
       activateView('notice');
+      history.pushState({ screen:'view', view:'notice' }, '');
     });
+  });
+
+  // ---- 브라우저 뒤로가기: 사이트를 벗어나지 않고 직전 화면으로 되돌리기 ----
+  Object.keys(sectionMd).forEach(function(key){          // 문서 클릭 시 히스토리 기록
+    sectionMd[key].items.forEach(function(it){
+      it.addEventListener('click', function(){
+        history.pushState({ screen:'detail', view:key, id:it.getAttribute('data-id') }, '');
+      });
+    });
+  });
+  window.addEventListener('popstate', function(e){
+    var s = e.state || { screen:'view', view:'notice' };
+    if(s.screen === 'search'){
+      closeDrawers();
+      if(gsInput) gsInput.value = s.q;
+      runSearch(s.q);
+    } else if(s.screen === 'detail'){
+      showView(s.view);
+      if(s.view === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }
+      if(sectionMd[s.view]) sectionMd[s.view].select(s.id);
+    } else {
+      closeDrawers();
+      activateView(s.view, true);
+    }
   });
 
   // ---- 전체 검색: Enter → 결과 목록 페이지 (제목·내용 검색) ----
@@ -1185,6 +1217,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
         activateView(r.key);
         if(r.key === 'faq'){ curCat = '전체'; apply(); }
         sectionMd[r.key].select(r.id);
+        history.pushState({ screen:'detail', view:r.key, id:r.id }, '');
       });
       srList.appendChild(b);
     });
@@ -1193,8 +1226,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     searchView.hidden = false;
     window.scrollTo(0, 0);
   }
-  gsInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); runSearch(gsInput.value); } });
-  document.getElementById('gs-ico').addEventListener('click', function(){ runSearch(gsInput.value); });
+  function doSearch(raw){ if(!raw.trim()) return; runSearch(raw); history.pushState({ screen:'search', q:raw.trim() }, ''); }
+  gsInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); doSearch(gsInput.value); } });
+  document.getElementById('gs-ico').addEventListener('click', function(){ doSearch(gsInput.value); });
 
   // ---- lightbox ----
   var lb = document.getElementById('lightbox'), lbimg = document.getElementById('lbimg');
@@ -1205,6 +1239,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ lb.classList.remove('on'); document.querySelectorAll('.detail').forEach(function(d){d.classList.remove('drawer-open');}); document.body.classList.remove('drawer-open'); }
   });
+
+  // 초기 화면을 히스토리 기준점으로 등록 (뒤로가기 시 사이트를 벗어나지 않음)
+  history.replaceState({ screen:'view', view:'notice' }, '');
 })();
 </script>
 </body>
