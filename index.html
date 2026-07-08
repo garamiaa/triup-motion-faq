@@ -76,6 +76,23 @@ main{padding:22px 0 60px}
 .qi-arrow{flex:none;color:#b3bccc;transition:transform .15s,color .15s}
 .q-item.active .qi-arrow{color:var(--brand);transform:translateX(2px)}
 .badge{flex:none;font-size:10.5px;font-weight:700;color:#b45309;background:#fef3c7;padding:3px 8px;border-radius:6px}
+/* 매뉴얼 2단 네비 */
+.q-group{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.q-group:hover{border-color:#c3d6f5}
+.q-group.open{border-color:var(--brand);box-shadow:0 6px 20px rgba(33,114,222,.1)}
+.man-nav .q-item{border:none;border-radius:0;background:none;box-shadow:none}
+.man-nav .q-item:hover{box-shadow:none;background:#f7faff}
+.man-parent.active{background:var(--brand-soft)}
+.qi-arrow.expand{transition:transform .2s}
+.q-group.open .qi-arrow.expand{transform:rotate(180deg);color:var(--brand)}
+.sub-count{flex:none;font-size:11px;font-weight:700;color:var(--sub);background:#eef1f6;border-radius:999px;padding:1px 8px}
+.q-group.open .sub-count{color:var(--brand);background:#fff}
+.submenu{display:none;flex-direction:column;padding:2px 10px 10px}
+.q-group.open .submenu{display:flex}
+.sub-item{text-align:left;background:none;border:none;border-left:2px solid var(--line);
+  padding:8px 12px;margin-left:12px;font-size:13.5px;color:var(--sub);cursor:pointer;line-height:1.4}
+.sub-item:hover{color:var(--brand);border-left-color:#9dc0f5;background:#f4f8ff}
+.sub-item.active{color:var(--brand);font-weight:700;border-left-color:var(--brand)}
 
 /* detail */
 .detail{position:sticky;top:calc(var(--head-h)+6px);background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;max-height:calc(100vh - var(--head-h) - 34px);overflow:auto;box-shadow:0 8px 30px rgba(23,45,90,.06)}
@@ -422,135 +439,231 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
   </div>
   <main class="wrap">
     <div class="faq-layout">
-      <aside class="q-list" id="man-list">
-<button class="q-item" data-id="m1" data-search="고객관리 고객관리 고객검색 고객 정보 및 진료 내역에서 검색하고자 하는 값을 입력하여 리스트를 확인할 수 있습니다. 진료 내역의 경우 특정 단어 내용 입력하여 검색이 가능합니다. 고객등록 이름과 연락처는 필수값입니다. 고객리스트 고객 전체 리스트 확인 및 고객정보 수정, 등록된 고객삭제, 문자 발송이 가능합니다. 문자발송 설정해 놓은 문자 템플릿을 선택하여 발송할 수 있습니다. (문자/ 친구톡 /. 알림톡 체크 및 이미지 첨부가 가능합니다.) 문자검색 crm관리 고정crm 부재중 통화 내역 cti 연동된 경우 부재중 통화 내역을 확인할 수 있습니다. 주민등록번호 보유 현황 내원객의 주민번호 보유 현황을 확인할 수 있습니다. crm 수동 발송 포인트 관리 상담보기 차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다. 확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다. 상담 진행 시 상담 정보를 작성할 수 있습니다. 상담 메모 및 어시 메모를 작성할 수 있습니다. 💡 동시에 차트 작성 시 주의 사항 처음 차트를 연 사람의 이름이 뜬다. 차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다. 동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. (‘저장’을 누르면 기록이 날라가지는 않음.) 해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다. 상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다. 새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다. 진료사진/펜차트/동의서 080수신거부목록 수신거부한 고객의 리스트를 확인 후 수신거부 처리해 주셔야 합니다.">
-      <span class="qi-text">고객관리</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m2" data-search="보험청구 보험청구 건강보험 청구 청구할 해당 월을 선택 후 청구자료 생성을 클릭합니다. 우측에 생성된 청구리스트를 확인 후 청구파일(sam)생성 버튼을 클릭합니다. 파일 생성 완료 후 청구(프로그램 실행)을 눌러주세요. 수신문서 조회 수신 문서를 조회할 수 있습니다. 수신 및 파일저장 수신 파일을 저장할 수 있습니다. 조회를 클릭하면 진료비 청구 프로그램이 열립니다. 요양기관인증서 확인 후 통보서 수신 리스트를 확인합니다. dur내역보기 dur 내역을 확인할 수 있습니다. 처방전 발급 내역 처방전 발급 리스트를 확인 및 출력 할 수 있습니다.">
-      <span class="qi-text">보험청구</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m3" data-search="전자서명 전자서명 일괄서명 전체 차트에 일괄서명이 가능합니다. 조회 시작일과 종료일을 선택합니다. 진료기록, 수납기록 체크 &amp;gt; [서명대상 건수 확인] 클릭합니다. [서명] 클릭 후 조회되는 인증서 로그인 시 전자서명이 완료됩니다. 진료기록 진료기록 기준으로 전자서명을 할 수 있습니다. 진료일자: 진료일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. [오늘] 선택 시 오늘일자로 조회됩니다. 미서명: [미서명] 체크 후 조회 시 전자서명이 되지 않은 진료기록만 조회됩니다. 서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다. 구분, 서명일시, 서명자, 담당의, 진료일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다. 검증: 전자서명이 완료된 진료기록은 [검증] 으로 변경됩니다. 서명: 전자서명 할 진료기록을 선택 후 [서명] 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다. 수납기록 수납기록 기준으로 전자서명을 할 수 있습니다. 수납일자: 수납일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. [오늘] 선택 시 오늘일자로 조회됩니다. 미서명: [미서명] 체크 후 조회 시 전자서명이 되지 않은 수납기록만 조회됩니다. 서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다. 구분, 서명일시, 서명자, 담당의, 수납일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다. 검증: 전자서명이 완료된 수납기록은 [검증] 으로 변경됩니다. 서명: 전자서명 할 수납기록을 선택 후 [서명] 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.">
-      <span class="qi-text">전자서명</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m4" data-search="서식출력 서식출력 서식양식 [서식출력]- 사용할 양식을 클릭합니다. 환자를 검색 후 출력할 진료일을 선택합니다. 내용 확인하여 출력 또는 액셀 내보내기 합니다. yellow 칸은 설정 된 값이 연동되어 들어갑니다. 해당 창에서 다른 서식 출력이 가능합니다. 가지고 있는 액셀 파일을 업로드 가능하여 저장 후 사용할 수 있습니다. 💡 진단서 / 진단서(영문) / 상해진단서 / 병무용진단서 / 소견서 / 회송서 / 요양급여의뢰서 / 의료급여의뢰서 / 진료확인서 / 진료기록부 / 진료비납입확인서 / 진료비세부내역 / 진료비세부산정내역 / 향후진료비추정서">
-      <span class="qi-text">서식출력</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m5" data-search="매출관리 매출관리 결산시스템 결산 시스템을 통해 매출집계 및 고객만족도를 확인할 수 있습니다. 일, 주, 월, 3개월, 연도, 직접 기간 입력을 통해 결산 조회가 가능합니다. 항목을 선택하여 매출을 확인할 수 있습니다. 💡 개인별 → 신구환별 - 총인원수는 차트 수를 의미합니다. ex) 트라이업 환자 - 시술 오더 - 보톡스 : a 원장님 리쥬란 힐러 : b 원장님 피코토닝 : b 원장님 인모드 : b 원장님 경우, a 원장님 1명, b 원장님 1명으로 통계가 잡히게 됩니다. 보험청구현황 미수금 내역 환불금 내역 오더 판매 내역 의약품 사용 내역 연말정산 간소화 연말정산 간소화 자료를 액셀 저장하여 사용할 수 있습니다. vip 관리 환자별 집계 내역">
-      <span class="qi-text">매출관리</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m6" data-search="의약품 의약품 의약품 검색 [의약품 검색]을 클릭하면 건강보험심사평가원 의약품통합정보 페이지로 이동됩니다. 급여이력정보 &amp;lt; 의약품통합정보 &amp;lt; 의약품정보 &amp;lt; 의료정보 &amp;lt; 건강보험심사평가원 (hira.or.kr)">
-      <span class="qi-text">의약품</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m7" data-search="마약류 마약류 마약류 구입/투약 보고 및 현황, 내역, 재고현황 등 연동하여 사용할 수 있습니다. 💡 마약류통합관리시스템 nims 와 의료용마약류 빅데이터활용서비스 에서 계정 정보를 입력해 주세요. data.nims.or.kr/ 가입 시 사용 차트 입력칸에 [motion chart] 를 꼭 선택해 주세요!">
-      <span class="qi-text">마약류</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m8" data-search="예약관리 예약관리 취소, 부도 리스트 예약 취소 및 부도 리스트를 확인할 수 있습니다. 통계 원하는 기간을 조회하여 예약 통계를 확인할 수 있습니다.">
-      <span class="qi-text">예약관리</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m9" data-search="설정 보험청구 병원공지 병원 공지를 등록, 수정, 삭제할 수 있습니다. 업데이트 공지 차트 업데이트 공지 히스토리를 확인할 수 있습니다. 공통코드 관리 문자템플릿 관리 펜차트 관리 펜차트에서 사용할 차트 이미지 등록 및 수정을 원할 시 고객센터로 연락주시면 등록 및 수정 진행이 가능합니다. 동의서 관리 모션t에서 사용할 동의서를 등록해 주세요. 처방 및 수가설정 상용구 설정 자주쓰는 문장 및 양식을 상용구로 설정할 수 있습니다. /상용구 + 스페이스바 외부기기 설정 외부기기를 차트에 연동하여 사용할 수 있습니다. 스티커 설정">
-      <span class="qi-text">설정</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m10" data-search="화면 화면 dashboard ‣ 차트 상담보기 차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다. 확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다. 상담 진행 시 상담 정보를 작성할 수 있습니다. 상담 메모 및 어시 메모를 작성할 수 있습니다. 💡 동시에 차트 작성 시 주의 사항 처음 차트를 연 사람의 이름이 뜬다. 차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다. 동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. (‘저장’을 누르면 기록이 날라가지는 않음.) 해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다. 상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다. 새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다. 대기 현황판 예약 캘린더 ‣">
-      <span class="qi-text">화면</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m11" data-search="관리자 관리 병원 설정 병원정보 및 운영시간을 설정합니다. 단축 진료일 설정 시 날짜 변경을 위해서는 고객센터로 수정 요청 부탁드립니다. &amp;lt;닥톡 가입방법&amp;gt; 📎 닥톡 예약 이용 가이드_v2.pdf (notion 원문에서 다운로드) 사용자 관리 사용자 접속 기록 옵션 설정 마케팅 동의 변경 변경 이력 조회 포인트 설정 옵션설정에서 포인트 사용 설정을 ‘설정’으로 체크 후 사용해 주세요. 비급여 보고 항목 국가 정보 설정">
-      <span class="qi-text">관리자</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m12" data-search="dashboard dashboard dashboard 환자를 검색하여 예약 및 접수를 할 수 있습니다. 예약 : 해당 날짜에 예약된 환자들을 확인할 수 있습니다. 환자 이름에 마우스를 오버하면 메모를 확인할 수 있습니다. 설정해 놓은 부도 시간이 지나면 환자는 예약에서 부도로 넘어갑니다. 접수 : 접수된 환자들을 확인할 수 있습니다. 접수 후 대기시간을 확인할 수 있습니다. 접수 시 입력한 정보를 확인할 수 있습니다.(담당의/구환,신환/보험정보/시술/진료분야) 시술 : 시술중인 환자들을 확인할 수 있습니다. 오더 내린 시술 항목을 확인하고 체크할 수 있습니다. 시술 완료 후 [시술] 버튼을 클릭하면 최종완료 처리가 됩니다. 수납 : 접수 후 차트에서 상담 or 진료 오더 후 [저장하기]를 클릭하면 수납보드로 환자가 이동합니다. [시술전] 버튼을 클릭 시 시술보드로 이동합니다. 공지사항을 작성하고 수정, 관리할 수 있습니다. 환자의 영역에서 우클릭 후 접수 및 차트 열기, 예약 하기 등의 기능을 클릭하여 해당 화면으로 이동합니다.">
-      <span class="qi-text">Dashboard</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m13" data-search="대기현황판 대기현황판 미리 설정해 둔 대기현황판에서 대기중인 환자들을 위치를 확인하고 이동할 수 있습니다. 현재 위치에서 대기한 시간을 표시해 줍니다. 대기실 위치가 변경되면 0분에서 다시 시작합니다. 이름에 마우스를 오버하면 예약/접수 메모를 확인할 수 있습니다.">
-      <span class="qi-text">대기현황판</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m14" data-search="예약캘린더 예약캘린더 미리 설정해 둔 항목별 스케줄의 예약 상황을 확인하고 새로운 예약 및 예약 수정이 가능합니다. 마우스 우클릭 마킹하기 : 마킹하기 기능을 색구분, 메세지를 기록해 둘 수 있습니다. 검색하기 : 이름을 입력하여 신환/구환 예약을 할 수 있습니다. 드래그 앤 드롭으로 예약 시간을 변경할 수 있습니다. 예약 정보 및 날짜 변경 시 고객 이름 클릭 or 마우스 우클릭 하여 예약변경/확인을 클릭하여 수정합니다. 환자 이름을 클릭하면 해당 예약 정보가 사이드 창에서 확인가능하여 예약변경/취소/삭제가 가능합니다. 액셀저장을 통해 원하는 정보를 다운로드 받을 수 있습니다. 고객을 검색하면 해당 고객 예약스케줄이 하이라이트로 표시됩니다. &amp;lt;예약변경&amp;gt; 시간 변경 시 드래그 앤 드롭으로 원하는 시간으로 이동할 수 있어요 &amp;lt;예약 정보 다운로드&amp;gt;">
-      <span class="qi-text">예약캘린더</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m15" data-search="트라이업 x 투비콘 환자 병원비 수납 후 병원에 요청하면 알림톡 자동 발송 실비 청구할 진료 내역 선택 내 보험사 확인 후 청구서 제출 완료 병원 실손 청구를 원하는 환자는 차트에서 내역 발송 요청된 신청 리스트를 한눈에 확인 모션e 사용 매뉴얼 1. [관리자] - [ 옵션 설정]을 클릭해 주세요. 2. [병원설정] - [권한] - 투비콘 사용여부 (사용)을 체크해 주세요. 3. 요청 들어온 리스트를 확인하고 처리할 수 있습니다. 청구 신청 시 차트로 발급 요청이 들어옵니다. [발급요청] 처리 시 13시, 21시에 일괄 업로드 됩니다. 4. [알림톡 요청] 버튼을 통해 미처리 된 요청건을 다시 요청할 수 있습니다. 해당 월이 기본값으로 설정되어 있습니다. 전체, 알림톡 요청 완료, 처리실패, 발급가능, 증명서 전송완료 환자가 서류 신청 후 미처리 상태로 3일이 지나면 [알림톡 요청] 버튼으로 변경되어 재신청 요청을 할 수 있습니다. faq 1.보험사에 청구하면 언제 환급 받을 수 있나요? 보험사마다 처리 기간이 달라 정확한 일정은 보험사 고객센터를 통해 문의 부탁드립니다. 2.보험사에서 재청구 하라고 합니다. 어떻게 하면 되나요? 동일한 진료 내역을 그대로 다시 청구를 하는 것이라면, 전송받은 알림톡에서 [바로 청구하기]로 다시 들어가 동일하게 청구를 진행하면 됩니다. 다른 진료 내역을 포함하여 청구를 원하시는 경우 병원에 재요청해 주세요. 3.비용은 어떻게 되나요? 해당 서비스는 병원과 환자 모두 무료로 사용 가능합니다. 신청 방법 실손 보험 빠른 청구를 원하는 요양기관은 트라이업 or 투비콘으로 신청해 주세요🙂 💡 &amp;lt;트라이업&amp;gt; 고객센터 : 02-6083-7711 카카오톡 채널 : http://pf.kakao.com/_xunhk/chat &amp;lt;투비콘&amp;gt; 고객센터 : 070-4699-4529 채널톡 : yeoyj.channel.io">
-      <span class="qi-text">트라이업 X 투비콘</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m16" data-search="네이버 예약 네이버 예약 연동">
-      <span class="qi-text">네이버 예약</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m17" data-search="강남언니 아래 연동 가이드를 확인해 주세요. 📎 강남언니 예약 연동 가이드.pdf (notion 원문에서 다운로드)">
-      <span class="qi-text">강남언니</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m18" data-search="여신티켓 [관리자] - [옵션설정] - [여신티켓] 사용을 체크 후 차트를 재실행 해주세요.">
-      <span class="qi-text">여신티켓</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m19" data-search="문자포인트 충전하기 📎 모션e_문자충전 가이드 240329.pdf (notion 원문에서 다운로드)">
-      <span class="qi-text">문자포인트 충전하기</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m20" data-search="rx+사전점검 아래 연동 가이드를 확인해 주세요. 📎 닥플rx 사전점검 연동 가이드.pdf (notion 원문에서 다운로드)">
-      <span class="qi-text">RX+사전점검</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m21" data-search="룰루랩 준비중입니다.">
-      <span class="qi-text">룰루랩</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m22" data-search="인바디 준비중입니다.">
-      <span class="qi-text">인바디</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m23" data-search="van(카드단말기)연동 💡 모션e 와 연동되는 단말기는 [한국결제시스템] 단말기 입니다. 현재는, 이 외 단말기는 연동이 어려우니 변경을 원하시는 경우 모션e 고객센터로 문의주세요. ( 02-6083-7711) van연동 [관리자] - [ 옵셜설정] - [van 사용 여부] - [사용] 으로 체크 후 차트를 재실행해 주세요. [설정] - [공통코드관리] - [기타 결제구분코드] - [van 매핑] - [일괄적용] - [확인] - [저장] [설정] - [공통코드관리] - [카드 구분코드] - [van 매핑] - [일괄적용] - [확인] - [저장] → 순서대로 진행해 주세요. 수납 [수납]탭에서 수납할 금액을 입력 후 [수납하기] 버튼을 눌러주세요. van 연결 없이 처리를 원하는 경우 해당 버튼 클릭 후 [수납하기] 눌러주세요. 카드 단말기에 카드를 넣어주세요. 결제가 완료되면 3초 후 자동으로 창이 종료됩니다. 환불 및 수납취소 1.수납내역 + 를 클릭해 주세요. ** 단말기를 연동하지 않고 따로 처리하고 싶은 경우 [결제취소]버튼 위 [van연결해제]에 체크 후 결제취소를 진행해 주시면 됩니다.">
-      <span class="qi-text">VAN(카드단말기)연동</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-<button class="q-item" data-id="m24" data-search="모션e 태블릿 모션t는 안드로이드 운영체제에서만 사용 가능합니다. 플레이스토어에서 [모션e]라고 검색해서[ 모션e pro]를 다운로드 해주세요. 모션e (차트) 계정으로 로그인해주세요.">
-      <span class="qi-text">모션E 태블릿</span>
-      <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+      <aside class="q-list man-nav" id="man-list">
+<div class="q-group" data-id="m1" data-search="고객관리 고객관리 고객검색 고객 정보 및 진료 내역에서 검색하고자 하는 값을 입력하여 리스트를 확인할 수 있습니다. 진료 내역의 경우 특정 단어 내용 입력하여 검색이 가능합니다. 고객등록 이름과 연락처는 필수값입니다. 고객리스트 고객 전체 리스트 확인 및 고객정보 수정, 등록된 고객삭제, 문자 발송이 가능합니다. 문자발송 설정해 놓은 문자 템플릿을 선택하여 발송할 수 있습니다. (문자/ 친구톡 /. 알림톡 체크 및 이미지 첨부가 가능합니다.) 문자검색 crm관리 고정crm 부재중 통화 내역 cti 연동된 경우 부재중 통화 내역을 확인할 수 있습니다. 주민등록번호 보유 현황 내원객의 주민번호 보유 현황을 확인할 수 있습니다. crm 수동 발송 포인트 관리 상담보기 차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다. 확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다. 상담 진행 시 상담 정보를 작성할 수 있습니다. 상담 메모 및 어시 메모를 작성할 수 있습니다. 💡 동시에 차트 작성 시 주의 사항 처음 차트를 연 사람의 이름이 뜬다. 차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다. 동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. (‘저장’을 누르면 기록이 날라가지는 않음.) 해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다. 상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다. 새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다. 진료사진/펜차트/동의서 080수신거부목록 수신거부한 고객의 리스트를 확인 후 수신거부 처리해 주셔야 합니다.">
+      <button class="q-item man-parent" data-id="m1">
+        <span class="qi-text">고객관리</span>
+        <span class="sub-count">14</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m1" data-anchor="m1-h0">고객검색</button><button class="sub-item" data-id="m1" data-anchor="m1-h1">고객등록</button><button class="sub-item" data-id="m1" data-anchor="m1-h2">고객리스트</button><button class="sub-item" data-id="m1" data-anchor="m1-h3">문자발송</button><button class="sub-item" data-id="m1" data-anchor="m1-h4">문자검색</button><button class="sub-item" data-id="m1" data-anchor="m1-h5">CRM관리</button><button class="sub-item" data-id="m1" data-anchor="m1-h6">고정CRM</button><button class="sub-item" data-id="m1" data-anchor="m1-h7">부재중 통화 내역</button><button class="sub-item" data-id="m1" data-anchor="m1-h8">주민등록번호 보유 현황</button><button class="sub-item" data-id="m1" data-anchor="m1-h9">CRM 수동 발송</button><button class="sub-item" data-id="m1" data-anchor="m1-h10">포인트 관리</button><button class="sub-item" data-id="m1" data-anchor="m1-h11">상담보기</button><button class="sub-item" data-id="m1" data-anchor="m1-h12">진료사진/펜차트/동의서</button><button class="sub-item" data-id="m1" data-anchor="m1-h13">080수신거부목록</button></div>
+    </div>
+<div class="q-group" data-id="m2" data-search="보험청구 보험청구 건강보험 청구 청구할 해당 월을 선택 후 청구자료 생성을 클릭합니다. 우측에 생성된 청구리스트를 확인 후 청구파일(sam)생성 버튼을 클릭합니다. 파일 생성 완료 후 청구(프로그램 실행)을 눌러주세요. 수신문서 조회 수신 문서를 조회할 수 있습니다. 수신 및 파일저장 수신 파일을 저장할 수 있습니다. 조회를 클릭하면 진료비 청구 프로그램이 열립니다. 요양기관인증서 확인 후 통보서 수신 리스트를 확인합니다. dur내역보기 dur 내역을 확인할 수 있습니다. 처방전 발급 내역 처방전 발급 리스트를 확인 및 출력 할 수 있습니다.">
+      <button class="q-item man-parent" data-id="m2">
+        <span class="qi-text">보험청구</span>
+        <span class="sub-count">5</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m2" data-anchor="m2-h0">건강보험 청구</button><button class="sub-item" data-id="m2" data-anchor="m2-h1">수신문서 조회</button><button class="sub-item" data-id="m2" data-anchor="m2-h2">수신 및 파일저장</button><button class="sub-item" data-id="m2" data-anchor="m2-h3">DUR내역보기</button><button class="sub-item" data-id="m2" data-anchor="m2-h4">처방전 발급 내역</button></div>
+    </div>
+<div class="q-group" data-id="m3" data-search="전자서명 전자서명 일괄서명 전체 차트에 일괄서명이 가능합니다. 조회 시작일과 종료일을 선택합니다. 진료기록, 수납기록 체크 &amp;gt; [서명대상 건수 확인] 클릭합니다. [서명] 클릭 후 조회되는 인증서 로그인 시 전자서명이 완료됩니다. 진료기록 진료기록 기준으로 전자서명을 할 수 있습니다. 진료일자: 진료일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. [오늘] 선택 시 오늘일자로 조회됩니다. 미서명: [미서명] 체크 후 조회 시 전자서명이 되지 않은 진료기록만 조회됩니다. 서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다. 구분, 서명일시, 서명자, 담당의, 진료일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다. 검증: 전자서명이 완료된 진료기록은 [검증] 으로 변경됩니다. 서명: 전자서명 할 진료기록을 선택 후 [서명] 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다. 수납기록 수납기록 기준으로 전자서명을 할 수 있습니다. 수납일자: 수납일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. [오늘] 선택 시 오늘일자로 조회됩니다. 미서명: [미서명] 체크 후 조회 시 전자서명이 되지 않은 수납기록만 조회됩니다. 서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다. 구분, 서명일시, 서명자, 담당의, 수납일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다. 검증: 전자서명이 완료된 수납기록은 [검증] 으로 변경됩니다. 서명: 전자서명 할 수납기록을 선택 후 [서명] 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.">
+      <button class="q-item man-parent" data-id="m3">
+        <span class="qi-text">전자서명</span>
+        <span class="sub-count">3</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m3" data-anchor="m3-h0">일괄서명</button><button class="sub-item" data-id="m3" data-anchor="m3-h1">진료기록</button><button class="sub-item" data-id="m3" data-anchor="m3-h2">수납기록</button></div>
+    </div>
+<div class="q-group" data-id="m4" data-search="서식출력 서식출력 서식양식 [서식출력]- 사용할 양식을 클릭합니다. 환자를 검색 후 출력할 진료일을 선택합니다. 내용 확인하여 출력 또는 액셀 내보내기 합니다. yellow 칸은 설정 된 값이 연동되어 들어갑니다. 해당 창에서 다른 서식 출력이 가능합니다. 가지고 있는 액셀 파일을 업로드 가능하여 저장 후 사용할 수 있습니다. 💡 진단서 / 진단서(영문) / 상해진단서 / 병무용진단서 / 소견서 / 회송서 / 요양급여의뢰서 / 의료급여의뢰서 / 진료확인서 / 진료기록부 / 진료비납입확인서 / 진료비세부내역 / 진료비세부산정내역 / 향후진료비추정서">
+      <button class="q-item man-parent" data-id="m4">
+        <span class="qi-text">서식출력</span>
+        <span class="sub-count">1</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m4" data-anchor="m4-h0">서식양식</button></div>
+    </div>
+<div class="q-group" data-id="m5" data-search="매출관리 매출관리 결산시스템 결산 시스템을 통해 매출집계 및 고객만족도를 확인할 수 있습니다. 일, 주, 월, 3개월, 연도, 직접 기간 입력을 통해 결산 조회가 가능합니다. 항목을 선택하여 매출을 확인할 수 있습니다. 💡 개인별 → 신구환별 - 총인원수는 차트 수를 의미합니다. ex) 트라이업 환자 - 시술 오더 - 보톡스 : a 원장님 리쥬란 힐러 : b 원장님 피코토닝 : b 원장님 인모드 : b 원장님 경우, a 원장님 1명, b 원장님 1명으로 통계가 잡히게 됩니다. 보험청구현황 미수금 내역 환불금 내역 오더 판매 내역 의약품 사용 내역 연말정산 간소화 연말정산 간소화 자료를 액셀 저장하여 사용할 수 있습니다. vip 관리 환자별 집계 내역">
+      <button class="q-item man-parent" data-id="m5">
+        <span class="qi-text">매출관리</span>
+        <span class="sub-count">9</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m5" data-anchor="m5-h0">결산시스템</button><button class="sub-item" data-id="m5" data-anchor="m5-h1">보험청구현황</button><button class="sub-item" data-id="m5" data-anchor="m5-h2">미수금 내역</button><button class="sub-item" data-id="m5" data-anchor="m5-h3">환불금 내역</button><button class="sub-item" data-id="m5" data-anchor="m5-h4">오더 판매 내역</button><button class="sub-item" data-id="m5" data-anchor="m5-h5">의약품 사용 내역</button><button class="sub-item" data-id="m5" data-anchor="m5-h6">연말정산 간소화</button><button class="sub-item" data-id="m5" data-anchor="m5-h7">VIP 관리</button><button class="sub-item" data-id="m5" data-anchor="m5-h8">환자별 집계 내역</button></div>
+    </div>
+<div class="q-group" data-id="m6" data-search="의약품 의약품 의약품 검색 [의약품 검색]을 클릭하면 건강보험심사평가원 의약품통합정보 페이지로 이동됩니다. 급여이력정보 &amp;lt; 의약품통합정보 &amp;lt; 의약품정보 &amp;lt; 의료정보 &amp;lt; 건강보험심사평가원 (hira.or.kr)">
+      <button class="q-item man-parent" data-id="m6">
+        <span class="qi-text">의약품</span>
+        <span class="sub-count">1</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m6" data-anchor="m6-h0">의약품 검색</button></div>
+    </div>
+<div class="q-group" data-id="m7" data-search="마약류 마약류 마약류 구입/투약 보고 및 현황, 내역, 재고현황 등 연동하여 사용할 수 있습니다. 💡 마약류통합관리시스템 nims 와 의료용마약류 빅데이터활용서비스 에서 계정 정보를 입력해 주세요. data.nims.or.kr/ 가입 시 사용 차트 입력칸에 [motion chart] 를 꼭 선택해 주세요!">
+      <button class="q-item man-parent" data-id="m7">
+        <span class="qi-text">마약류</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m8" data-search="예약관리 예약관리 취소, 부도 리스트 예약 취소 및 부도 리스트를 확인할 수 있습니다. 통계 원하는 기간을 조회하여 예약 통계를 확인할 수 있습니다.">
+      <button class="q-item man-parent" data-id="m8">
+        <span class="qi-text">예약관리</span>
+        <span class="sub-count">2</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m8" data-anchor="m8-h0">취소, 부도 리스트</button><button class="sub-item" data-id="m8" data-anchor="m8-h1">통계</button></div>
+    </div>
+<div class="q-group" data-id="m9" data-search="설정 보험청구 병원공지 병원 공지를 등록, 수정, 삭제할 수 있습니다. 업데이트 공지 차트 업데이트 공지 히스토리를 확인할 수 있습니다. 공통코드 관리 문자템플릿 관리 펜차트 관리 펜차트에서 사용할 차트 이미지 등록 및 수정을 원할 시 고객센터로 연락주시면 등록 및 수정 진행이 가능합니다. 동의서 관리 모션t에서 사용할 동의서를 등록해 주세요. 처방 및 수가설정 상용구 설정 자주쓰는 문장 및 양식을 상용구로 설정할 수 있습니다. /상용구 + 스페이스바 외부기기 설정 외부기기를 차트에 연동하여 사용할 수 있습니다. 스티커 설정">
+      <button class="q-item man-parent" data-id="m9">
+        <span class="qi-text">설정</span>
+        <span class="sub-count">10</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m9" data-anchor="m9-h0">병원공지</button><button class="sub-item" data-id="m9" data-anchor="m9-h1">업데이트 공지</button><button class="sub-item" data-id="m9" data-anchor="m9-h2">공통코드 관리</button><button class="sub-item" data-id="m9" data-anchor="m9-h3">문자템플릿 관리</button><button class="sub-item" data-id="m9" data-anchor="m9-h4">펜차트 관리</button><button class="sub-item" data-id="m9" data-anchor="m9-h5">동의서 관리</button><button class="sub-item" data-id="m9" data-anchor="m9-h6">처방 및 수가설정</button><button class="sub-item" data-id="m9" data-anchor="m9-h7">상용구 설정</button><button class="sub-item" data-id="m9" data-anchor="m9-h8">외부기기 설정</button><button class="sub-item" data-id="m9" data-anchor="m9-h9">스티커 설정</button></div>
+    </div>
+<div class="q-group" data-id="m10" data-search="화면 화면 dashboard ‣ 차트 상담보기 차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다. 확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다. 상담 진행 시 상담 정보를 작성할 수 있습니다. 상담 메모 및 어시 메모를 작성할 수 있습니다. 💡 동시에 차트 작성 시 주의 사항 처음 차트를 연 사람의 이름이 뜬다. 차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다. 동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. (‘저장’을 누르면 기록이 날라가지는 않음.) 해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다. 상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다. 새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다. 대기 현황판 예약 캘린더 ‣">
+      <button class="q-item man-parent" data-id="m10">
+        <span class="qi-text">화면</span>
+        <span class="sub-count">4</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m10" data-anchor="m10-h0">Dashboard</button><button class="sub-item" data-id="m10" data-anchor="m10-h1">차트</button><button class="sub-item" data-id="m10" data-anchor="m10-h2">대기 현황판</button><button class="sub-item" data-id="m10" data-anchor="m10-h3">예약 캘린더</button></div>
+    </div>
+<div class="q-group" data-id="m11" data-search="관리자 관리 병원 설정 병원정보 및 운영시간을 설정합니다. 단축 진료일 설정 시 날짜 변경을 위해서는 고객센터로 수정 요청 부탁드립니다. &amp;lt;닥톡 가입방법&amp;gt; 📎 닥톡 예약 이용 가이드_v2.pdf (notion 원문에서 다운로드) 사용자 관리 사용자 접속 기록 옵션 설정 마케팅 동의 변경 변경 이력 조회 포인트 설정 옵션설정에서 포인트 사용 설정을 ‘설정’으로 체크 후 사용해 주세요. 비급여 보고 항목 국가 정보 설정">
+      <button class="q-item man-parent" data-id="m11">
+        <span class="qi-text">관리자</span>
+        <span class="sub-count">9</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m11" data-anchor="m11-h0">병원  설정</button><button class="sub-item" data-id="m11" data-anchor="m11-h1">사용자 관리</button><button class="sub-item" data-id="m11" data-anchor="m11-h2">사용자 접속 기록</button><button class="sub-item" data-id="m11" data-anchor="m11-h3">옵션 설정</button><button class="sub-item" data-id="m11" data-anchor="m11-h4">마케팅 동의 변경</button><button class="sub-item" data-id="m11" data-anchor="m11-h5">변경 이력 조회</button><button class="sub-item" data-id="m11" data-anchor="m11-h6">포인트 설정</button><button class="sub-item" data-id="m11" data-anchor="m11-h7">비급여 보고 항목</button><button class="sub-item" data-id="m11" data-anchor="m11-h8">국가 정보 설정</button></div>
+    </div>
+<div class="q-group" data-id="m12" data-search="dashboard dashboard dashboard 환자를 검색하여 예약 및 접수를 할 수 있습니다. 예약 : 해당 날짜에 예약된 환자들을 확인할 수 있습니다. 환자 이름에 마우스를 오버하면 메모를 확인할 수 있습니다. 설정해 놓은 부도 시간이 지나면 환자는 예약에서 부도로 넘어갑니다. 접수 : 접수된 환자들을 확인할 수 있습니다. 접수 후 대기시간을 확인할 수 있습니다. 접수 시 입력한 정보를 확인할 수 있습니다.(담당의/구환,신환/보험정보/시술/진료분야) 시술 : 시술중인 환자들을 확인할 수 있습니다. 오더 내린 시술 항목을 확인하고 체크할 수 있습니다. 시술 완료 후 [시술] 버튼을 클릭하면 최종완료 처리가 됩니다. 수납 : 접수 후 차트에서 상담 or 진료 오더 후 [저장하기]를 클릭하면 수납보드로 환자가 이동합니다. [시술전] 버튼을 클릭 시 시술보드로 이동합니다. 공지사항을 작성하고 수정, 관리할 수 있습니다. 환자의 영역에서 우클릭 후 접수 및 차트 열기, 예약 하기 등의 기능을 클릭하여 해당 화면으로 이동합니다.">
+      <button class="q-item man-parent" data-id="m12">
+        <span class="qi-text">Dashboard</span>
+        <span class="sub-count">1</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m12" data-anchor="m12-h0">Dashboard</button></div>
+    </div>
+<div class="q-group" data-id="m13" data-search="대기현황판 대기현황판 미리 설정해 둔 대기현황판에서 대기중인 환자들을 위치를 확인하고 이동할 수 있습니다. 현재 위치에서 대기한 시간을 표시해 줍니다. 대기실 위치가 변경되면 0분에서 다시 시작합니다. 이름에 마우스를 오버하면 예약/접수 메모를 확인할 수 있습니다.">
+      <button class="q-item man-parent" data-id="m13">
+        <span class="qi-text">대기현황판</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m14" data-search="예약캘린더 예약캘린더 미리 설정해 둔 항목별 스케줄의 예약 상황을 확인하고 새로운 예약 및 예약 수정이 가능합니다. 마우스 우클릭 마킹하기 : 마킹하기 기능을 색구분, 메세지를 기록해 둘 수 있습니다. 검색하기 : 이름을 입력하여 신환/구환 예약을 할 수 있습니다. 드래그 앤 드롭으로 예약 시간을 변경할 수 있습니다. 예약 정보 및 날짜 변경 시 고객 이름 클릭 or 마우스 우클릭 하여 예약변경/확인을 클릭하여 수정합니다. 환자 이름을 클릭하면 해당 예약 정보가 사이드 창에서 확인가능하여 예약변경/취소/삭제가 가능합니다. 액셀저장을 통해 원하는 정보를 다운로드 받을 수 있습니다. 고객을 검색하면 해당 고객 예약스케줄이 하이라이트로 표시됩니다. &amp;lt;예약변경&amp;gt; 시간 변경 시 드래그 앤 드롭으로 원하는 시간으로 이동할 수 있어요 &amp;lt;예약 정보 다운로드&amp;gt;">
+      <button class="q-item man-parent" data-id="m14">
+        <span class="qi-text">예약캘린더</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m15" data-search="트라이업 x 투비콘 환자 병원비 수납 후 병원에 요청하면 알림톡 자동 발송 실비 청구할 진료 내역 선택 내 보험사 확인 후 청구서 제출 완료 병원 실손 청구를 원하는 환자는 차트에서 내역 발송 요청된 신청 리스트를 한눈에 확인 모션e 사용 매뉴얼 1. [관리자] - [ 옵션 설정]을 클릭해 주세요. 2. [병원설정] - [권한] - 투비콘 사용여부 (사용)을 체크해 주세요. 3. 요청 들어온 리스트를 확인하고 처리할 수 있습니다. 청구 신청 시 차트로 발급 요청이 들어옵니다. [발급요청] 처리 시 13시, 21시에 일괄 업로드 됩니다. 4. [알림톡 요청] 버튼을 통해 미처리 된 요청건을 다시 요청할 수 있습니다. 해당 월이 기본값으로 설정되어 있습니다. 전체, 알림톡 요청 완료, 처리실패, 발급가능, 증명서 전송완료 환자가 서류 신청 후 미처리 상태로 3일이 지나면 [알림톡 요청] 버튼으로 변경되어 재신청 요청을 할 수 있습니다. faq 1.보험사에 청구하면 언제 환급 받을 수 있나요? 보험사마다 처리 기간이 달라 정확한 일정은 보험사 고객센터를 통해 문의 부탁드립니다. 2.보험사에서 재청구 하라고 합니다. 어떻게 하면 되나요? 동일한 진료 내역을 그대로 다시 청구를 하는 것이라면, 전송받은 알림톡에서 [바로 청구하기]로 다시 들어가 동일하게 청구를 진행하면 됩니다. 다른 진료 내역을 포함하여 청구를 원하시는 경우 병원에 재요청해 주세요. 3.비용은 어떻게 되나요? 해당 서비스는 병원과 환자 모두 무료로 사용 가능합니다. 신청 방법 실손 보험 빠른 청구를 원하는 요양기관은 트라이업 or 투비콘으로 신청해 주세요🙂 💡 &amp;lt;트라이업&amp;gt; 고객센터 : 02-6083-7711 카카오톡 채널 : http://pf.kakao.com/_xunhk/chat &amp;lt;투비콘&amp;gt; 고객센터 : 070-4699-4529 채널톡 : yeoyj.channel.io">
+      <button class="q-item man-parent" data-id="m15">
+        <span class="qi-text">트라이업 X 투비콘</span>
+        <span class="sub-count">5</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m15" data-anchor="m15-h0">병원비 수납 후 병원에 요청하면 알림톡 자동 발송</button><button class="sub-item" data-id="m15" data-anchor="m15-h1">실비 청구할 진료 내역 선택</button><button class="sub-item" data-id="m15" data-anchor="m15-h2">내 보험사 확인 후 청구서 제출 완료</button><button class="sub-item" data-id="m15" data-anchor="m15-h3">실손 청구를 원하는 환자는 차트에서 내역 발송</button><button class="sub-item" data-id="m15" data-anchor="m15-h4">요청된 신청 리스트를 한눈에 확인</button></div>
+    </div>
+<div class="q-group" data-id="m16" data-search="네이버 예약 네이버 예약 연동">
+      <button class="q-item man-parent" data-id="m16">
+        <span class="qi-text">네이버 예약</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m17" data-search="강남언니 아래 연동 가이드를 확인해 주세요. 📎 강남언니 예약 연동 가이드.pdf (notion 원문에서 다운로드)">
+      <button class="q-item man-parent" data-id="m17">
+        <span class="qi-text">강남언니</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m18" data-search="여신티켓 [관리자] - [옵션설정] - [여신티켓] 사용을 체크 후 차트를 재실행 해주세요.">
+      <button class="q-item man-parent" data-id="m18">
+        <span class="qi-text">여신티켓</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m19" data-search="문자포인트 충전하기 📎 모션e_문자충전 가이드 240329.pdf (notion 원문에서 다운로드)">
+      <button class="q-item man-parent" data-id="m19">
+        <span class="qi-text">문자포인트 충전하기</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m20" data-search="rx+사전점검 아래 연동 가이드를 확인해 주세요. 📎 닥플rx 사전점검 연동 가이드.pdf (notion 원문에서 다운로드)">
+      <button class="q-item man-parent" data-id="m20">
+        <span class="qi-text">RX+사전점검</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m21" data-search="룰루랩 준비중입니다.">
+      <button class="q-item man-parent" data-id="m21">
+        <span class="qi-text">룰루랩</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m22" data-search="인바디 준비중입니다.">
+      <button class="q-item man-parent" data-id="m22">
+        <span class="qi-text">인바디</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
+<div class="q-group" data-id="m23" data-search="van(카드단말기)연동 💡 모션e 와 연동되는 단말기는 [한국결제시스템] 단말기 입니다. 현재는, 이 외 단말기는 연동이 어려우니 변경을 원하시는 경우 모션e 고객센터로 문의주세요. ( 02-6083-7711) van연동 [관리자] - [ 옵셜설정] - [van 사용 여부] - [사용] 으로 체크 후 차트를 재실행해 주세요. [설정] - [공통코드관리] - [기타 결제구분코드] - [van 매핑] - [일괄적용] - [확인] - [저장] [설정] - [공통코드관리] - [카드 구분코드] - [van 매핑] - [일괄적용] - [확인] - [저장] → 순서대로 진행해 주세요. 수납 [수납]탭에서 수납할 금액을 입력 후 [수납하기] 버튼을 눌러주세요. van 연결 없이 처리를 원하는 경우 해당 버튼 클릭 후 [수납하기] 눌러주세요. 카드 단말기에 카드를 넣어주세요. 결제가 완료되면 3초 후 자동으로 창이 종료됩니다. 환불 및 수납취소 1.수납내역 + 를 클릭해 주세요. ** 단말기를 연동하지 않고 따로 처리하고 싶은 경우 [결제취소]버튼 위 [van연결해제]에 체크 후 결제취소를 진행해 주시면 됩니다.">
+      <button class="q-item man-parent" data-id="m23">
+        <span class="qi-text">VAN(카드단말기)연동</span>
+        <span class="sub-count">2</span>
+        <svg class="qi-arrow expand" viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="submenu"><button class="sub-item" data-id="m23" data-anchor="m23-h0">수납</button><button class="sub-item" data-id="m23" data-anchor="m23-h1">환불 및 수납취소</button></div>
+    </div>
+<div class="q-group" data-id="m24" data-search="모션e 태블릿 모션t는 안드로이드 운영체제에서만 사용 가능합니다. 플레이스토어에서 [모션e]라고 검색해서[ 모션e pro]를 다운로드 해주세요. 모션e (차트) 계정으로 로그인해주세요.">
+      <button class="q-item man-parent" data-id="m24">
+        <span class="qi-text">모션E 태블릿</span>
+        
+        <svg class="qi-arrow" viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
+    </div>
       </aside>
       <section class="detail" id="man-detail">
         <button class="detail-close">◀ 목록</button>
         <div class="detail-empty"><span class="de-ico">📖</span>왼쪽 목록에서 기능을 선택하세요.</div>
 <div class="detail-panel" data-id="m1">
       <h2 class="dp-q">고객관리</h2>
-      <div class="dp-body"><h3 class="a-h1">고객관리                                                             </h3><hr><h4 class="a-h2">고객검색</h4><ul><li>고객 정보 및 진료 내역에서 검색하고자 하는 값을 입력하여 리스트를 확인할 수 있습니다.<ul><li>진료 내역의 경우 특정 단어 내용 입력하여 검색이 가능합니다. </li></ul><figure><img loading="lazy" src="images/man-01.png" alt="이미지"></figure></li></ul><h4 class="a-h2">고객등록                                                                                             </h4><ul><li>이름과 연락처는 필수값입니다.</li></ul><figure><img loading="lazy" src="images/man-02.png" alt="이미지"></figure><h4 class="a-h2">고객리스트</h4><ul><li>고객 전체 리스트 확인 및 고객정보 수정, 등록된 고객삭제, 문자 발송이 가능합니다.</li></ul><figure><img loading="lazy" src="images/man-03.png" alt="이미지"></figure><h4 class="a-h2">문자발송</h4><ul><li>설정해 놓은 문자 템플릿을 선택하여 발송할 수 있습니다. (문자/ 친구톡 /. 알림톡 체크 및 이미지 첨부가 가능합니다.)</li></ul><figure><img loading="lazy" src="images/man-04.png" alt="이미지"></figure><h4 class="a-h2">문자검색</h4><figure><img loading="lazy" src="images/man-05.png" alt="이미지"></figure><h4 class="a-h2">CRM관리</h4><figure><img loading="lazy" src="images/man-06.png" alt="이미지"></figure><h4 class="a-h2">고정CRM</h4><figure><img loading="lazy" src="images/man-07.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-08.png" alt="이미지"></figure><h4 class="a-h2">부재중 통화 내역</h4><ul><li>CTI 연동된 경우 부재중 통화 내역을 확인할 수 있습니다.</li></ul><h4 class="a-h2">주민등록번호 보유 현황</h4><ul><li>내원객의 주민번호 보유 현황을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-09.png" alt="이미지"></figure><h4 class="a-h2">CRM 수동 발송</h4><figure><img loading="lazy" src="images/man-10.png" alt="이미지"></figure><h4 class="a-h2">포인트 관리</h4><figure><img loading="lazy" src="images/man-11.png" alt="이미지"></figure><hr><h4 class="a-h2">상담보기                                                                                              </h4><ul><li>차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다.</li><li>확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다.</li><li>상담 진행 시 상담 정보를 작성할 수 있습니다.</li><li>상담 메모 및 어시 메모를 작성할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong>동시에 차트 작성 시 주의 사항</strong><ul><li>처음 차트를 연 사람의 이름이 뜬다.</li><li>차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다.</li><li>동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. </li></ul><p>       (‘저장’을 누르면 기록이 날라가지는 않음.)</p></div></div><figure><img loading="lazy" src="images/man-12.png" alt="이미지"></figure><ul><li>해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다.</li><li>상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다.<ul><li>새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-13.png" alt="이미지"></figure><hr><h4 class="a-h2">진료사진/펜차트/동의서</h4><h4 class="a-h2">080수신거부목록</h4><ul><li>수신거부한 고객의 리스트를 확인 후 수신거부 처리해 주셔야 합니다.</li></ul></div>
+      <div class="dp-body"><h3 class="a-h1">고객관리                                                             </h3><hr><h4 class="a-h2" id="m1-h0">고객검색</h4><ul><li>고객 정보 및 진료 내역에서 검색하고자 하는 값을 입력하여 리스트를 확인할 수 있습니다.<ul><li>진료 내역의 경우 특정 단어 내용 입력하여 검색이 가능합니다. </li></ul><figure><img loading="lazy" src="images/man-01.png" alt="이미지"></figure></li></ul><h4 class="a-h2" id="m1-h1">고객등록                                                                                             </h4><ul><li>이름과 연락처는 필수값입니다.</li></ul><figure><img loading="lazy" src="images/man-02.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h2">고객리스트</h4><ul><li>고객 전체 리스트 확인 및 고객정보 수정, 등록된 고객삭제, 문자 발송이 가능합니다.</li></ul><figure><img loading="lazy" src="images/man-03.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h3">문자발송</h4><ul><li>설정해 놓은 문자 템플릿을 선택하여 발송할 수 있습니다. (문자/ 친구톡 /. 알림톡 체크 및 이미지 첨부가 가능합니다.)</li></ul><figure><img loading="lazy" src="images/man-04.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h4">문자검색</h4><figure><img loading="lazy" src="images/man-05.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h5">CRM관리</h4><figure><img loading="lazy" src="images/man-06.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h6">고정CRM</h4><figure><img loading="lazy" src="images/man-07.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-08.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h7">부재중 통화 내역</h4><ul><li>CTI 연동된 경우 부재중 통화 내역을 확인할 수 있습니다.</li></ul><h4 class="a-h2" id="m1-h8">주민등록번호 보유 현황</h4><ul><li>내원객의 주민번호 보유 현황을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-09.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h9">CRM 수동 발송</h4><figure><img loading="lazy" src="images/man-10.png" alt="이미지"></figure><h4 class="a-h2" id="m1-h10">포인트 관리</h4><figure><img loading="lazy" src="images/man-11.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m1-h11">상담보기                                                                                              </h4><ul><li>차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다.</li><li>확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다.</li><li>상담 진행 시 상담 정보를 작성할 수 있습니다.</li><li>상담 메모 및 어시 메모를 작성할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong>동시에 차트 작성 시 주의 사항</strong><ul><li>처음 차트를 연 사람의 이름이 뜬다.</li><li>차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다.</li><li>동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. </li></ul><p>       (‘저장’을 누르면 기록이 날라가지는 않음.)</p></div></div><figure><img loading="lazy" src="images/man-12.png" alt="이미지"></figure><ul><li>해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다.</li><li>상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다.<ul><li>새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-13.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m1-h12">진료사진/펜차트/동의서</h4><h4 class="a-h2" id="m1-h13">080수신거부목록</h4><ul><li>수신거부한 고객의 리스트를 확인 후 수신거부 처리해 주셔야 합니다.</li></ul></div>
     </div>
 <div class="detail-panel" data-id="m2">
       <h2 class="dp-q">보험청구</h2>
-      <div class="dp-body"><h3 class="a-h1">보험청구                                                         </h3><hr><h4 class="a-h2">건강보험 청구                                                                              </h4><ul><li>청구할 해당 월을 선택 후  청구자료 생성을 클릭합니다.</li><li>우측에 생성된 청구리스트를 확인 후 청구파일(SAM)생성 버튼을 클릭합니다.</li><li>파일 생성 완료 후 청구(프로그램 실행)을 눌러주세요.</li></ul><figure><img loading="lazy" src="images/man-14.png" alt="이미지"></figure><hr><h4 class="a-h2">수신문서 조회                                                                                        </h4><ul><li>수신 문서를 조회할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-15.png" alt="이미지"></figure><hr><h4 class="a-h2">수신 및 파일저장                                                                                           </h4><ul><li>수신 파일을 저장할 수 있습니다.<ul><li>조회를 클릭하면 진료비 청구 프로그램이 열립니다.<ul><li>요양기관인증서 확인 후 통보서 수신 리스트를 확인합니다.</li></ul></li></ul></li></ul><figure><img loading="lazy" src="images/man-16.png" alt="이미지"></figure><hr><h4 class="a-h2">  DUR내역보기                                                                                          </h4><ul><li>DUR 내역을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-17.png" alt="이미지"></figure><hr><h4 class="a-h2">처방전 발급 내역                                                                                              </h4><ul><li>처방전 발급 리스트를 확인 및 출력 할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-18.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">보험청구                                                         </h3><hr><h4 class="a-h2" id="m2-h0">건강보험 청구                                                                              </h4><ul><li>청구할 해당 월을 선택 후  청구자료 생성을 클릭합니다.</li><li>우측에 생성된 청구리스트를 확인 후 청구파일(SAM)생성 버튼을 클릭합니다.</li><li>파일 생성 완료 후 청구(프로그램 실행)을 눌러주세요.</li></ul><figure><img loading="lazy" src="images/man-14.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m2-h1">수신문서 조회                                                                                        </h4><ul><li>수신 문서를 조회할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-15.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m2-h2">수신 및 파일저장                                                                                           </h4><ul><li>수신 파일을 저장할 수 있습니다.<ul><li>조회를 클릭하면 진료비 청구 프로그램이 열립니다.<ul><li>요양기관인증서 확인 후 통보서 수신 리스트를 확인합니다.</li></ul></li></ul></li></ul><figure><img loading="lazy" src="images/man-16.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m2-h3">  DUR내역보기                                                                                          </h4><ul><li>DUR 내역을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-17.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m2-h4">처방전 발급 내역                                                                                              </h4><ul><li>처방전 발급 리스트를 확인 및 출력 할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-18.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m3">
       <h2 class="dp-q">전자서명</h2>
-      <div class="dp-body"><h3 class="a-h1">전자서명                                                      </h3><hr><h4 class="a-h2">  일괄서명                                                                                  </h4><ul><li>전체 차트에 일괄서명이 가능합니다.</li></ul><figure><img loading="lazy" src="images/man-19.png" alt="이미지"></figure><hr><ol><li>조회 시작일과 종료일을 선택합니다.</li><li>진료기록, 수납기록 체크 &gt; [서명대상 건수 확인] 클릭합니다.</li><li>[서명] 클릭 후 조회되는 인증서 로그인 시 전자서명이 완료됩니다.</li></ol><h4 class="a-h2"> 진료기록                                                                                      </h4><ul><li>진료기록 기준으로 전자서명을 할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-20.png" alt="이미지"></figure><hr><ol><li>진료일자: 진료일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. <strong>[오늘]</strong> 선택 시 오늘일자로 조회됩니다.</li><li>미서명: <strong>[미서명]</strong> 체크 후 조회 시 전자서명이 되지 않은 진료기록만 조회됩니다.</li><li>서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다.</li><li>구분, 서명일시, 서명자, 담당의, 진료일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다.</li><li>검증: 전자서명이 완료된 진료기록은 <strong>[검증]</strong>으로 변경됩니다.</li><li>서명: 전자서명 할 진료기록을 선택 후<strong>[서명]</strong> 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.</li></ol><h4 class="a-h2">수납기록                                                                                  </h4><ul><li>수납기록 기준으로 전자서명을 할 수 있습니다.<figure><img loading="lazy" src="images/man-21.png" alt="이미지"></figure></li></ul><hr><ol><li>수납일자: 수납일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다.<strong>[오늘]</strong> 선택 시 오늘일자로 조회됩니다.</li><li>미서명: <strong>[미서명]</strong> 체크 후 조회 시 전자서명이 되지 않은 수납기록만 조회됩니다.</li><li>서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다.</li><li>구분, 서명일시, 서명자, 담당의, 수납일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다.</li><li>검증: 전자서명이 완료된 수납기록은 <strong>[검증]</strong>으로 변경됩니다.</li><li>서명: 전자서명 할 수납기록을 선택 후<strong>[서명] </strong>클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.</li></ol></div>
+      <div class="dp-body"><h3 class="a-h1">전자서명                                                      </h3><hr><h4 class="a-h2" id="m3-h0">  일괄서명                                                                                  </h4><ul><li>전체 차트에 일괄서명이 가능합니다.</li></ul><figure><img loading="lazy" src="images/man-19.png" alt="이미지"></figure><hr><ol><li>조회 시작일과 종료일을 선택합니다.</li><li>진료기록, 수납기록 체크 &gt; [서명대상 건수 확인] 클릭합니다.</li><li>[서명] 클릭 후 조회되는 인증서 로그인 시 전자서명이 완료됩니다.</li></ol><h4 class="a-h2" id="m3-h1"> 진료기록                                                                                      </h4><ul><li>진료기록 기준으로 전자서명을 할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-20.png" alt="이미지"></figure><hr><ol><li>진료일자: 진료일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다. <strong>[오늘]</strong> 선택 시 오늘일자로 조회됩니다.</li><li>미서명: <strong>[미서명]</strong> 체크 후 조회 시 전자서명이 되지 않은 진료기록만 조회됩니다.</li><li>서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다.</li><li>구분, 서명일시, 서명자, 담당의, 진료일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다.</li><li>검증: 전자서명이 완료된 진료기록은 <strong>[검증]</strong>으로 변경됩니다.</li><li>서명: 전자서명 할 진료기록을 선택 후<strong>[서명]</strong> 클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.</li></ol><h4 class="a-h2" id="m3-h2">수납기록                                                                                  </h4><ul><li>수납기록 기준으로 전자서명을 할 수 있습니다.<figure><img loading="lazy" src="images/man-21.png" alt="이미지"></figure></li></ul><hr><ol><li>수납일자: 수납일 기준 시작일과 종료일을 설정하여 기간을 조회할 수 있습니다.<strong>[오늘]</strong> 선택 시 오늘일자로 조회됩니다.</li><li>미서명: <strong>[미서명]</strong> 체크 후 조회 시 전자서명이 되지 않은 수납기록만 조회됩니다.</li><li>서명자, 고객이름, 담당의를 검색하여 조회할 수 있습니다.</li><li>구분, 서명일시, 서명자, 담당의, 수납일시, 최종수정일시(마지막전자서명시간), 제목, 검증 등 전자서명의 기록을 확인할 수 있습니다.</li><li>검증: 전자서명이 완료된 수납기록은 <strong>[검증]</strong>으로 변경됩니다.</li><li>서명: 전자서명 할 수납기록을 선택 후<strong>[서명] </strong>클릭 시 공동인증서가 조회되고, 인증서 로그인 시 전자서명이 완료됩니다.</li></ol></div>
     </div>
 <div class="detail-panel" data-id="m4">
       <h2 class="dp-q">서식출력</h2>
-      <div class="dp-body"><h3 class="a-h1">서식출력                                                </h3><hr><h4 class="a-h2">서식양식</h4><ol><li>[서식출력]- 사용할 양식을 클릭합니다.</li><li>환자를 검색 후 출력할 진료일을 선택합니다.</li><li>내용 확인하여 출력 또는 액셀 내보내기 합니다.</li></ol><hr><ul><li>YELLOW 칸은 설정 된 값이 연동되어 들어갑니다.</li><li>해당 창에서 다른 서식 출력이 가능합니다.</li><li>가지고 있는 액셀 파일을 업로드 가능하여 저장 후 사용할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body">진단서 / 진단서(영문) / 상해진단서 / 병무용진단서 / 소견서 / 회송서 / 요양급여의뢰서 / 의료급여의뢰서 / 진료확인서 / 진료기록부 / 진료비납입확인서 / 진료비세부내역 / 진료비세부산정내역 / 향후진료비추정서</div></div><figure><img loading="lazy" src="images/man-22.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">서식출력                                                </h3><hr><h4 class="a-h2" id="m4-h0">서식양식</h4><ol><li>[서식출력]- 사용할 양식을 클릭합니다.</li><li>환자를 검색 후 출력할 진료일을 선택합니다.</li><li>내용 확인하여 출력 또는 액셀 내보내기 합니다.</li></ol><hr><ul><li>YELLOW 칸은 설정 된 값이 연동되어 들어갑니다.</li><li>해당 창에서 다른 서식 출력이 가능합니다.</li><li>가지고 있는 액셀 파일을 업로드 가능하여 저장 후 사용할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body">진단서 / 진단서(영문) / 상해진단서 / 병무용진단서 / 소견서 / 회송서 / 요양급여의뢰서 / 의료급여의뢰서 / 진료확인서 / 진료기록부 / 진료비납입확인서 / 진료비세부내역 / 진료비세부산정내역 / 향후진료비추정서</div></div><figure><img loading="lazy" src="images/man-22.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m5">
       <h2 class="dp-q">매출관리</h2>
-      <div class="dp-body"><h3 class="a-h1">매출관리                                                        </h3><hr><h4 class="a-h2">결산시스템                                                         </h4><ul><li>결산 시스템을 통해 매출집계 및 고객만족도를 확인할 수 있습니다.</li><li>일, 주, 월, 3개월, 연도, 직접 기간 입력을 통해 결산 조회가 가능합니다.</li><li>항목을 선택하여 매출을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-23.png" alt="이미지"></figure><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong><u>개인별 → 신구환별</u></strong> - 총인원수는 차트 수를 의미합니다.
+      <div class="dp-body"><h3 class="a-h1">매출관리                                                        </h3><hr><h4 class="a-h2" id="m5-h0">결산시스템                                                         </h4><ul><li>결산 시스템을 통해 매출집계 및 고객만족도를 확인할 수 있습니다.</li><li>일, 주, 월, 3개월, 연도, 직접 기간 입력을 통해 결산 조회가 가능합니다.</li><li>항목을 선택하여 매출을 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-23.png" alt="이미지"></figure><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong><u>개인별 → 신구환별</u></strong> - 총인원수는 차트 수를 의미합니다.
 ex) 트라이업 환자 - 시술 오더 -  보톡스 : A 원장님 
                                                     리쥬란 힐러 : B 원장님 
                                                     피코토닝 : B 원장님
                                                     인모드 : B 원장님 
-경우, A 원장님 1명, B 원장님 1명으로 통계가 잡히게 됩니다. </div></div><figure><img loading="lazy" src="images/man-24.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-25.png" alt="이미지"></figure><h4 class="a-h2">보험청구현황                                                         </h4><figure><img loading="lazy" src="images/man-26.png" alt="이미지"></figure><h4 class="a-h2">미수금 내역                                                            </h4><figure><img loading="lazy" src="images/man-27.png" alt="이미지"></figure><h4 class="a-h2">환불금 내역                                                            </h4><figure><img loading="lazy" src="images/man-28.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-29.png" alt="이미지"></figure><h4 class="a-h2">오더 판매 내역                                                        </h4><figure><img loading="lazy" src="images/man-30.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-31.png" alt="이미지"></figure><h4 class="a-h2">의약품 사용 내역                                                    </h4><figure><img loading="lazy" src="images/man-32.png" alt="이미지"></figure><h4 class="a-h2">연말정산 간소화                                                     </h4><ul><li>연말정산 간소화 자료를 액셀 저장하여 사용할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-33.png" alt="이미지"></figure><h4 class="a-h2">VIP 관리                                                                </h4><figure><img loading="lazy" src="images/man-34.png" alt="이미지"></figure><h4 class="a-h2">환자별 집계 내역                                                   </h4><figure><img loading="lazy" src="images/man-35.png" alt="이미지"></figure></div>
+경우, A 원장님 1명, B 원장님 1명으로 통계가 잡히게 됩니다. </div></div><figure><img loading="lazy" src="images/man-24.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-25.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h1">보험청구현황                                                         </h4><figure><img loading="lazy" src="images/man-26.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h2">미수금 내역                                                            </h4><figure><img loading="lazy" src="images/man-27.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h3">환불금 내역                                                            </h4><figure><img loading="lazy" src="images/man-28.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-29.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h4">오더 판매 내역                                                        </h4><figure><img loading="lazy" src="images/man-30.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-31.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h5">의약품 사용 내역                                                    </h4><figure><img loading="lazy" src="images/man-32.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h6">연말정산 간소화                                                     </h4><ul><li>연말정산 간소화 자료를 액셀 저장하여 사용할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-33.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h7">VIP 관리                                                                </h4><figure><img loading="lazy" src="images/man-34.png" alt="이미지"></figure><h4 class="a-h2" id="m5-h8">환자별 집계 내역                                                   </h4><figure><img loading="lazy" src="images/man-35.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m6">
       <h2 class="dp-q">의약품</h2>
-      <div class="dp-body"><h3 class="a-h1">의약품                                              </h3><hr><h4 class="a-h2">의약품 검색</h4><ul><li>[의약품 검색]을 클릭하면 건강보험심사평가원 의약품통합정보 페이지로 이동됩니다.</li></ul><p> <a href="https://www.hira.or.kr/ra/medi/getHistoryList.do?pgmid=HIRAA030035020000" target="_blank" rel="noopener">급여이력정보 &lt; 의약품통합정보 &lt; 의약품정보 &lt; 의료정보 &lt; 건강보험심사평가원 (hira.or.kr)</a></p><figure><img loading="lazy" src="images/man-36.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">의약품                                              </h3><hr><h4 class="a-h2" id="m6-h0">의약품 검색</h4><ul><li>[의약품 검색]을 클릭하면 건강보험심사평가원 의약품통합정보 페이지로 이동됩니다.</li></ul><p> <a href="https://www.hira.or.kr/ra/medi/getHistoryList.do?pgmid=HIRAA030035020000" target="_blank" rel="noopener">급여이력정보 &lt; 의약품통합정보 &lt; 의약품정보 &lt; 의료정보 &lt; 건강보험심사평가원 (hira.or.kr)</a></p><figure><img loading="lazy" src="images/man-36.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m7">
       <h2 class="dp-q">마약류</h2>
@@ -559,24 +672,24 @@ Data.nims.or.kr/ 가입 시 사용 차트 입력칸에 </strong><strong>[MOTion 
     </div>
 <div class="detail-panel" data-id="m8">
       <h2 class="dp-q">예약관리</h2>
-      <div class="dp-body"><h3 class="a-h1">예약관리</h3><hr><h4 class="a-h2">취소, 부도 리스트                                                                                           </h4><ul><li>예약 취소 및 부도 리스트를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-41.png" alt="이미지"></figure><h4 class="a-h2">통계                                                                                                               </h4><ul><li>원하는 기간을 조회하여 예약 통계를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-42.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">예약관리</h3><hr><h4 class="a-h2" id="m8-h0">취소, 부도 리스트                                                                                           </h4><ul><li>예약 취소 및 부도 리스트를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-41.png" alt="이미지"></figure><h4 class="a-h2" id="m8-h1">통계                                                                                                               </h4><ul><li>원하는 기간을 조회하여 예약 통계를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-42.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m9">
       <h2 class="dp-q">설정</h2>
-      <div class="dp-body"><h3 class="a-h1">보험청구     </h3><hr><h4 class="a-h2">병원공지                                                                                                                                                            </h4><ul><li>병원 공지를 등록, 수정, 삭제할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-43.png" alt="이미지"></figure><hr><h4 class="a-h2">업데이트 공지                                                                                                                                                  </h4><ul><li>차트 업데이트 공지 히스토리를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-44.png" alt="이미지"></figure><h4 class="a-h2">공통코드 관리                               </h4><figure><img loading="lazy" src="images/man-45.png" alt="이미지"></figure><h4 class="a-h2">문자템플릿 관리                           </h4><figure><img loading="lazy" src="images/man-46.png" alt="이미지"></figure><h4 class="a-h2">펜차트 관리                                                                                                                                                      </h4><ul><li>펜차트에서 사용할 차트 이미지 등록 및 수정을 원할 시 고객센터로 연락주시면 등록 및 수정 진행이 가능합니다.</li></ul><h4 class="a-h2">동의서 관리                                                                                                                                                      </h4><ul><li>모션T에서 사용할 동의서를 등록해 주세요.</li></ul><h4 class="a-h2">처방 및 수가설정                                                                                                                                              </h4><figure><img loading="lazy" src="images/man-47.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-48.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-49.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-50.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-51.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-52.png" alt="이미지"></figure><h4 class="a-h2">상용구 설정                                                                                                                                                      </h4><ul><li>자주쓰는 문장 및 양식을 상용구로 설정할 수 있습니다.<ul><li>/상용구 + 스페이스바</li></ul></li></ul><figure><img loading="lazy" src="images/man-53.png" alt="이미지"></figure><h4 class="a-h2">외부기기 설정                                                                                                                                 </h4><ul><li>외부기기를 차트에 연동하여 사용할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-54.png" alt="이미지"></figure><h4 class="a-h2">스티커 설정                                                                                                                                         </h4><figure><img loading="lazy" src="images/man-55.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">보험청구     </h3><hr><h4 class="a-h2" id="m9-h0">병원공지                                                                                                                                                            </h4><ul><li>병원 공지를 등록, 수정, 삭제할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-43.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m9-h1">업데이트 공지                                                                                                                                                  </h4><ul><li>차트 업데이트 공지 히스토리를 확인할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-44.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h2">공통코드 관리                               </h4><figure><img loading="lazy" src="images/man-45.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h3">문자템플릿 관리                           </h4><figure><img loading="lazy" src="images/man-46.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h4">펜차트 관리                                                                                                                                                      </h4><ul><li>펜차트에서 사용할 차트 이미지 등록 및 수정을 원할 시 고객센터로 연락주시면 등록 및 수정 진행이 가능합니다.</li></ul><h4 class="a-h2" id="m9-h5">동의서 관리                                                                                                                                                      </h4><ul><li>모션T에서 사용할 동의서를 등록해 주세요.</li></ul><h4 class="a-h2" id="m9-h6">처방 및 수가설정                                                                                                                                              </h4><figure><img loading="lazy" src="images/man-47.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-48.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-49.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-50.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-51.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-52.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h7">상용구 설정                                                                                                                                                      </h4><ul><li>자주쓰는 문장 및 양식을 상용구로 설정할 수 있습니다.<ul><li>/상용구 + 스페이스바</li></ul></li></ul><figure><img loading="lazy" src="images/man-53.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h8">외부기기 설정                                                                                                                                 </h4><ul><li>외부기기를 차트에 연동하여 사용할 수 있습니다.</li></ul><figure><img loading="lazy" src="images/man-54.png" alt="이미지"></figure><h4 class="a-h2" id="m9-h9">스티커 설정                                                                                                                                         </h4><figure><img loading="lazy" src="images/man-55.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m10">
       <h2 class="dp-q">화면</h2>
-      <div class="dp-body"><h3 class="a-h1">화면   </h3><hr><h4 class="a-h2">Dashboard                                                                                                                                                               </h4><p>‣ </p><h4 class="a-h2">차트                                                                                                                                                                          </h4><h5 class="a-h3">상담보기 </h5><ul><li>차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다.</li><li>확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다.</li><li>상담 진행 시 상담 정보를 작성할 수 있습니다.</li><li>상담 메모 및 어시 메모를 작성할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong>동시에 차트 작성 시 주의 사항</strong><ul><li>처음 차트를 연 사람의 이름이 뜬다.</li><li>차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다.</li><li>동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. </li></ul><p>       (‘저장’을 누르면 기록이 날라가지는 않음.)</p></div></div><figure><img loading="lazy" src="images/man-56.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-57.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-58.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-59.png" alt="이미지"></figure><ul><li>해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다.</li><li>상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다.<ul><li>새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다.</li></ul></li></ul><h4 class="a-h2">대기 현황판                                                                                                                                                              </h4><h4 class="a-h2">예약 캘린더                                                                                                                                                              </h4><p>‣ </p></div>
+      <div class="dp-body"><h3 class="a-h1">화면   </h3><hr><h4 class="a-h2" id="m10-h0">Dashboard                                                                                                                                                               </h4><p>‣ </p><h4 class="a-h2" id="m10-h1">차트                                                                                                                                                                          </h4><h5 class="a-h3">상담보기 </h5><ul><li>차트를 열면 현재 작성중인 사용자를 확인할 수 있습니다.</li><li>확인 사항 및 예약/접수 메모를 작성, 수정할 수 있습니다.</li><li>상담 진행 시 상담 정보를 작성할 수 있습니다.</li><li>상담 메모 및 어시 메모를 작성할 수 있습니다.</li></ul><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong>동시에 차트 작성 시 주의 사항</strong><ul><li>처음 차트를 연 사람의 이름이 뜬다.</li><li>차트 내 메모 및 오더를 내리고 마지막에 저장을 누른 사람의 내역이 뜬다.</li><li>동시에 차트를 열어 작성하는 경우 마지막에 저장을 누른 사람의 내역이 뜨기 때문에 그 전에 저장을 누른 내역은 [차트 변경 내역]에서 확인할 수 있다. </li></ul><p>       (‘저장’을 누르면 기록이 날라가지는 않음.)</p></div></div><figure><img loading="lazy" src="images/man-56.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-57.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-58.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-59.png" alt="이미지"></figure><ul><li>해당 환자에게 문자 발송, 고객 상세정보 확인, 자격조회를 할 수 있습니다.</li><li>상품선택 및 패키지 선택에서 미리 등록해 둔 오더를 추가합니다.<ul><li>새로운 상품 등록이 필요한 경우 [설정] - [처방 및 수가설정] - [시술오더/패키지]에서 새로운 상품 및 패키지를 등록할 수 있습니다.</li></ul></li></ul><h4 class="a-h2" id="m10-h2">대기 현황판                                                                                                                                                              </h4><h4 class="a-h2" id="m10-h3">예약 캘린더                                                                                                                                                              </h4><p>‣ </p></div>
     </div>
 <div class="detail-panel" data-id="m11">
       <h2 class="dp-q">관리자</h2>
-      <div class="dp-body"><h3 class="a-h1">관리  </h3><hr><h4 class="a-h2">병원  설정                                                                                                                                                               </h4><ul><li>병원정보 및 운영시간을 설정합니다.<ul><li>단축 진료일 설정 시 날짜 변경을 위해서는 고객센터로 수정 요청 부탁드립니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-60.png" alt="이미지"></figure><p>&lt;닥톡 가입방법&gt;
-</p><hr><figure><img loading="lazy" src="images/man-61.png" alt="이미지"></figure><a class="file-link" href="https://triup.notion.site/38860920d2d3809b92c0f3c24beceb0b" target="_blank" rel="noopener">📎 닥톡 예약 이용 가이드_v2.pdf <span class="file-hint">(Notion 원문에서 다운로드)</span></a><h4 class="a-h2">사용자 관리                                                                                                                                                             </h4><figure><img loading="lazy" src="images/man-62.png" alt="이미지"></figure><h4 class="a-h2">사용자 접속 기록                                                                                                                                                    </h4><figure><img loading="lazy" src="images/man-63.png" alt="이미지"></figure><h4 class="a-h2">옵션 설정                                                                                                                                                               </h4><figure><img loading="lazy" src="images/man-64.png" alt="이미지"></figure><h4 class="a-h2">마케팅 동의 변경                                                                                                                                                   </h4><figure><img loading="lazy" src="images/man-65.png" alt="이미지"></figure><h4 class="a-h2">변경 이력 조회                                                                                                                                                      </h4><figure><img loading="lazy" src="images/man-66.png" alt="이미지"></figure><h4 class="a-h2">포인트 설정</h4><p>옵션설정에서 포인트 사용 설정을 ‘설정’으로 체크 후 사용해 주세요.                   </p><figure><img loading="lazy" src="images/man-67.png" alt="이미지"></figure><h4 class="a-h2">비급여 보고 항목                                                                                                                                        </h4><h4 class="a-h2">국가 정보 설정                                                                                                                                                       </h4><figure><img loading="lazy" src="images/man-68.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">관리  </h3><hr><h4 class="a-h2" id="m11-h0">병원  설정                                                                                                                                                               </h4><ul><li>병원정보 및 운영시간을 설정합니다.<ul><li>단축 진료일 설정 시 날짜 변경을 위해서는 고객센터로 수정 요청 부탁드립니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-60.png" alt="이미지"></figure><p>&lt;닥톡 가입방법&gt;
+</p><hr><figure><img loading="lazy" src="images/man-61.png" alt="이미지"></figure><a class="file-link" href="https://triup.notion.site/38860920d2d3809b92c0f3c24beceb0b" target="_blank" rel="noopener">📎 닥톡 예약 이용 가이드_v2.pdf <span class="file-hint">(Notion 원문에서 다운로드)</span></a><h4 class="a-h2" id="m11-h1">사용자 관리                                                                                                                                                             </h4><figure><img loading="lazy" src="images/man-62.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h2">사용자 접속 기록                                                                                                                                                    </h4><figure><img loading="lazy" src="images/man-63.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h3">옵션 설정                                                                                                                                                               </h4><figure><img loading="lazy" src="images/man-64.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h4">마케팅 동의 변경                                                                                                                                                   </h4><figure><img loading="lazy" src="images/man-65.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h5">변경 이력 조회                                                                                                                                                      </h4><figure><img loading="lazy" src="images/man-66.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h6">포인트 설정</h4><p>옵션설정에서 포인트 사용 설정을 ‘설정’으로 체크 후 사용해 주세요.                   </p><figure><img loading="lazy" src="images/man-67.png" alt="이미지"></figure><h4 class="a-h2" id="m11-h7">비급여 보고 항목                                                                                                                                        </h4><h4 class="a-h2" id="m11-h8">국가 정보 설정                                                                                                                                                       </h4><figure><img loading="lazy" src="images/man-68.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m12">
       <h2 class="dp-q">Dashboard</h2>
-      <div class="dp-body"><h3 class="a-h1">Dashboard</h3><hr><h4 class="a-h2">Dashboard</h4><ul><li>환자를 검색하여 예약 및 접수를 할 수 있습니다.</li><li>예약 : 해당 날짜에 예약된 환자들을 확인할 수 있습니다.<ul><li>환자 이름에 마우스를 오버하면 메모를 확인할 수 있습니다.</li><li>설정해 놓은 부도 시간이 지나면 환자는 예약에서 부도로 넘어갑니다.</li></ul></li><li>접수 : 접수된 환자들을 확인할 수 있습니다.<ul><li>접수 후 대기시간을 확인할 수 있습니다.</li><li>접수 시 입력한 정보를 확인할 수 있습니다.(담당의/구환,신환/보험정보/시술/진료분야)</li></ul></li><li>시술 :  시술중인 환자들을 확인할 수 있습니다.<ul><li>오더 내린 시술 항목을 확인하고 체크할 수 있습니다.</li><li>시술 완료 후 [시술] 버튼을 클릭하면 최종완료 처리가 됩니다.</li></ul></li><li>수납 : 접수 후 차트에서 상담 or 진료 오더 후 [저장하기]를 클릭하면 수납보드로 환자가 이동합니다.<ul><li>[시술전] 버튼을 클릭 시 시술보드로 이동합니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-69.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-70.png" alt="이미지"></figure><ul><li>공지사항을 작성하고 수정, 관리할 수 있습니다.</li><li>환자의 영역에서 우클릭 후 접수 및 차트 열기, 예약 하기 등의 기능을 클릭하여 해당 화면으로 </li></ul><p>      이동합니다.</p><figure><img loading="lazy" src="images/man-71.png" alt="이미지"></figure></div>
+      <div class="dp-body"><h3 class="a-h1">Dashboard</h3><hr><h4 class="a-h2" id="m12-h0">Dashboard</h4><ul><li>환자를 검색하여 예약 및 접수를 할 수 있습니다.</li><li>예약 : 해당 날짜에 예약된 환자들을 확인할 수 있습니다.<ul><li>환자 이름에 마우스를 오버하면 메모를 확인할 수 있습니다.</li><li>설정해 놓은 부도 시간이 지나면 환자는 예약에서 부도로 넘어갑니다.</li></ul></li><li>접수 : 접수된 환자들을 확인할 수 있습니다.<ul><li>접수 후 대기시간을 확인할 수 있습니다.</li><li>접수 시 입력한 정보를 확인할 수 있습니다.(담당의/구환,신환/보험정보/시술/진료분야)</li></ul></li><li>시술 :  시술중인 환자들을 확인할 수 있습니다.<ul><li>오더 내린 시술 항목을 확인하고 체크할 수 있습니다.</li><li>시술 완료 후 [시술] 버튼을 클릭하면 최종완료 처리가 됩니다.</li></ul></li><li>수납 : 접수 후 차트에서 상담 or 진료 오더 후 [저장하기]를 클릭하면 수납보드로 환자가 이동합니다.<ul><li>[시술전] 버튼을 클릭 시 시술보드로 이동합니다.</li></ul></li></ul><figure><img loading="lazy" src="images/man-69.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-70.png" alt="이미지"></figure><ul><li>공지사항을 작성하고 수정, 관리할 수 있습니다.</li><li>환자의 영역에서 우클릭 후 접수 및 차트 열기, 예약 하기 등의 기능을 클릭하여 해당 화면으로 </li></ul><p>      이동합니다.</p><figure><img loading="lazy" src="images/man-71.png" alt="이미지"></figure></div>
     </div>
 <div class="detail-panel" data-id="m13">
       <h2 class="dp-q">대기현황판</h2>
@@ -588,7 +701,7 @@ Data.nims.or.kr/ 가입 시 사용 차트 입력칸에 </strong><strong>[MOTion 
     </div>
 <div class="detail-panel" data-id="m15">
       <h2 class="dp-q">트라이업 X 투비콘</h2>
-      <div class="dp-body"><hr><h3 class="a-h1">환자                                                           </h3><h4 class="a-h2">병원비 수납 후 병원에 요청하면 알림톡 자동 발송</h4><figure><img loading="lazy" src="images/man-79.png" alt="이미지"></figure><hr><h4 class="a-h2">실비 청구할 진료 내역 선택</h4><figure><img loading="lazy" src="images/man-80.png" alt="이미지"></figure><hr><h4 class="a-h2">내 보험사 확인 후 청구서 제출 완료 </h4><figure><img loading="lazy" src="images/man-81.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-82.png" alt="이미지"></figure><h3 class="a-h1">병원                                                          </h3><h4 class="a-h2">실손 청구를 원하는 환자는 차트에서 내역 발송</h4><figure><img loading="lazy" src="images/man-83.png" alt="이미지"></figure><hr><h4 class="a-h2">요청된 신청 리스트를 한눈에 확인</h4><figure><img loading="lazy" src="images/man-84.png" alt="이미지"></figure><hr><h3 class="a-h1">모션E 사용 매뉴얼                                    </h3><h5 class="a-h3">1. [관리자] - [ 옵션 설정]을 클릭해 주세요.</h5><figure><img loading="lazy" src="images/man-85.png" alt="이미지"></figure><h5 class="a-h3">2. [병원설정] - [권한] - 투비콘 사용여부 (사용)을 체크해 주세요.</h5><figure><img loading="lazy" src="images/man-86.png" alt="이미지"></figure><h5 class="a-h3">3. 요청 들어온 리스트를 확인하고 처리할 수 있습니다.</h5><ol><li>청구 신청 시 차트로 발급 요청이 들어옵니다.<ol><li>[발급요청] 처리 시 13시, 21시에 일괄 업로드 됩니다.</li></ol></li></ol><figure><img loading="lazy" src="images/man-87.png" alt="이미지"></figure><h5 class="a-h3">4. [알림톡 요청] 버튼을 통해 미처리 된 요청건을 다시 요청할 수 있습니다.</h5><ol><li>해당 월이 기본값으로 설정되어 있습니다.</li><li>전체, 알림톡 요청 완료, 처리실패, 발급가능, 증명서 전송완료 </li><li>환자가 서류 신청 후 미처리 상태로 3일이 지나면 [알림톡 요청] 버튼으로 변경되어 재신청 요청을 할 수 있습니다.</li></ol><figure><img loading="lazy" src="images/man-88.png" alt="이미지"></figure><h3 class="a-h1">
+      <div class="dp-body"><hr><h3 class="a-h1">환자                                                           </h3><h4 class="a-h2" id="m15-h0">병원비 수납 후 병원에 요청하면 알림톡 자동 발송</h4><figure><img loading="lazy" src="images/man-79.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m15-h1">실비 청구할 진료 내역 선택</h4><figure><img loading="lazy" src="images/man-80.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m15-h2">내 보험사 확인 후 청구서 제출 완료 </h4><figure><img loading="lazy" src="images/man-81.png" alt="이미지"></figure><figure><img loading="lazy" src="images/man-82.png" alt="이미지"></figure><h3 class="a-h1">병원                                                          </h3><h4 class="a-h2" id="m15-h3">실손 청구를 원하는 환자는 차트에서 내역 발송</h4><figure><img loading="lazy" src="images/man-83.png" alt="이미지"></figure><hr><h4 class="a-h2" id="m15-h4">요청된 신청 리스트를 한눈에 확인</h4><figure><img loading="lazy" src="images/man-84.png" alt="이미지"></figure><hr><h3 class="a-h1">모션E 사용 매뉴얼                                    </h3><h5 class="a-h3">1. [관리자] - [ 옵션 설정]을 클릭해 주세요.</h5><figure><img loading="lazy" src="images/man-85.png" alt="이미지"></figure><h5 class="a-h3">2. [병원설정] - [권한] - 투비콘 사용여부 (사용)을 체크해 주세요.</h5><figure><img loading="lazy" src="images/man-86.png" alt="이미지"></figure><h5 class="a-h3">3. 요청 들어온 리스트를 확인하고 처리할 수 있습니다.</h5><ol><li>청구 신청 시 차트로 발급 요청이 들어옵니다.<ol><li>[발급요청] 처리 시 13시, 21시에 일괄 업로드 됩니다.</li></ol></li></ol><figure><img loading="lazy" src="images/man-87.png" alt="이미지"></figure><h5 class="a-h3">4. [알림톡 요청] 버튼을 통해 미처리 된 요청건을 다시 요청할 수 있습니다.</h5><ol><li>해당 월이 기본값으로 설정되어 있습니다.</li><li>전체, 알림톡 요청 완료, 처리실패, 발급가능, 증명서 전송완료 </li><li>환자가 서류 신청 후 미처리 상태로 3일이 지나면 [알림톡 요청] 버튼으로 변경되어 재신청 요청을 할 수 있습니다.</li></ol><figure><img loading="lazy" src="images/man-88.png" alt="이미지"></figure><h3 class="a-h1">
 FAQ                                                           </h3><h5 class="a-h3">1.보험사에 청구하면 언제 환급 받을 수 있나요?</h5><ul><li>보험사마다 처리 기간이 달라 정확한 일정은 보험사 고객센터를 통해 문의 부탁드립니다.</li></ul><h5 class="a-h3">2.보험사에서 재청구 하라고 합니다. 어떻게 하면 되나요?</h5><ul><li>동일한 진료 내역을 그대로 다시 청구를 하는 것이라면, 전송받은 알림톡에서 [바로 청구하기]로 다시 들어가 동일하게 청구를 진행하면 됩니다.</li><li>다른 진료 내역을 포함하여 청구를 원하시는 경우 병원에 재요청해 주세요.</li></ul><h5 class="a-h3">3.비용은 어떻게 되나요?</h5><ul><li>해당 서비스는 병원과 환자 모두 무료로 사용 가능합니다.</li></ul><h3 class="a-h1">신청 방법                                                     </h3><h5 class="a-h3">실손 보험 빠른 청구를 원하는 요양기관은 
 트라이업 or 투비콘으로 신청해 주세요🙂</h5><div class="callout"><span class="co-ico">💡</span><div class="co-body"><strong>&lt;트라이업&gt;
 고객센터 : 02-6083-7711
@@ -628,7 +741,7 @@ FAQ                                                           </h3><h5 class="a-
     </div>
 <div class="detail-panel" data-id="m23">
       <h2 class="dp-q">VAN(카드단말기)연동</h2>
-      <div class="dp-body"><div class="callout"><span class="co-ico">💡</span><div class="co-body"><p>모션E 와 연동되는 단말기는 [한국결제시스템] 단말기 입니다. 현재는, 이 외 단말기는 연동이 어려우니 변경을 원하시는 경우 모션E 고객센터로 문의주세요. ( 02-6083-7711)</p></div></div><h5 class="a-h3">VAN연동</h5><ul><li><em><strong>[관리자] - [ 옵셜설정] - [VAN 사용 여부] - [사용] 으로 체크 후 차트를 재실행해 주세요.</strong></em></li><li><em><strong>[설정] - [공통코드관리] - [기타 결제구분코드] - [VAN 매핑] - [일괄적용] - [확인] - [저장]</strong></em></li><li><em><strong>[설정] - [공통코드관리] - [카드 구분코드] - [VAN 매핑] - [일괄적용] - [확인] - [저장]</strong></em></li></ul><p>→ 순서대로 진행해 주세요.</p><h4 class="a-h2">수납</h4><ol><li>[수납]탭에서 수납할 금액을 입력 후 [수납하기] 버튼을 눌러주세요.</li></ol><figure><img loading="lazy" src="images/man-91.png" alt="이미지"></figure><ol><li>VAN 연결 없이 처리를 원하는 경우 해당 버튼 클릭 후 [수납하기] 눌러주세요.</li></ol><figure><img loading="lazy" src="images/man-92.png" alt="이미지"></figure><ol><li>카드 단말기에 카드를 넣어주세요.</li></ol><figure><img loading="lazy" src="images/man-93.png" alt="이미지"></figure><ol><li>결제가 완료되면 3초 후 자동으로 창이 종료됩니다.</li></ol><figure><img loading="lazy" src="images/man-94.png" alt="이미지"></figure><h4 class="a-h2">환불 및 수납취소</h4><p>1.수납내역 + 를 클릭해 주세요.</p><figure><img loading="lazy" src="images/man-95.png" alt="이미지"></figure><p>** 단말기를 연동하지 않고 따로 처리하고 싶은 경우 [결제취소]버튼 위 [VAN연결해제]에 체크 후 결제취소를 진행해 주시면 됩니다.</p></div>
+      <div class="dp-body"><div class="callout"><span class="co-ico">💡</span><div class="co-body"><p>모션E 와 연동되는 단말기는 [한국결제시스템] 단말기 입니다. 현재는, 이 외 단말기는 연동이 어려우니 변경을 원하시는 경우 모션E 고객센터로 문의주세요. ( 02-6083-7711)</p></div></div><h5 class="a-h3">VAN연동</h5><ul><li><em><strong>[관리자] - [ 옵셜설정] - [VAN 사용 여부] - [사용] 으로 체크 후 차트를 재실행해 주세요.</strong></em></li><li><em><strong>[설정] - [공통코드관리] - [기타 결제구분코드] - [VAN 매핑] - [일괄적용] - [확인] - [저장]</strong></em></li><li><em><strong>[설정] - [공통코드관리] - [카드 구분코드] - [VAN 매핑] - [일괄적용] - [확인] - [저장]</strong></em></li></ul><p>→ 순서대로 진행해 주세요.</p><h4 class="a-h2" id="m23-h0">수납</h4><ol><li>[수납]탭에서 수납할 금액을 입력 후 [수납하기] 버튼을 눌러주세요.</li></ol><figure><img loading="lazy" src="images/man-91.png" alt="이미지"></figure><ol><li>VAN 연결 없이 처리를 원하는 경우 해당 버튼 클릭 후 [수납하기] 눌러주세요.</li></ol><figure><img loading="lazy" src="images/man-92.png" alt="이미지"></figure><ol><li>카드 단말기에 카드를 넣어주세요.</li></ol><figure><img loading="lazy" src="images/man-93.png" alt="이미지"></figure><ol><li>결제가 완료되면 3초 후 자동으로 창이 종료됩니다.</li></ol><figure><img loading="lazy" src="images/man-94.png" alt="이미지"></figure><h4 class="a-h2" id="m23-h1">환불 및 수납취소</h4><p>1.수납내역 + 를 클릭해 주세요.</p><figure><img loading="lazy" src="images/man-95.png" alt="이미지"></figure><p>** 단말기를 연동하지 않고 따로 처리하고 싶은 경우 [결제취소]버튼 위 [VAN연결해제]에 체크 후 결제취소를 진행해 주시면 됩니다.</p></div>
     </div>
 <div class="detail-panel" data-id="m24">
       <h2 class="dp-q">모션E 태블릿</h2>
@@ -915,7 +1028,51 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   var faq = setupMasterDetail(document.getElementById('faq-list'), document.getElementById('faq-detail'));
   setupMasterDetail(document.getElementById('upd-list'), document.getElementById('upd-detail'));
   setupMasterDetail(document.getElementById('ntc-list'), document.getElementById('ntc-detail'));
-  var man = setupMasterDetail(document.getElementById('man-list'), document.getElementById('man-detail'));
+
+  // ---- manual 2-level nav (대분류 → 하위메뉴 → 본문 위치 이동) ----
+  var manNav = (function(){
+    var listEl = document.getElementById('man-list');
+    var detailEl = document.getElementById('man-detail');
+    var groups = [].slice.call(listEl.querySelectorAll('.q-group'));
+    var parents = [].slice.call(listEl.querySelectorAll('.man-parent'));
+    var subItems = [].slice.call(listEl.querySelectorAll('.sub-item'));
+    var panels = [].slice.call(detailEl.querySelectorAll('.detail-panel'));
+
+    function showPanel(id){
+      parents.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-id') === id); });
+      panels.forEach(function(p){ p.classList.toggle('show', p.getAttribute('data-id') === id); });
+      detailEl.classList.add('has-selection','drawer-open');
+      document.body.classList.add('drawer-open');
+    }
+    function openGroup(id){ groups.forEach(function(g){ g.classList.toggle('open', g.getAttribute('data-id') === id); }); }
+    function scrollTo(anchor){
+      var el = document.getElementById(anchor);
+      if(el) detailEl.scrollTo({ top: Math.max(0, el.offsetTop - 12), behavior: 'smooth' });
+    }
+    parents.forEach(function(p){
+      p.addEventListener('click', function(){
+        var id = p.getAttribute('data-id');
+        var wasOpen = p.closest('.q-group').classList.contains('open');
+        showPanel(id);
+        openGroup(wasOpen ? null : id);   // 이미 열려있으면 접기
+        subItems.forEach(function(x){ x.classList.remove('active'); });
+        detailEl.scrollTop = 0;
+      });
+    });
+    subItems.forEach(function(s){
+      s.addEventListener('click', function(){
+        var id = s.getAttribute('data-id');
+        showPanel(id);
+        openGroup(id);
+        subItems.forEach(function(x){ x.classList.remove('active'); });
+        s.classList.add('active');
+        scrollTo(s.getAttribute('data-anchor'));
+      });
+    });
+    var cb = detailEl.querySelector('.detail-close');
+    if(cb) cb.addEventListener('click', function(){ detailEl.classList.remove('drawer-open'); document.body.classList.remove('drawer-open'); });
+    return { groups: groups };
+  })();
 
   // ---- manual search ----
   var manSearch = document.getElementById('man-search');
@@ -923,9 +1080,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   manSearch.addEventListener('input', function(){
     var qv = manSearch.value.trim().toLowerCase();
     var shown = 0;
-    man.items.forEach(function(it){
-      var ok = !qv || it.getAttribute('data-search').indexOf(qv) !== -1;
-      it.style.display = ok ? '' : 'none';
+    manNav.groups.forEach(function(g){
+      var ok = !qv || g.getAttribute('data-search').indexOf(qv) !== -1;
+      g.style.display = ok ? '' : 'none';
       if(ok) shown++;
     });
     manEmpty.style.display = shown ? 'none' : 'block';
