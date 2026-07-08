@@ -1088,6 +1088,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     snavs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-view') === v); });
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== v); });
     searchView.hidden = true;                    // 섹션 이동 시 검색결과 화면 닫기
+    if(v === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }  // FAQ 재진입 시 카테고리 초기화
     if(!noscroll) window.scrollTo(0, 0);
   }
   snavs.forEach(function(n){ n.addEventListener('click', function(){ activateView(n.getAttribute('data-view')); }); });
