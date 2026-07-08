@@ -19,7 +19,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   line-height:1.7;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
 a{color:var(--brand)}
 
 /* header */
@@ -62,7 +62,7 @@ a{color:var(--brand)}
 .view[hidden]{display:none}
 main{padding:22px 0 60px}
 .count{color:var(--sub);font-size:13px;margin:0 2px 12px}
-.faq-layout{display:grid;grid-template-columns:minmax(300px,400px) 1fr;gap:22px;align-items:start}
+.faq-layout{display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:22px;align-items:start}
 
 /* list */
 .q-list{display:flex;flex-direction:column;gap:9px}
@@ -80,7 +80,7 @@ main{padding:22px 0 60px}
 .sub-count{flex:none;font-size:11px;font-weight:700;color:var(--sub);background:#eef1f6;border-radius:999px;padding:1px 8px}
 .q-item.active .sub-count{color:var(--brand);background:#fff}
 /* 매뉴얼: 3열 레이아웃 + 오른쪽 목차(TOC) */
-.man-layout{display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr) 210px;gap:20px;align-items:start}
+.man-layout{display:grid;grid-template-columns:210px minmax(0,1fr) 168px;gap:18px;align-items:start}
 .man-toc{position:sticky;top:calc(var(--head-h) + 6px);max-height:calc(100vh - var(--head-h) - 34px);overflow:auto}
 .man-toc .toc-head{font-size:11.5px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.05em;padding-bottom:9px;margin-bottom:8px;border-bottom:1px solid var(--line)}
 .toc-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid var(--line);
@@ -971,11 +971,14 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   function setupMasterDetail(listEl, detailEl, onSelect){
     var items = [].slice.call(listEl.querySelectorAll('.q-item'));
     var panels = [].slice.call(detailEl.querySelectorAll('.detail-panel'));
-    function select(id){
+    function select(id, silent){
       items.forEach(function(it){ it.classList.toggle('active', it.getAttribute('data-id') === id); });
       panels.forEach(function(p){ p.classList.toggle('show', p.getAttribute('data-id') === id); });
-      detailEl.classList.add('has-selection','drawer-open');
-      document.body.classList.add('drawer-open');
+      detailEl.classList.add('has-selection');
+      if(!silent){                                   // 모바일 드로어 열기 (자동선택 땐 열지 않음)
+        detailEl.classList.add('drawer-open');
+        document.body.classList.add('drawer-open');
+      }
       detailEl.scrollTop = 0;
       if(onSelect) onSelect(id);
     }
@@ -983,12 +986,12 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     items.forEach(function(it){ it.addEventListener('click', function(){ select(it.getAttribute('data-id')); }); });
     var cb = detailEl.querySelector('.detail-close');
     if(cb) cb.addEventListener('click', close);
-    return { items: items, close: close };
+    return { items: items, close: close, select: select };
   }
 
   var faq = setupMasterDetail(document.getElementById('faq-list'), document.getElementById('faq-detail'));
-  setupMasterDetail(document.getElementById('upd-list'), document.getElementById('upd-detail'));
-  setupMasterDetail(document.getElementById('ntc-list'), document.getElementById('ntc-detail'));
+  var upd = setupMasterDetail(document.getElementById('upd-list'), document.getElementById('upd-detail'));
+  var ntc = setupMasterDetail(document.getElementById('ntc-list'), document.getElementById('ntc-detail'));
 
   // ---- manual: 대분류 선택 + 오른쪽 목차(TOC) + 스크롤 위치 자동표시 ----
   var manDetailEl = document.getElementById('man-detail');
@@ -1032,6 +1035,11 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       scrollContentTo(b.getAttribute('data-anchor'));
       var d = b.closest('details'); if(d) d.open = false;
     });
+  });
+
+  // 각 섹션 진입 시 첫 문서 자동 표시 (모바일에선 드로어를 열지 않아 목록이 먼저 보임)
+  [faq, ntc, upd, man].forEach(function(md){
+    if(md.items.length) md.select(md.items[0].getAttribute('data-id'), true);
   });
 
   // ---- manual search ----
