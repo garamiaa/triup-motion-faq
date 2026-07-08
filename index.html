@@ -1072,7 +1072,12 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     countEl.textContent = shown + '개의 질문';
     emptyEl.style.display = shown ? 'none' : 'block';
   }
-  tabs.forEach(function(t){ t.addEventListener('click', function(){ curCat = t.getAttribute('data-cat'); apply(); }); });
+  function selectFirstVisible(md){
+    for(var i = 0; i < md.items.length; i++){
+      if(md.items[i].style.display !== 'none'){ md.select(md.items[i].getAttribute('data-id'), true); return; }
+    }
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ curCat = t.getAttribute('data-cat'); apply(); selectFirstVisible(faq); }); });
   apply();
 
   // ---- section switch (FAQ / 매뉴얼 / 공지 / 업데이트) ----
@@ -1084,18 +1089,19 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     update: document.getElementById('view-update')
   };
   var searchView = document.getElementById('view-search');
+  var sectionMd = { faq: faq, manual: man, notice: ntc, update: upd };
+  var sectionLabel = { faq: 'FAQ', manual: '매뉴얼', notice: '공지', update: '업데이트' };
   function activateView(v, noscroll){
     snavs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-view') === v); });
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== v); });
     searchView.hidden = true;                    // 섹션 이동 시 검색결과 화면 닫기
     if(v === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }  // FAQ 재진입 시 카테고리 초기화
+    if(sectionMd[v]) selectFirstVisible(sectionMd[v]);  // 재진입 시 첫 문서로 초기화
     if(!noscroll) window.scrollTo(0, 0);
   }
   snavs.forEach(function(n){ n.addEventListener('click', function(){ activateView(n.getAttribute('data-view')); }); });
 
   // ---- 전체 검색: Enter → 결과 목록 페이지 (제목·내용 검색) ----
-  var sectionMd = { faq: faq, manual: man, notice: ntc, update: upd };
-  var sectionLabel = { faq: 'FAQ', manual: '매뉴얼', notice: '공지', update: '업데이트' };
   var gsInput = document.getElementById('global-search');
   var srList = document.getElementById('sr-list');
   var srEmpty = document.getElementById('sr-empty');
