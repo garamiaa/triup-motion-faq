@@ -29,6 +29,7 @@ a{color:var(--brand)}
 .head-titles h1{margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
 .head-sub{margin:2px 0 0;font-size:12.5px;color:var(--sub);letter-spacing:.02em}
 .logo-triup{height:26px;width:auto;margin-left:auto;flex:none;opacity:.92}
+.home-trigger{cursor:pointer}
 
 /* section nav (FAQ / 업데이트) */
 .section-nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
@@ -204,8 +205,8 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 <body>
 <header class="site-head">
   <div class="head-row">
-    <img class="logo-motion" src="images/logo-motion.png" alt="Motion E 로고">
-    <div class="head-titles">
+    <img class="logo-motion home-trigger" src="images/logo-motion.png" alt="Motion E 로고">
+    <div class="head-titles home-trigger">
       <h1>고객센터</h1>
       <p class="head-sub">TRIUP MOTION E · EMR · OCS · CRM CHART SYSTEM</p>
     </div>
@@ -232,7 +233,6 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 <div class="view view-faq" id="view-faq" hidden>
   <div class="band">
     <div class="wrap">
-      <p class="band-title">자주 묻는 질문</p>
       <p class="band-sub">카테고리로 찾거나 상단 검색창을 이용하세요.</p>
     </div>
   </div>
@@ -473,7 +473,6 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 <div class="view view-manual" id="view-manual" hidden>
   <div class="band">
     <div class="wrap">
-      <p class="band-title">사용자 매뉴얼</p>
       <p class="band-sub">Motion E 기능별 사용 방법을 확인하세요.</p>
     </div>
   </div>
@@ -729,7 +728,6 @@ FAQ                                                           </h3><h5 class="a-
 <div class="view view-notice" id="view-notice">
   <div class="band">
     <div class="wrap">
-      <p class="band-title">공지사항</p>
       <p class="band-sub">Motion E 서비스 공지와 안내사항을 확인하세요.</p>
     </div>
   </div>
@@ -931,7 +929,6 @@ DUR프로그램 다운로드 경로 &gt;<a href="https://biz.hira.or.kr/index.do
 <div class="view view-update" id="view-update" hidden>
   <div class="band">
     <div class="wrap">
-      <p class="band-title">제품 업데이트 소식</p>
       <p class="band-sub">Motion E의 새로운 기능과 개선사항을 확인하세요.</p>
     </div>
   </div>
@@ -1124,6 +1121,14 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     if(!noscroll) window.scrollTo(0, 0);
   }
   snavs.forEach(function(n){ n.addEventListener('click', function(){ activateView(n.getAttribute('data-view')); }); });
+
+  // ---- 로고 · '고객센터' 클릭 → 홈(공지사항 첫 페이지) ----
+  document.querySelectorAll('.home-trigger').forEach(function(el){
+    el.addEventListener('click', function(){
+      var gs = document.getElementById('global-search'); if(gs) gs.value = '';
+      activateView('notice');
+    });
+  });
 
   // ---- 전체 검색: Enter → 결과 목록 페이지 (제목·내용 검색) ----
   var gsInput = document.getElementById('global-search');
