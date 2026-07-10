@@ -29,6 +29,9 @@ a{color:var(--brand)}
 .head-titles h1{margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
 .head-sub{margin:2px 0 0;font-size:12.5px;color:var(--sub);letter-spacing:.02em}
 .logo-triup{height:26px;width:auto;margin-left:auto;flex:none;opacity:.92}
+.logo-triup-link{margin-left:auto;display:inline-flex;align-items:center;flex:none;transition:opacity .15s}
+.logo-triup-link:hover{opacity:.7}
+.logo-triup-link .logo-triup{margin-left:0}
 
 /* section nav (FAQ / 업데이트) */
 .section-nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
@@ -204,7 +207,7 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
   .detail-empty{display:none}
   .detail-close{display:inline-flex;align-items:center;gap:6px;position:fixed;top:12px;left:14px;z-index:61;background:var(--card);border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer}
 }
-@media(max-width:560px){.head-row{flex-wrap:wrap;gap:12px}.logo-triup{margin-left:0}.qi-cat{display:none}}
+@media(max-width:560px){.head-row{flex-wrap:wrap;gap:12px}.logo-triup,.logo-triup-link{margin-left:0}.qi-cat{display:none}}
 </style>
 </head>
 <body>
@@ -215,7 +218,9 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
       <h1>고객센터</h1>
       <p class="head-sub">TRIUP MOTION E · EMR · OCS · CRM CHART SYSTEM</p>
     </div>
-    <img class="logo-triup" src="images/logo-triup.png" alt="trIup 로고">
+    <a class="logo-triup-link" href="https://www.triupcorp.com/" target="_blank" rel="noopener" title="트라이업 홈페이지 바로가기" aria-label="트라이업 홈페이지 바로가기">
+      <img class="logo-triup" src="images/logo-triup.png" alt="trIup 로고">
+    </a>
   </div>
 </header>
 
