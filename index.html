@@ -1249,9 +1249,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       if(!md) return;
       md.select(s.id);
       if(s.q){                                           // 검색으로 열었던 문서면 하이라이트도 되살린다
-        var panel = md.detail.querySelector('.detail-panel.show');
-        var first = highlightIn(panel, s.q);
-        if(first) requestAnimationFrame(function(){ focusHit(md.detail, panel, first); });
+        var body = shownBody(md);
+        var first = highlightIn(body, s.q);
+        if(first) requestAnimationFrame(function(){ focusHit(md.detail, body, first); });
       }
     } else {
       closeDrawers();
@@ -1290,6 +1290,13 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     });
     kwPanel.normalize();                             // 쪼개진 텍스트 노드를 원래대로 합친다
     kwPanel = null;
+  }
+  // 하이라이트·포커스 대상은 문서 '본문'(.dp-body)뿐이다.
+  // 매뉴얼 패널 앞머리에는 접이식 목차(.toc-mobile)가 있는데, 이건 내비게이션인 데다 데스크톱에선
+  // display:none이라 크기가 0이다. 여기에 첫 일치가 잡히면 스크롤 목표가 0으로 계산돼 화면이 움직이지 않는다.
+  function shownBody(md){
+    var p = md.detail.querySelector('.detail-panel.show');
+    return p ? (p.querySelector('.dp-body') || p) : null;
   }
   // 텍스트 노드만 <mark>로 감싸므로 이미지·링크·표 등 기존 마크업은 건드리지 않는다. 첫 일치 지점을 반환.
   function highlightIn(panel, q){
@@ -1382,9 +1389,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
         if(r.key === 'faq'){ curCat = '전체'; apply(); }
         var md = sectionMd[r.key];
         md.select(r.id);
-        var panel = md.detail.querySelector('.detail-panel.show');
-        var first = highlightIn(panel, q);           // 본문에 검색어가 없으면 null → 지금처럼 문서 상단을 보여준다
-        if(first) requestAnimationFrame(function(){ focusHit(md.detail, panel, first); });
+        var body = shownBody(md);
+        var first = highlightIn(body, q);            // 본문에 검색어가 없으면 null → 지금처럼 문서 상단을 보여준다
+        if(first) requestAnimationFrame(function(){ focusHit(md.detail, body, first); });
         pushScreen({ screen:'detail', view:r.key, id:r.id, q:q });   // 뒤로가기 → 검색결과, 앞으로가기 → 이 문서(하이라이트 포함)
       });
       srList.appendChild(b);
