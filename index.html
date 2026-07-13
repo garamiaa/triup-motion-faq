@@ -26,6 +26,7 @@ a{color:var(--brand)}
 .site-head{background:var(--card);border-bottom:1px solid var(--line)}
 .head-row{display:flex;align-items:center;gap:16px;padding:8px 22px;max-width:1240px;margin:0 auto}
 .logo-motion{height:80px;width:auto;flex:none}
+.home-trigger{cursor:pointer}
 .head-titles h1{margin:0;font-size:23px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
 .head-sub{margin:2px 0 0;font-size:12.5px;color:var(--sub);letter-spacing:.02em}
 .logo-triup{height:26px;width:auto;margin-left:auto;flex:none;opacity:.92}
@@ -216,8 +217,8 @@ footer .logo-triup{height:20px;vertical-align:middle;margin:0 4px;opacity:.8}
 <body>
 <header class="site-head">
   <div class="head-row">
-    <img class="logo-motion" src="images/logo-motion.png" alt="Motion E 로고">
-    <div class="head-titles">
+    <img class="logo-motion home-trigger" src="images/logo-motion.png" alt="Motion E 로고">
+    <div class="head-titles home-trigger">
       <h1>고객센터</h1>
       <p class="head-sub">TRIUP MOTION E · EMR · OCS · CRM CHART SYSTEM</p>
     </div>
@@ -1190,15 +1191,76 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     var md = sectionMd[n.getAttribute('data-view')], badge = n.querySelector('.n-badge');
     if(md && badge) badge.textContent = md.items.length;
   });
-  function activateView(v, noscroll){
+  function showView(v){                           // 화면만 전환 (뒤로가기 복원 때도 재사용)
     snavs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-view') === v); });
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== v); });
     searchView.hidden = true;                    // 섹션 이동 시 검색결과 화면 닫기
+  }
+  function closeDrawers(){                        // 열려 있는 모바일 드로어 닫기
+    document.querySelectorAll('.detail').forEach(function(d){ d.classList.remove('drawer-open'); });
+    document.body.classList.remove('drawer-open');
+  }
+  function activateView(v, noscroll){
+    showView(v);
     if(v === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }  // FAQ 재진입 시 카테고리 초기화
     if(sectionMd[v]) selectFirstVisible(sectionMd[v]);  // 재진입 시 첫 문서로 초기화
     if(!noscroll) window.scrollTo(0, 0);
   }
-  snavs.forEach(function(n){ n.addEventListener('click', function(){ activateView(n.getAttribute('data-view')); }); });
+  snavs.forEach(function(n){ n.addEventListener('click', function(){ var v = n.getAttribute('data-view'); activateView(v); pushScreen({ screen:'view', view:v }); }); });
+
+  // ---- 로고 · '고객센터' 클릭 → 홈(공지사항 첫 페이지) ----
+  document.querySelectorAll('.home-trigger').forEach(function(el){
+    el.addEventListener('click', function(){
+      var gs = document.getElementById('global-search'); if(gs) gs.value = '';
+      activateView('notice');
+      pushScreen({ screen:'view', view:'notice' });
+    });
+  });
+
+  // ---- 브라우저 뒤로가기 / 앞으로가기 ----
+  // 화면 이동을 history에 기록해 두고, popstate에서 그 화면을 그대로 되살린다.
+  // 같은 화면을 연달아 쌓지 않아야 뒤로가기를 두 번 눌러야 움직이는 일이 없다.
+  function sameScreen(a, b){
+    if(!a || !b || a.screen !== b.screen) return false;
+    if(a.screen === 'search') return a.q === b.q;
+    if(a.screen === 'detail') return a.view === b.view && a.id === b.id && a.q === b.q;
+    return a.view === b.view;
+  }
+  function pushScreen(s){
+    if(sameScreen(history.state, s)) return;
+    history.pushState(s, '');
+  }
+  Object.keys(sectionMd).forEach(function(key){          // 목록에서 문서를 직접 클릭한 경우
+    sectionMd[key].items.forEach(function(it){
+      it.addEventListener('click', function(){
+        pushScreen({ screen:'detail', view:key, id:it.getAttribute('data-id') });
+      });
+    });
+  });
+  function restoreScreen(s){
+    if(s.screen === 'search'){
+      closeDrawers();
+      gsInput.value = s.q;
+      runSearch(s.q);                                    // runSearch 자체는 history를 건드리지 않는다
+    } else if(s.screen === 'detail'){
+      showView(s.view);
+      if(s.view === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }
+      var md = sectionMd[s.view];
+      if(!md) return;
+      md.select(s.id);
+      if(s.q){                                           // 검색으로 열었던 문서면 하이라이트도 되살린다
+        var panel = md.detail.querySelector('.detail-panel.show');
+        var first = highlightIn(panel, s.q);
+        if(first) requestAnimationFrame(function(){ focusHit(md.detail, panel, first); });
+      }
+    } else {
+      closeDrawers();
+      activateView(s.view, true);
+    }
+  }
+  window.addEventListener('popstate', function(e){
+    restoreScreen(e.state || { screen:'view', view:'notice' });
+  });
 
   // 본문 안의 매뉴얼 페이지 링크(‣ 멘션 / 링크 블록) → 해당 매뉴얼 섹션으로 내부 이동
   document.addEventListener('click', function(e){
@@ -1323,6 +1385,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
         var panel = md.detail.querySelector('.detail-panel.show');
         var first = highlightIn(panel, q);           // 본문에 검색어가 없으면 null → 지금처럼 문서 상단을 보여준다
         if(first) requestAnimationFrame(function(){ focusHit(md.detail, panel, first); });
+        pushScreen({ screen:'detail', view:r.key, id:r.id, q:q });   // 뒤로가기 → 검색결과, 앞으로가기 → 이 문서(하이라이트 포함)
       });
       srList.appendChild(b);
     });
@@ -1331,8 +1394,13 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     searchView.hidden = false;
     window.scrollTo(0, 0);
   }
-  gsInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); runSearch(gsInput.value); } });
-  document.getElementById('gs-ico').addEventListener('click', function(){ runSearch(gsInput.value); });
+  function doSearch(raw){
+    if(!raw.trim()) return;
+    runSearch(raw);
+    pushScreen({ screen:'search', q: raw.trim() });     // 입력한 그대로 보관 (검색창·결과 제목에 다시 그대로 표시)
+  }
+  gsInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); doSearch(gsInput.value); } });
+  document.getElementById('gs-ico').addEventListener('click', function(){ doSearch(gsInput.value); });
 
   // ---- lightbox ----
   var lb = document.getElementById('lightbox'), lbimg = document.getElementById('lbimg');
@@ -1343,6 +1411,9 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ lb.classList.remove('on'); document.querySelectorAll('.detail').forEach(function(d){d.classList.remove('drawer-open');}); document.body.classList.remove('drawer-open'); }
   });
+
+  // 초기 화면(공지사항)을 히스토리 기준점으로 등록 → 첫 화면에서 뒤로가기를 눌러야 사이트를 벗어난다
+  history.replaceState({ screen:'view', view:'notice' }, '');
 })();
 </script>
 </body>
