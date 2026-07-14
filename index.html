@@ -178,7 +178,9 @@ main{padding:22px 0 60px}
 .file-link:hover{background:#e8f0fe;border-color:#bcd4fb}
 .file-hint{color:var(--sub);font-weight:400;font-size:12.5px}
 figure{margin:16px 0}
-figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;display:block}
+/* width:100%로 늘리면 원본이 본문폭보다 작은 이미지가 확대돼 뭉개진다.
+   max-width로 두어 원본 크기를 넘지 않게 하고, 큰 이미지만 본문폭에 맞춰 줄인다. */
+figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;display:block}
 figcaption{font-size:13px;color:var(--sub);margin-top:6px;text-align:center}
 .pending{color:var(--sub);background:#fafbfd;border:1px dashed var(--line);border-radius:10px;padding:20px;text-align:center;font-size:15px}
 .tbl-wrap{overflow-x:auto;margin:14px 0}
