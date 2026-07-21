@@ -1117,7 +1117,7 @@ DUR프로그램 다운로드 경로 &gt;<a href="https://biz.hira.or.kr/index.do
       <p class="band-sub">Motion E의 새로운 기능과 개선사항을 확인하세요.</p>
     </div>
   </div>
-  <div class="tabs"><div class="wrap"><button class="upd-tab active" data-prod="전체">전체</button><button class="upd-tab" data-prod="모션E">🖥️ 모션E</button><button class="upd-tab" data-prod="모션T">🔳 모션T</button></div></div>
+  <div class="tabs"><div class="wrap"><button class="tab upd-tab active" data-prod="전체">전체</button><button class="tab upd-tab" data-prod="모션E">🖥️ 모션E</button><button class="tab upd-tab" data-prod="모션T">🔳 모션T</button></div></div>
   <main class="wrap">
     <div class="faq-layout">
       <aside class="q-list" id="upd-list">
@@ -1285,7 +1285,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   });
 
   // ---- FAQ 카테고리 필터 (검색은 상단 전체검색으로 이동) ----
-  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  var tabs = [].slice.call(document.querySelectorAll('.tab[data-cat]'));  // FAQ 탭만 (업데이트 .upd-tab 제외)
   var countEl = document.getElementById('count');
   var emptyEl = document.getElementById('empty');
   var curCat = '전체';
