@@ -1634,5 +1634,27 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   history.replaceState({ screen:'view', view:'notice' }, '');
 })();
 </script>
+
+<!-- 채널톡 인페이지 메신저: '문의하기' 클릭 시 새 탭 대신 오른쪽에 메신저 창만 띄운다 -->
+<script>
+(function(){
+  var PLUGIN_KEY = "a7bec9d9-0eec-44d3-a29f-3a866e3ea54a";
+  // ChannelIO 부트스트랩 (공식 로더)
+  (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];x.parentNode.insertBefore(s,x);}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+  // 기본 런처 버블은 숨기고(hideChannelButtonOnBoot) 우리 '문의하기' 버튼으로만 연다
+  ChannelIO('boot', { pluginKey: PLUGIN_KEY, hideChannelButtonOnBoot: true });
+
+  var fab = document.querySelector('.fab-channel');
+  if(fab){
+    fab.addEventListener('click', function(e){
+      if(window.ChannelIO && window.ChannelIOInitialized){   // SDK 로드됨 → 새 탭 막고 메신저만 열기
+        e.preventDefault();
+        ChannelIO('showMessenger');
+      }
+      // 미로드(오프라인/차단) 시엔 기본 동작(href 새 탭)으로 폴백
+    });
+  }
+})();
+</script>
 </body>
 </html>
