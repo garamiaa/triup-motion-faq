@@ -140,14 +140,14 @@ main{padding:22px 0 60px}
 .detail-close{display:none}
 .detail-empty{color:var(--sub);text-align:center;padding:60px 20px}
 .detail-empty .de-ico{font-size:34px;display:block;margin-bottom:10px;opacity:.6}
-.detail-panel{display:none}
+.detail-panel{display:none;position:relative}
 .detail-panel.show{display:block;animation:fade .2s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .detail.has-selection .detail-empty{display:none}
 .dp-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:4px 11px;border-radius:7px;margin-bottom:12px}
 .upd-meta{display:inline-block;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);padding:5px 13px;border-radius:8px;margin-bottom:14px}
-.dp-q{margin:0 0 16px;font-size:22px;font-weight:800;line-height:1.4;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line)}
-.dp-link{display:inline-flex;align-items:center;gap:6px;margin:-4px 0 18px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.dp-q{margin:0 0 16px;font-size:22px;font-weight:800;line-height:1.4;color:var(--ink);padding:0 116px 16px 0;border-bottom:1px solid var(--line)}
+.dp-link{position:absolute;top:0;right:0;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;font-size:12.5px;font-weight:600;color:var(--brand);background:var(--brand-soft);border:1px solid var(--line);border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
 .dp-link:hover{background:#dbe8fb}
 .dp-link.copied{color:#0a7d43;background:#e7f7ee;border-color:#b6e3c8}
 .dp-body{font-size:15.5px}
@@ -1609,7 +1609,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       btn.type = 'button'; btn.className = 'dp-link'; btn.innerHTML = '🔗 링크 복사';
       btn.addEventListener('click', function(){
         var url = linkFor(view, id);
-        copyText(url).then(function(){ flashBtn(btn, '✅ 링크가 복사됐어요'); }).catch(function(){ flashBtn(btn, url); });
+        copyText(url).then(function(){ flashBtn(btn, '✅ 복사됨'); }).catch(function(){ flashBtn(btn, '⚠️ 복사 실패'); });
       });
       h2.insertAdjacentElement('afterend', btn);
     });
