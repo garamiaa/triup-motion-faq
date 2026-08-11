@@ -147,6 +147,9 @@ main{padding:22px 0 60px}
 .dp-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:4px 11px;border-radius:7px;margin-bottom:12px}
 .upd-meta{display:inline-block;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);padding:5px 13px;border-radius:8px;margin-bottom:14px}
 .dp-q{margin:0 0 16px;font-size:22px;font-weight:800;line-height:1.4;color:var(--ink);padding-bottom:16px;border-bottom:1px solid var(--line)}
+.dp-link{display:inline-flex;align-items:center;gap:6px;margin:-4px 0 18px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.dp-link:hover{background:#dbe8fb}
+.dp-link.copied{color:#0a7d43;background:#e7f7ee;border-color:#b6e3c8}
 .dp-body{font-size:15.5px}
 .dp-body p{margin:0 0 11px}
 .dp-body ul,.dp-body ol{margin:0 0 13px;padding-left:22px}
@@ -1529,7 +1532,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   }
   function pushScreen(s){
     if(sameScreen(history.state, s)) return;
-    history.pushState(s, '');
+    history.pushState(s, '', urlFor(s));
   }
   Object.keys(sectionMd).forEach(function(key){          // 목록에서 문서를 직접 클릭한 경우
     sectionMd[key].items.forEach(function(it){
@@ -1561,6 +1564,55 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   }
   window.addEventListener('popstate', function(e){
     restoreScreen(e.state || { screen:'view', view:'notice' });
+  });
+
+  // ---- 문서별 딥링크(주소 공유) + '링크 복사' 버튼 ----
+  // 링크에는 번호(f5 등)가 아니라 '제목'을 쓴다 → 노션 반영으로 정렬·번호가 바뀌어도 링크가 안 깨진다.
+  function slugify(t){ return (t || '').trim().replace(/[.\s]+$/, '').replace(/\s+/g, '-'); }
+  function baseUrl(){ return location.href.split('#')[0]; }
+  function titleOfItem(view, id){
+    var md = sectionMd[view]; if(!md) return '';
+    var it = md.items.filter(function(x){ return x.getAttribute('data-id') === id; })[0];
+    return it ? it.querySelector('.qi-text').textContent : '';
+  }
+  function linkFor(view, id){ return baseUrl() + '#' + view + '/' + encodeURIComponent(slugify(titleOfItem(view, id))); }
+  function urlFor(s){ return (s && s.screen === 'detail') ? linkFor(s.view, s.id) : baseUrl(); }
+  function resolveHash(){                               // 주소의 해시 → {view,id} (없거나 못 찾으면 null)
+    var h = location.hash.slice(1); if(!h) return null;
+    var i = h.indexOf('/'); if(i < 0) return null;
+    var view = h.slice(0, i), slug = decodeURIComponent(h.slice(i + 1));
+    var md = sectionMd[view]; if(!md) return null;
+    var it = md.items.filter(function(x){ return slugify(x.querySelector('.qi-text').textContent) === slug; })[0];
+    return it ? { view: view, id: it.getAttribute('data-id') } : null;
+  }
+  function copyText(t){
+    if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    return new Promise(function(res, rej){
+      try{ var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); res(); }
+      catch(e){ rej(e); }
+    });
+  }
+  function flashBtn(btn, msg){
+    if(!btn.getAttribute('data-orig')) btn.setAttribute('data-orig', btn.innerHTML);
+    btn.classList.add('copied'); btn.innerHTML = msg;
+    clearTimeout(btn._t);
+    btn._t = setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML = btn.getAttribute('data-orig'); }, 1600);
+  }
+  // 모든 문서 패널 제목 아래에 '링크 복사' 버튼을 런타임에 심는다 (정렬로 번호가 바뀌어도 유지보수 불필요)
+  Object.keys(sectionMd).forEach(function(view){
+    var md = sectionMd[view];
+    [].slice.call(md.detail.querySelectorAll('.detail-panel')).forEach(function(panel){
+      var id = panel.getAttribute('data-id');
+      var h2 = panel.querySelector('.dp-q'); if(!h2) return;
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'dp-link'; btn.innerHTML = '🔗 링크 복사';
+      btn.addEventListener('click', function(){
+        var url = linkFor(view, id);
+        copyText(url).then(function(){ flashBtn(btn, '✅ 링크가 복사됐어요'); }).catch(function(){ flashBtn(btn, url); });
+      });
+      h2.insertAdjacentElement('afterend', btn);
+    });
   });
 
   // 본문 안의 매뉴얼 페이지 링크(‣ 멘션 / 링크 블록) → 해당 매뉴얼 섹션으로 내부 이동
@@ -1720,8 +1772,15 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     if(e.key === 'Escape'){ lb.classList.remove('on'); document.querySelectorAll('.detail').forEach(function(d){d.classList.remove('drawer-open');}); document.body.classList.remove('drawer-open'); }
   });
 
-  // 초기 화면(공지사항)을 히스토리 기준점으로 등록 → 첫 화면에서 뒤로가기를 눌러야 사이트를 벗어난다
-  history.replaceState({ screen:'view', view:'notice' }, '');
+  // 공유 링크(#섹션/제목)로 들어오면 해당 문서를 바로 연다. 아니면 초기 화면(공지사항)을 기준점으로 등록.
+  var initDoc = resolveHash();
+  if(initDoc){
+    activateView(initDoc.view, true);
+    sectionMd[initDoc.view].select(initDoc.id);
+    history.replaceState({ screen:'detail', view:initDoc.view, id:initDoc.id }, '', linkFor(initDoc.view, initDoc.id));
+  } else {
+    history.replaceState({ screen:'view', view:'notice' }, '');
+  }
 })();
 </script>
 
