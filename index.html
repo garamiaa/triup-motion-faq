@@ -1568,21 +1568,22 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
 
   // ---- 문서별 딥링크(주소 공유) + '링크 복사' 버튼 ----
   // 링크에는 번호(f5 등)가 아니라 '제목'을 쓴다 → 노션 반영으로 정렬·번호가 바뀌어도 링크가 안 깨진다.
-  function slugify(t){ return (t || '').trim().replace(/[.\s]+$/, '').replace(/\s+/g, '-'); }
+  // 제목 → 짧은 코드(주소를 짧게). 제목 기반이라 정렬·번호가 바뀌어도 링크가 안 깨진다(제목이 바뀌면 그 문서만 새 코드).
+  function docCode(t){ var s = (t || '').trim(), h = 5381; for(var i = 0; i < s.length; i++){ h = (((h << 5) + h) ^ s.charCodeAt(i)) >>> 0; } return h.toString(36); }
   function baseUrl(){ return location.href.split('#')[0]; }
   function titleOfItem(view, id){
     var md = sectionMd[view]; if(!md) return '';
     var it = md.items.filter(function(x){ return x.getAttribute('data-id') === id; })[0];
     return it ? it.querySelector('.qi-text').textContent : '';
   }
-  function linkFor(view, id){ return baseUrl() + '#' + view + '/' + encodeURIComponent(slugify(titleOfItem(view, id))); }
+  function linkFor(view, id){ return baseUrl() + '#' + view + '/' + docCode(titleOfItem(view, id)); }
   function urlFor(s){ return (s && s.screen === 'detail') ? linkFor(s.view, s.id) : baseUrl(); }
   function resolveHash(){                               // 주소의 해시 → {view,id} (없거나 못 찾으면 null)
     var h = location.hash.slice(1); if(!h) return null;
     var i = h.indexOf('/'); if(i < 0) return null;
-    var view = h.slice(0, i), slug = decodeURIComponent(h.slice(i + 1));
+    var view = h.slice(0, i), code = h.slice(i + 1);
     var md = sectionMd[view]; if(!md) return null;
-    var it = md.items.filter(function(x){ return slugify(x.querySelector('.qi-text').textContent) === slug; })[0];
+    var it = md.items.filter(function(x){ return docCode(x.querySelector('.qi-text').textContent) === code; })[0];
     return it ? { view: view, id: it.getAttribute('data-id') } : null;
   }
   function copyText(t){
