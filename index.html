@@ -1622,7 +1622,11 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       runSearch(s.q);                                    // runSearch 자체는 history를 건드리지 않는다
     } else if(s.screen === 'detail'){
       showView(s.view);
-      if(s.view === 'faq' && curCat !== '전체'){ curCat = '전체'; apply(); }
+      if(s.view === 'faq'){
+        var fdoc = s.q ? faq.items.filter(function(x){ return x.getAttribute('data-id') === s.id; })[0] : null;
+        var wantCat = fdoc ? fdoc.getAttribute('data-cat') : '전체';   // 검색으로 연 문서면 그 카테고리 고정, 아니면 전체
+        if(curCat !== wantCat){ curCat = wantCat; apply(); }
+      }
       var md = sectionMd[s.view];
       if(!md) return;
       md.select(s.id);
@@ -1814,7 +1818,11 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       b.appendChild(top); b.appendChild(snip);
       b.addEventListener('click', function(){
         activateView(r.key);
-        if(r.key === 'faq'){ curCat = '전체'; apply(); }
+        if(r.key === 'faq'){                             // FAQ는 문서가 속한 카테고리 탭을 고정한다
+          var doc = faq.items.filter(function(x){ return x.getAttribute('data-id') === r.id; })[0];
+          curCat = doc ? doc.getAttribute('data-cat') : '전체';
+          apply();
+        }
         var md = sectionMd[r.key];
         md.select(r.id);
         var body = shownBody(md);
