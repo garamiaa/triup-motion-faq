@@ -4,6 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Triup Motion E · 고객센터</title>
+<!-- Google Analytics (GA4) — 검색어·문서 조회수 집계 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5CPHYKN1FS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-5CPHYKN1FS');
+  // 검색어 기록: GA4 '검색어(search_term)' 리포트로 인기 검색어 순위 확인
+  window.trackSearch = function(term){
+    term = (term || '').trim(); if(!term) return;
+    try { gtag('event', 'search', { search_term: term }); } catch(e){}
+  };
+  // 문서 조회 기록: 가상 페이지뷰로 문서별 누적 조회수 집계 (섹션 - 제목)
+  window.trackDocView = function(view, id, title){
+    if(!title) return;
+    var label = { faq:'FAQ', manual:'매뉴얼', notice:'공지', update:'업데이트' }[view] || view;
+    try {
+      gtag('event', 'page_view', {
+        page_title: '[' + label + '] ' + title,
+        page_path: '/' + view + '/' + id,
+        page_location: (location.href.split('#')[0]) + '#' + view + '/' + id
+      });
+    } catch(e){}
+  };
+</script>
 <meta name="description" content="Triup Motion E 고객센터 — 자주 묻는 질문(FAQ)과 제품 업데이트 소식">
 <link rel="icon" href="images/logo-motion.png">
 <style>
@@ -1457,6 +1482,11 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
       }
       detailEl.scrollTop = 0;
       if(onSelect) onSelect(id);
+      if(!silent){                                   // 사용자가 실제로 연 문서만 GA에 조회 기록 (자동선택 제외)
+        var view = ({ 'faq-detail':'faq', 'man-detail':'manual', 'ntc-detail':'notice', 'upd-detail':'update' })[detailEl.id];
+        var shown = detailEl.querySelector('.detail-panel[data-id="' + id + '"] .dp-q');
+        if(view && shown && window.trackDocView) window.trackDocView(view, id, shown.textContent.trim());
+      }
       if(!silent && window.innerWidth > 820){       // 데스크톱: 선택한 문서 상단이 보이도록 전체 스크롤 정렬
         var y = detailEl.getBoundingClientRect().top + window.pageYOffset - 60;
         window.scrollTo({ top: Math.max(0, y) });
@@ -1853,6 +1883,7 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
   }
   function doSearch(raw){
     if(!raw.trim()) return;
+    if(window.trackSearch) window.trackSearch(raw);      // 인기 검색어 집계 (GA4)
     runSearch(raw);
     pushScreen({ screen:'search', q: raw.trim() });     // 입력한 그대로 보관 (검색창·결과 제목에 다시 그대로 표시)
   }
