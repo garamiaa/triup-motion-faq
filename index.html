@@ -1740,14 +1740,23 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     return it ? it.querySelector('.qi-text').textContent : '';
   }
   function linkFor(view, id){ return baseUrl() + '#' + view + '/' + docCode(titleOfItem(view, id)); }
-  function urlFor(s){ return (s && s.screen === 'detail') ? linkFor(s.view, s.id) : baseUrl(); }
-  function resolveHash(){                               // 주소의 해시 → {view,id} (없거나 못 찾으면 null)
+  function urlFor(s){
+    if(!s) return baseUrl();
+    if(s.screen === 'detail') return linkFor(s.view, s.id);
+    // 섹션 화면도 탭별로 주소를 다르게 한다(#faq/#manual/#notice/#update). 단 홈(공지)은 기준점이므로 해시 없이.
+    if(s.screen === 'view') return baseUrl() + (s.view === 'notice' ? '' : '#' + s.view);
+    return baseUrl();
+  }
+  function resolveHash(){                               // 주소의 해시 → {screen,view,(id)} (없거나 못 찾으면 null)
     var h = location.hash.slice(1); if(!h) return null;
-    var i = h.indexOf('/'); if(i < 0) return null;
+    var i = h.indexOf('/');
+    if(i < 0){                                          // '#faq' 처럼 섹션만 있는 경우 → 그 탭 열기
+      return sectionMd[h] ? { screen: 'view', view: h } : null;
+    }
     var view = h.slice(0, i), code = h.slice(i + 1);
     var md = sectionMd[view]; if(!md) return null;
     var it = md.items.filter(function(x){ return docCode(x.querySelector('.qi-text').textContent) === code; })[0];
-    return it ? { view: view, id: it.getAttribute('data-id') } : null;
+    return it ? { screen: 'detail', view: view, id: it.getAttribute('data-id') } : null;
   }
   function copyText(t){
     if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
@@ -1956,12 +1965,15 @@ B ↔ C 가족 연결</code></pre><p>위와 같이 연결되어 있어도</p><p>
     if(e.key === 'Escape'){ lb.classList.remove('on'); document.querySelectorAll('.detail').forEach(function(d){d.classList.remove('drawer-open');}); document.body.classList.remove('drawer-open'); }
   });
 
-  // 공유 링크(#섹션/제목)로 들어오면 해당 문서를 바로 연다. 아니면 초기 화면(공지사항)을 기준점으로 등록.
-  var initDoc = resolveHash();
-  if(initDoc){
-    activateView(initDoc.view, true);
-    sectionMd[initDoc.view].select(initDoc.id);
-    history.replaceState({ screen:'detail', view:initDoc.view, id:initDoc.id }, '', linkFor(initDoc.view, initDoc.id));
+  // 공유 링크로 들어오면 해당 화면을 바로 연다: #섹션 → 그 탭, #섹션/제목 → 그 문서. 아니면 초기 화면(공지사항).
+  var initHash = resolveHash();
+  if(initHash && initHash.screen === 'detail'){
+    activateView(initHash.view, true);
+    sectionMd[initHash.view].select(initHash.id);
+    history.replaceState({ screen:'detail', view:initHash.view, id:initHash.id }, '', linkFor(initHash.view, initHash.id));
+  } else if(initHash && initHash.screen === 'view'){
+    activateView(initHash.view, true);
+    history.replaceState({ screen:'view', view:initHash.view }, '', urlFor({ screen:'view', view:initHash.view }));
   } else {
     history.replaceState({ screen:'view', view:'notice' }, '');
   }
